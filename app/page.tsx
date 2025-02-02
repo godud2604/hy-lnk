@@ -13,7 +13,6 @@ interface StreamingService {
   action: string;
   type: string;
   url: string;
-  coupangUrl?: string;
 }
 
 // 모달 컴포넌트 추가
@@ -65,8 +64,11 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleServiceClick = () => {
-    setShowModal(true);
-    if (service.type === "pdf") return executeAction(service.url);
+    if (service.type === "pdf") {
+      executeAction(service.url);
+    } else {
+      setShowModal(true);
+    }
   };
 
   const executeAction = (url: string) => {
@@ -81,11 +83,14 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
     }
   
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.href = url;
-    } else {
-      window.open(url, '_blank');
-    }
+
+    {!isMobile && (
+      <iframe
+        src={"https://link.coupang.com/a/ccHvmq"}
+        className="w-full h-full rounded-lg"
+        title="Coupang Goldbox"
+      />
+    )}
   };
   
   return (
@@ -146,7 +151,6 @@ export default function Page() {
       action: "Download", 
       type: "pdf",
       url: "/ebook.pdf",
-      coupangUrl: "https://your-coupang-partners-url.com"
     },
     { 
       name: "Naver", 
