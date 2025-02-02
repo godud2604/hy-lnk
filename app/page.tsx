@@ -1,101 +1,211 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { ExternalLink, PlayCircle, Music, Instagram, Youtube, BookText } from "lucide-react"
+import { useState } from "react"
+
+interface StreamingService {
+  name: string;
+  icon?: React.ReactElement;
+  logo?: string;
+  action: string;
+  type: string;
+  url: string;
+  coupangUrl?: string;
+}
+
+// 모달 컴포넌트 추가
+const CoupangModal = ({ isOpen, onConfirm, type, name }: { 
+  isOpen: boolean; 
+  onClose: () => void;
+  onConfirm: () => void;
+  type: string;
+  name: string;
+}) => {
+  if (!isOpen) return null;
+
+  const coupangUrl = "https://link.coupang.com/a/ccHvmq"
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-lg p-6 max-w-4xl w-full h-[60vh]">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-bold text-gray-900">쿠팡 파트너스 프로그램</h3>
+          <Button 
+            onClick={onConfirm}
+            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {type === "pdf" ? "PDF 다운로드" : `${name} 이동`}
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="h-[calc(100%-90px)] overflow-auto">
+          <iframe
+            src={coupangUrl}
+            className="w-full h-full rounded-lg"
+            title="Coupang Goldbox"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+        <p className="text-xs mt-4 text-gray-500 text-left">
+          이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+        </p>
+      </div>
     </div>
   );
+};
+
+// 새로운 Client Component 생성
+const ServiceItem = ({ service }: { service: StreamingService }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleServiceClick = (url: string) => {
+    setShowModal(true);
+  };
+
+  const executeAction = (url: string) => {
+    if (service.action === "Download") {
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = "6일만에_블로그_체험단_당첨.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = url;
+      } else {
+        window.open(url, '_blank');
+      }
+    }
+  };
+
+  return (
+    <>
+      <div 
+        key={service.name} 
+        className="flex items-center justify-between p-4 hover:bg-white/5 transition-colors duration-200 cursor-pointer"
+        onClick={() => handleServiceClick(service.url)}
+      >
+        <div className="flex items-center gap-3">
+          {service.icon ? (
+            service.icon
+          ) : (
+            <Image
+              src={service.logo || "/placeholder.svg"}
+              alt={service.name}
+              width={24}
+              height={24}
+              className="w-6 h-6"
+            />
+          )}
+          <span className="font-medium">{service.name}</span>
+        </div>
+        <Button variant={service.type === "pdf" ? "default" : "secondary"} size="sm" className="min-w-[80px]">
+          {service.action === "Go To" ? (
+            <span className="flex items-center gap-1">
+              {service.action} <ExternalLink className="w-4 h-4" />
+            </span>
+          ) : service.action === "Play" ? (
+            <span className="flex items-center gap-1">
+              {service.action} <PlayCircle className="w-4 h-4" />
+            </span>
+          ) : (
+            service.action
+          )}
+        </Button>
+      </div>
+      
+      <CoupangModal 
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onConfirm={() => {
+          setShowModal(false);
+          executeAction(service.url);
+        }}
+        type={service.type}
+        name={service.name}
+      />
+    </>
+  );
+};
+
+export default function Page() {
+  const streamingServices: StreamingService[] = [
+    { 
+      name: "[전자책] 6일만에 블로그 체험단 당첨", 
+      icon: <BookText className="w-6 h-6" />, 
+      action: "Download", 
+      type: "pdf",
+      url: "/ebook.pdf",
+      coupangUrl: "https://your-coupang-partners-url.com"
+    },
+    { 
+      name: "Naver", 
+      icon: <Music className="w-6 h-6" />, 
+      action: "Go To", 
+      type: "sns",
+      url: "https://m.blog.naver.com/ees238?tab=2"
+    },
+    { 
+      name: "Instagram", 
+      icon: <Instagram className="w-6 h-6" />, 
+      action: "Go To", 
+      type: "sns",
+      url: "https://www.instagram.com/nomad._hy"
+    },
+    { 
+      name: "TikTok", 
+      icon: <Music className="w-6 h-6" />, 
+      action: "Go To", 
+      type: "sns",
+      url: "https://www.tiktok.com/@user7424792417244"
+    },
+    { 
+      name: "Youtube", 
+      icon: <Youtube className="w-6 h-6" />, 
+      action: "Go To", 
+      type: "sns",
+      url: "https://www.youtube.com/channel/UCD2sfmi3lx6lQUiV6zMuNbA"
+    },
+  ]
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+      <main className="container mx-auto px-4 py-8 max-w-md">
+        {/* Album Header */}
+        <div className="text-center mb-8">
+          <div className="relative w-64 h-64 mx-auto mb-4">
+            <Image
+              src="/profileImage.png"
+              alt="Album Cover"
+              fill
+              quality={100}  
+              priority 
+              className="rounded-lg object-cover"
+            />
+          </div>
+          <h1 className="text-2xl font-bold mb-1">Hae Sick 해식</h1>
+          <h2 className="text-xl mb-2">퇴사(디지털 노마드)를 꿈꾸는, 개발자의 삶</h2>
+          <p className="text-gray-400">N잡러 블로그&자기계발&부업</p>
+        </div>
+
+        {/* Streaming Services List */}
+        <Card className="bg-white/10 backdrop-blur-sm border-none">
+          <div className="divide-y divide-gray-700">
+            {streamingServices.map((service) => (
+              <ServiceItem key={service.name} service={service} />
+            ))}
+          </div>
+        </Card>
+
+        {/* Cookie Consent */}
+        <div className="text-center text-sm text-gray-400 mt-8">
+          <p className="mt-2">© 2025 해식. All rights reserved.</p>
+        </div>
+      </main>
+    </div>
+  )
 }
+
