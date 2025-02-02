@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { ExternalLink, PlayCircle, Music, Instagram, Youtube, BookText } from "lucide-react"
+import { ExternalLink, PlayCircle, Music, Instagram, Youtube } from "lucide-react"
 import { useState } from "react"
 
 interface StreamingService {
