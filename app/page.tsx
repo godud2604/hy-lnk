@@ -73,10 +73,7 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
     if (service.action === "Download") {
       const link = document.createElement('a');
       link.href = url;
-      link.download = "6일만에_블로그_체험단_당첨.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      window.open(url, '_blank');
     } else {
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       if (isMobile) {
