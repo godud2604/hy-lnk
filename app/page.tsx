@@ -17,7 +17,7 @@ interface StreamingService {
 }
 
 // 모달 컴포넌트 추가
-const CoupangModal = ({ isOpen, onConfirm, type, name }: { 
+const CoupangModal = ({ isOpen, onClose,onConfirm, type, name }: { 
   isOpen: boolean; 
   onClose: () => void;
   onConfirm: () => void;
@@ -32,14 +32,20 @@ const CoupangModal = ({ isOpen, onConfirm, type, name }: {
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg p-6 max-w-4xl w-full h-[60vh]">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold text-gray-900">쿠팡 파트너스 프로그램</h3>
           <Button 
             onClick={onConfirm}
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg overflow-hidden text-ellipsis whitespace-nowrap"
+            className="flex-1 mr-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg overflow-hidden text-ellipsis whitespace-nowrap"
           >
             {type === "pdf" ? "PDF 다운로드" : `${name} 이동`}
           </Button>
+          <Button 
+            onClick={onClose} 
+            className="bg-gray-400 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg"
+          >
+            닫기
+          </Button>
         </div>
+
         <div className="h-[calc(100%-90px)] overflow-auto">
           <iframe
             src={coupangUrl}
