@@ -55,7 +55,6 @@ const CoupangModal = ({ isOpen, onConfirm, type, name }: {
   );
 };
 
-// 새로운 Client Component 생성
 const ServiceItem = ({ service }: { service: StreamingService }) => {
   const [showModal, setShowModal] = useState(false);
 
