@@ -35,7 +35,7 @@ const CoupangModal = ({ isOpen, onConfirm, type, name }: {
           <h3 className="text-lg font-bold text-gray-900">쿠팡 파트너스 프로그램</h3>
           <Button 
             onClick={onConfirm}
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg"
+            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg overflow-hidden text-ellipsis whitespace-nowrap"
           >
             {type === "pdf" ? "PDF 다운로드" : `${name} 이동`}
           </Button>
@@ -60,6 +60,7 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
 
   const handleServiceClick = () => {
     setShowModal(true);
+    if (service.type === "pdf") return executeAction(service.url);
   };
 
   const executeAction = (url: string) => {
