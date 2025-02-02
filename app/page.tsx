@@ -73,17 +73,21 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
     if (service.action === "Download") {
       const link = document.createElement('a');
       link.href = url;
-      window.open(url, '_blank');
+      link.download = url.split('/').pop() || '6일만예_블로그_체험단_당첨.pdf'; // 파일 이름 지정
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return; 
+    }
+  
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = url;
     } else {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        window.location.href = url;
-      } else {
-        window.open(url, '_blank');
-      }
+      window.open(url, '_blank');
     }
   };
-
+  
   return (
     <>
       <div 
