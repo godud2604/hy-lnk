@@ -72,25 +72,13 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
   };
 
   const executeAction = (url: string) => {
-    if (service.action === "Download") {
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = url.split('/').pop() || '6일만예_블로그_체험단_당첨.pdf'; // 파일 이름 지정
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      return; 
-    }
-  
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    {!isMobile && (
-      <iframe
-        src={"https://link.coupang.com/a/ccHvmq"}
-        className="w-full h-full rounded-lg"
-        title="Coupang Goldbox"
-      />
-    )}
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = url.split('/').pop() || '6일만예_블로그_체험단_당첨.pdf'; // 파일 이름 지정
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    return; 
   };
   
   return (
