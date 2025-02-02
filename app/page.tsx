@@ -133,13 +133,13 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
 
 export default function Page() {
   const streamingServices: StreamingService[] = [
-    { 
-      name: "[전자책] 6일만에 블로그 체험단 당첨", 
-      icon: <BookText className="w-6 h-6" />, 
-      action: "Download", 
-      type: "pdf",
-      url: "/ebook.pdf",
-    },
+    // { 
+    //   name: "[전자책] 6일만에 블로그 체험단 당첨", 
+    //   icon: <BookText className="w-6 h-6" />, 
+    //   action: "Download", 
+    //   type: "pdf",
+    //   url: "/ebook.pdf",
+    // },
     { 
       name: "Naver", 
       icon: <Music className="w-6 h-6" />, 
