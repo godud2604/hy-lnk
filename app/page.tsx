@@ -59,7 +59,7 @@ const CoupangModal = ({ isOpen, onConfirm, type, name }: {
 const ServiceItem = ({ service }: { service: StreamingService }) => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleServiceClick = (url: string) => {
+  const handleServiceClick = () => {
     setShowModal(true);
   };
 
@@ -86,7 +86,7 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
       <div 
         key={service.name} 
         className="flex items-center justify-between p-4 hover:bg-white/5 transition-colors duration-200 cursor-pointer"
-        onClick={() => handleServiceClick(service.url)}
+        onClick={() => handleServiceClick()}
       >
         <div className="flex items-center gap-3">
           {service.icon ? (
