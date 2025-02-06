@@ -25,7 +25,7 @@ const CoupangModal = ({ isOpen, onClose,onConfirm, type, name }: {
 }) => {
   if (!isOpen) return null;
 
-  const coupangUrl = "https://link.coupang.com/a/ccHvmq"
+  const coupangUrl = "https://link.coupang.com/a/cdnkmC"
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
