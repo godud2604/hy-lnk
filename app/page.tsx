@@ -64,11 +64,7 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleServiceClick = () => {
-    if (service.type === "pdf") {
-      executeAction(service.url);
-    } else {
-      setShowModal(true);
-    }
+    setShowModal(true);
   };
 
   const executeAction = (url: string) => {
