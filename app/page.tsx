@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { ExternalLink, PlayCircle, Music, Instagram, Youtube } from "lucide-react"
+import { ExternalLink, PlayCircle, Music, Instagram, Youtube, BookText } from "lucide-react"
 import { useState } from "react"
 
 interface StreamingService {
@@ -72,13 +72,18 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
   };
 
   const executeAction = (url: string) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = url.split('/').pop() || '6일만예_블로그_체험단_당첨.pdf'; // 파일 이름 지정
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    return; 
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      // 모바일 기기에서 URL을 새 탭으로 열기
+      window.open(url, '_blank');
+    } else {
+      // 데스크탑에서는 다운로드 링크 생성
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = url.split('/').pop() || '6일만예_블로그_체험단_당첨.pdf'; // 파일 이름 지정
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
   
   return (
@@ -133,13 +138,13 @@ const ServiceItem = ({ service }: { service: StreamingService }) => {
 
 export default function Page() {
   const streamingServices: StreamingService[] = [
-    // { 
-    //   name: "[전자책] 6일만에 블로그 체험단 당첨", 
-    //   icon: <BookText className="w-6 h-6" />, 
-    //   action: "Download", 
-    //   type: "pdf",
-    //   url: "/ebook.pdf",
-    // },
+    { 
+      name: "[전자책] 6일만에 블로그 체험단 당첨", 
+      icon: <BookText className="w-6 h-6" />, 
+      action: "Download", 
+      type: "pdf",
+      url: "/ebook.pdf",
+    },
     { 
       name: "Naver", 
       icon: <Music className="w-6 h-6" />, 
