@@ -7,7 +7,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle, Clock, CloudCog, LayoutGrid } from "lucide-react";
+import { CheckCircle, Clock, LayoutGrid } from "lucide-react";
+
+// helper: 문자열 "25.03.08"를 Date 객체로 변환 (20XX년으로 가정)
+function parseReviewDeadline(deadlineStr: string): Date | null {
+  const parts = deadlineStr.split(".");
+  if(parts.length !== 3) return null;
+  const [yy, mm, dd] = parts;
+  const year = parseInt(yy) + 2000; // 두 자리 연도를 2000년대 기준으로 변환
+  const month = parseInt(mm) - 1;   // JavaScript Date에서는 월이 0부터 시작
+  const day = parseInt(dd);
+  return new Date(year, month, day);
+}
 
 interface CampaignData {
   id: string;
@@ -15,9 +26,10 @@ interface CampaignData {
   status: string;
   details: string;
   platform?: string;
-   points?: string;
+  points?: string;
   progress?: string;
   type?: string;
+  full_text?: string;
 }
 
 export default function ChvuPage() {
@@ -26,6 +38,7 @@ export default function ChvuPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState<CampaignData[]>([]);
   const [error, setError] = useState("");
+  const [expandedCampaign, setExpandedCampaign] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState("in-progress");
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -51,7 +64,7 @@ export default function ChvuPage() {
 
       setCampaigns(data.campaigns);
       
-      // Store campaigns in localStorage
+      // localStorage에 캠페인 데이터 저장
       data.campaigns.forEach((campaign: any) => {
         localStorage.setItem(`chvu_campaign_${campaign.id}`, JSON.stringify(campaign));
       });
@@ -63,14 +76,11 @@ export default function ChvuPage() {
     }
   };
 
-
-  // Add useEffect to load campaigns from localStorage on component mount
+  // 컴포넌트 마운트 시 localStorage에서 캠페인 데이터 로드
   useEffect(() => {
     const storedCampaigns: CampaignData[] = [];
-    // Check all localStorage keys
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      // If the key matches our campaign pattern
       if (key && key.startsWith('chvu_campaign_')) {
         try {
           const campaignData = JSON.parse(localStorage.getItem(key) || '');
@@ -82,12 +92,25 @@ export default function ChvuPage() {
         }
       }
     }
-    
-    // Update campaigns state if we found stored campaigns
     if (storedCampaigns.length > 0) {
       setCampaigns(storedCampaigns);
     }
   }, []);
+
+  // 토글 핸들러: 클릭 시 해당 캠페인의 full_text 보이기/숨기기
+  const handleToggleFullText = (campaignId: string) => {
+    if (expandedCampaign === campaignId) {
+      setExpandedCampaign(null);
+    } else {
+      setExpandedCampaign(campaignId);
+    }
+  };
+
+  // 오늘 날짜 (시간은 00:00:00 기준)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  // 전체 리뷰 기간 (예시로 30일)
+  const totalReviewDays = 30;
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -104,33 +127,33 @@ export default function ChvuPage() {
         {campaigns.length === 0 && (
           <Card className="bg-gray-900 border-gray-800 mb-8">
             <CardHeader>
-              <CardTitle className="text-center">체험뷰 로그인</CardTitle>
+              <CardTitle className="text-center text-white">체험뷰 로그인</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleLogin}>
                 <div className="grid gap-4">
                   <div className="grid gap-2">
-                    <label htmlFor="userId" className="text-sm">아이디</label>
+                    <label htmlFor="userId" className="text-sm text-white">아이디</label>
                     <Input
                       id="userId"
                       type="text"
                       value={userId}
                       onChange={(e) => setUserId(e.target.value)}
                       placeholder="체험뷰 아이디 입력"
-                      className="bg-gray-800 border-gray-700"
+                      className="bg-gray-800 border-gray-700 text-white"
                       required
                     />
                   </div>
                   
                   <div className="grid gap-2">
-                    <label htmlFor="password" className="text-sm">비밀번호</label>
+                    <label htmlFor="password" className="text-sm text-white">비밀번호</label>
                     <Input
                       id="password"
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="비밀번호 입력"
-                      className="bg-gray-800 border-gray-700"
+                      className="bg-gray-800 border-gray-700 "
                       required
                     />
                   </div>
@@ -157,79 +180,111 @@ export default function ChvuPage() {
         {/* Campaign Dashboard */}
         {campaigns.length > 0 && (
           <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <LayoutGrid className="h-5 w-5" />내 캠페인
-              </CardTitle>
-              <CardDescription className="text-gray-400">현재 진행 중인 체험단 캠페인 목록입니다</CardDescription>
-            </CardHeader>
             <CardContent>
               <Tabs defaultValue="in-progress" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 bg-gray-800">
-                  <TabsTrigger
-                    value="in-progress"
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500"
-                  >
-                    체험중
-                  </TabsTrigger>
-                  <TabsTrigger value="completed">완료됨</TabsTrigger>
-                  <TabsTrigger value="all">전체</TabsTrigger>
-                </TabsList>
                 <TabsContent value="in-progress" className="mt-4">
                   <div className="grid gap-4">
-                    {campaigns.map((campaign) => (
-                      <div key={campaign.id} className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-                        <div className="flex justify-between items-start mb-2">
-                          <div>
-                            <Badge variant="outline" className="mb-2 bg-blue-500/10 text-blue-400 border-blue-500/20">
-                              {campaign.platform || "Blog"}
-                            </Badge>
-                            <h3 className="font-medium text-lg">{campaign.title}</h3>
-                          </div>
-                          <Badge className="bg-gradient-to-r from-blue-500 to-purple-500">{campaign.status}</Badge>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
-                          <div className="flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-gray-400" />
-                            <span className="text-gray-400">진행률:</span>
-                            <span className="font-medium">{campaign.progress || "0/0"}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-gray-400" />
-                            <span className="text-gray-400">포인트:</span>
-                            <span className="font-medium">{campaign.points || "0P"}</span>
-                          </div>
-                        </div>
-
-                        {campaign.progress && (
-                          <div className="mt-3">
-                            <div className="flex justify-between text-xs text-gray-400 mb-1">
-                              <span>진행도</span>
-                              <span>
-                                {campaign.progress.split("/")[0]}/{campaign.progress.split("/")[1]}
-                              </span>
+                    {campaigns.map((campaign) => {
+                      let reviewDeadlineStr: string | null = null;
+                      let daysRemaining: number | null = null;
+                      let progressPercentage: number | null = null;
+                      if(campaign.full_text) {
+                        const match = campaign.full_text.match(/리뷰마감일\s*[:\-]?\s*(\d{2}\.\d{2}\.\d{2})/);
+                        if(match && match[1]) {
+                          reviewDeadlineStr = match[1];
+                          const reviewDeadlineDate = parseReviewDeadline(reviewDeadlineStr);
+                          if(reviewDeadlineDate) {
+                            // 차이를 일(day) 단위로 계산
+                            const diffTime = reviewDeadlineDate.getTime() - today.getTime();
+                            daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                            // progress: 남은 일수 기준으로 진행률 계산 (전체 기간이 totalReviewDays일)
+                            if(daysRemaining >= totalReviewDays) {
+                              progressPercentage = 0;
+                            } else if(daysRemaining <= 0) {
+                              progressPercentage = 100;
+                            } else {
+                              progressPercentage = Math.round((1 - daysRemaining / totalReviewDays) * 100);
+                            }
+                          }
+                        }
+                      }
+                      
+                      return (
+                        <div key={campaign.id} className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+                          <div className="flex justify-between items-start mb-2">
+                            <div>
+                              <Badge variant="outline" className="mb-2 bg-blue-500/10 text-blue-400 border-blue-500/20">
+                                {campaign.platform || "Blog"}
+                              </Badge>
+                              <h3 className="font-medium text-lg text-white">{campaign.title}</h3>
+                              
                             </div>
-                            <Progress
-                              value={Math.min(
-                                (Number.parseInt(campaign.progress.split("/")[0]) /
+                            
+                            <Badge className="bg-gradient-to-r from-blue-500 to-purple-500">{campaign.status}</Badge>
+                          </div>
+
+                          {/* 리뷰마감일 정보가 추출되었다면 UI 표시 */}
+                          {reviewDeadlineStr && daysRemaining !== null && progressPercentage !== null && (
+                            <div className="mt-4">
+                              <div className="flex justify-between text-xs text-gray-400 mb-2">
+                                <span>리뷰 마감일: {reviewDeadlineStr}</span>
+                                {daysRemaining > 0 ? <span>{daysRemaining}일</span>: <span className="text-red-400">남은 기간: 마감됨</span>}
+                              </div>
+                              <Progress 
+                                value={progressPercentage} 
+                                className="h-2 bg-gray-500" 
+                              />
+                            </div>
+                          )}
+
+                          {campaign.progress && (
+                            <div className="">
+                              <div className="flex justify-between text-xs text-gray-400 mb-1">
+                                <span>진행도</span>
+                                <span>
+                                  {campaign.progress.split("/")[0]}/{campaign.progress.split("/")[1]}
+                                </span>
+                              </div>
+                              <Progress
+                                value={Math.min(
+                                  (Number.parseInt(campaign.progress.split("/")[0]) /
                                   Number.parseInt(campaign.progress.split("/")[1])) *
                                   100,
-                                100,
-                              )}
-                              className="h-2 bg-gray-700"
-                            />
-                          </div>
-                        )}
+                                  100,
+                                )}
+                                className="h-2 bg-gray-700"
+                              />
+                            </div>
+                          )}
 
-                        <div className="mt-4 pt-3 border-t border-gray-700">
-                          <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/20">
-                            {campaign.type || "구매형체험단"}
-                          </Badge>
-                          <p className="text-gray-300 text-sm mt-2">{campaign.details}</p>
+                          <div className="mt-4 pt-3 border-t border-gray-700">
+                            <p className="text-gray-300 text-sm">{campaign.details}</p>
+                          </div>
+
+                          {/* full_text 토글 버튼 */}
+                          {campaign.full_text && (
+                            <div className="mt-4">
+                              <Button 
+                                size="sm" 
+                                onClick={() => handleToggleFullText(campaign.id)}
+                                className="bg-gray-700 hover:bg-gray-600"
+                              >
+                                {expandedCampaign === campaign.id ? "숨기기" : "상세 내용 보기"}
+                              </Button>
+                              {expandedCampaign === campaign.id && (
+                                <div className="mt-3 p-3 bg-gray-900 border border-gray-700 rounded">
+                                  <pre className="whitespace-pre-wrap text-sm text-white">
+                                    {campaign.full_text}
+                                  </pre>
+                                </div>
+                              )}
+                            </div>
+                          )}
+
+
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </TabsContent>
                 <TabsContent value="completed">
@@ -249,4 +304,4 @@ export default function ChvuPage() {
       </main>
     </div>
   );
-} 
+}
