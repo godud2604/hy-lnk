@@ -63,10 +63,12 @@ export default function ChvuPage() {
       setCampaigns(data.campaigns);
       
       // localStorage에 캠페인 데이터 저장
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data.campaigns.forEach((campaign: any) => {
         localStorage.setItem(`chvu_campaign_${campaign.id}`, JSON.stringify(campaign));
       });
       
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
     } finally {

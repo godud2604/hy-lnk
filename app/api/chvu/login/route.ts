@@ -47,6 +47,7 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({ campaigns: data.campaigns });
     
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any 
   } catch (error: any) {
     console.error('API error:', error);
     return NextResponse.json(
