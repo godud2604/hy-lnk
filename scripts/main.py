@@ -11,14 +11,13 @@ import json
 import time
 
 def main():
-    # 커맨드 라인 인자 받기
-    if len(sys.argv) < 4:
-        print("Usage: python main.py <user_id> <password> <output_file>")
+    # 커맨드 라인 인자 받기 (이제 user_id와 password만 필요)
+    if len(sys.argv) < 3:
+        print("Usage: python main.py <user_id> <password>")
         sys.exit(1)
     
     user_id = sys.argv[1]
     password = sys.argv[2]
-    output_file = sys.argv[3]
     
     # 웹 드라이버 실행 (ChromeDriver 필요)
     driver = webdriver.Chrome()
@@ -65,8 +64,7 @@ def main():
         
         if error_message:
             result = {"error": error_message}
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(result, f, ensure_ascii=False)
+            print(json.dumps(result, ensure_ascii=False))
             return
             
         # 로그인 후 대기
@@ -77,49 +75,39 @@ def main():
         
         # "미제출" 버튼 클릭 (실제 버튼 클래스명/텍스트 확인 필요)
         try:
-            # "미선택" 버튼 클릭
             unsubmitted_button = wait.until(
                 EC.element_to_be_clickable((
                     By.XPATH,
-                    # 클래스 전체 문자열이 "MyPageBoardRv__HidePC-sc-1dg3pfb-3 ehRENO" 이고
-                    # 텍스트가 "미선택" 인 <div> 요소
                     "//div[@class='MyPageBoardRv__HidePC-sc-1dg3pfb-3 ehRENO' and normalize-space(text())='미제출']"
                 ))
             )
             unsubmitted_button.click()
-            # 혹시 클릭 후 페이지가 다시 로드된다면, 로딩 대기 추가
-            time.sleep(2)  # 혹은 wait.until(EC.presence_of_element_located(...)) 사용
+            time.sleep(2)
         except Exception as e:
             print("미제출 버튼 클릭 실패:", e)
         
-        # 이후 데이터 수집
+        # 데이터 수집
         campaigns = []
         
         try:
-            # 페이지가 완전히 로드될 때까지 대기
             wait.until(
                 EC.presence_of_element_located((By.CLASS_NAME, "CardFlexBoxRv__FlexWrap-sc-7o8xct-0.yMhqi"))
             )
             
-            # 해당 클래스를 가진 요소들 찾기
             campaign_wrappers = driver.find_elements(
                 By.CSS_SELECTOR, "[class*='CardFlexBoxRv__CardWrapper']"
             )
             
-            # 각 요소의 데이터 수집
             for i, wrapper in enumerate(campaign_wrappers):
-                # ID 추출 (a 태그의 href 속성)
                 campaign_id = "unknown"
                 try:
                     a_tag = wrapper.find_element(By.TAG_NAME, "a")
                     href = a_tag.get_attribute("href")
-                    # "/campaign/119078" 형태 추출
                     if "/campaign/" in href:
                         campaign_id = href.split("/campaign/")[1]
                 except Exception as e:
                     print(f"ID 추출 중 오류: {e}")
                 
-                # 제목 추출
                 title = "제목 없음"
                 try:
                     title_element = wrapper.find_element(
@@ -129,7 +117,6 @@ def main():
                 except Exception as e:
                     print(f"제목 추출 중 오류: {e}")
                 
-                # 상태 추출
                 status = "상태 정보 없음"
                 try:
                     status_element = wrapper.find_element(
@@ -139,7 +126,6 @@ def main():
                 except Exception as e:
                     print(f"상태 추출 중 오류: {e}")
                 
-                # 세부 정보 추출
                 details = "세부 정보 없음"
                 try:
                     details_element = wrapper.find_element(
@@ -161,19 +147,18 @@ def main():
         except Exception as e:
             print(f"요소를 찾는 중 오류 발생: {e}")
         
-        # 각 캠페인 페이지에서 추가 정보(전체 페이지 텍스트, HTML, 리뷰 마감일) 추출
+        # 각 캠페인 페이지에서 추가 정보 추출
         for campaign in campaigns:
             campaign_id = campaign.get("id")
             if campaign_id == "unknown":
-                continue  # id가 없는 경우 건너뜁니다.
+                continue
             
             campaign_url = f"https://chvu.co.kr/campaign/{campaign_id}"
             driver.get(campaign_url)
             
-            # 전체 텍스트 및 HTML 소스 추출
             try:
                 wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-                time.sleep(0.5)  # 페이지 로딩 안정화 (필요 시 조정)
+                time.sleep(0.5)
                 full_text = driver.find_element(By.TAG_NAME, "body").text
                 html_source = driver.page_source
                 
@@ -184,7 +169,6 @@ def main():
                 campaign["full_text"] = "정보 추출 실패"
                 campaign["html_source"] = "정보 추출 실패"
             
-            # 리뷰 마감일 정보 추출 (CSS 선택자 ".CampaignMain__InfoDesc-sc-v3fvdj-22" 예시)
             try:
                 review_deadline_element = WebDriverWait(driver, 15).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, ".CampaignMain__InfoDesc-sc-v3fvdj-22"))
@@ -196,14 +180,10 @@ def main():
             
             campaign["review_deadline"] = review_deadline
         
-        print("campaigns", campaigns)
-        # 결과 저장
         result = {"campaigns": campaigns}
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(result, f, ensure_ascii=False)
+        print(json.dumps(result, ensure_ascii=False))
             
     finally:
-        # 브라우저 종료
         driver.quit()
 
 if __name__ == "__main__":
