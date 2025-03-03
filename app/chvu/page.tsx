@@ -3,11 +3,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle, Clock, LayoutGrid } from "lucide-react";
 
 // helper: 문자열 "25.03.08"를 Date 객체로 변환 (20XX년으로 가정)
 function parseReviewDeadline(deadlineStr: string): Date | null {
@@ -39,7 +38,6 @@ export default function ChvuPage() {
   const [campaigns, setCampaigns] = useState<CampaignData[]>([]);
   const [error, setError] = useState("");
   const [expandedCampaign, setExpandedCampaign] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState("in-progress");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

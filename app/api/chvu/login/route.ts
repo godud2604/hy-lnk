@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     await fs.mkdir(path.join(process.cwd(), 'temp'), { recursive: true });
     
     // 파이썬 스크립트 실행 (credentials과 출력 경로 전달)
-    const { stdout, stderr } = await execPromise(
+    const { stderr } = await execPromise(
       `python3 scripts/main.py "${userId}" "${password}" "${tempFilePath}"`
     );
     
