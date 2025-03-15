@@ -45,7 +45,7 @@ export default function ChvuPage() {
     setError("");
     
     try {
-      const response = await fetch('/api/chvu/login', {
+      const response = await fetch('/api/chvu_login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,20 +55,12 @@ export default function ChvuPage() {
       
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || '로그인 실패');
+        throw new Error(errorData.error || '로그인 실패');
       }
       
       const data = await response.json();
-
       setCampaigns(data.campaigns);
       
-      // localStorage에 캠페인 데이터 저장
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      data.campaigns.forEach((campaign: any) => {
-        localStorage.setItem(`chvu_campaign_${campaign.id}`, JSON.stringify(campaign));
-      });
-      
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
     } finally {
