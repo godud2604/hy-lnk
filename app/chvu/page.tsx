@@ -45,7 +45,7 @@ export default function ChvuPage() {
     setError("");
     
     try {
-      const response = await fetch('/api/chvu_login', {
+      const response = await fetch('/api/chvu/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,6 +58,7 @@ export default function ChvuPage() {
         throw new Error(errorData.error || '로그인 실패');
       }
       
+      console.log('response', response)
       const data = await response.json();
       setCampaigns(data.campaigns);
       

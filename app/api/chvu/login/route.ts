@@ -24,9 +24,12 @@ export async function POST(request: NextRequest) {
     // stdout에서 결과를 JSON으로 파싱
     const data = JSON.parse(stdout);
 
-    return NextResponse.json({ campaigns: data.campaigns });
+    // 응답 구조 보장
+    return NextResponse.json({
+      campaigns: data.campaigns || [],
+      error: data.error
+    });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('API error:', error);
     return NextResponse.json(

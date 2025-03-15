@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import base64
+from http import HTTPStatus
 
 def login_to_chvu(user_id, password):
     # 헤드리스 Chrome 옵션 설정
@@ -77,26 +78,46 @@ def login_to_chvu(user_id, password):
     finally:
         driver.quit()
 
-class handler(BaseHTTPRequestHandler):
-    def do_POST(self):
-        content_length = int(self.headers['Content-Length'])
-        post_data = self.rfile.read(content_length)
-        request_data = json.loads(post_data.decode('utf-8'))
-        
-        user_id = request_data.get('userId')
-        password = request_data.get('password')
+# Vercel의 Python 함수 최신 형식
+def handler(request):
+    if request.method != 'POST':
+        return {
+            "statusCode": 405,
+            "body": json.dumps({"error": "Method Not Allowed"}),
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    
+    try:
+        body = json.loads(request.body)
+        user_id = body.get('userId')
+        password = body.get('password')
         
         if not user_id or not password:
-            self.send_response(400)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps({"error": "아이디와 비밀번호를 입력해주세요"}).encode('utf-8'))
-            return
+            return {
+                "statusCode": 400,
+                "body": json.dumps({"error": "아이디와 비밀번호를 입력해주세요"}),
+                "headers": {
+                    "Content-Type": "application/json"
+                }
+            }
         
+        # 로그인 함수 호출
         result = login_to_chvu(user_id, password)
         
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.end_headers()
-        self.wfile.write(json.dumps(result, ensure_ascii=False).encode('utf-8'))
-        return 
+        return {
+            "statusCode": 200,
+            "body": json.dumps(result, ensure_ascii=False),
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"error": str(e)}),
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        } 
