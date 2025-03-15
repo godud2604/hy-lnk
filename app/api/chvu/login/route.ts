@@ -30,10 +30,15 @@ export async function POST(request: NextRequest) {
       error: data.error
     });
 
-  } catch (error: any) {
+  } catch (error: Error | unknown) {
     console.error('API error:', error);
+    
+    const errorMessage = error instanceof Error 
+      ? error.message 
+      : '알 수 없는 오류가 발생했습니다';
+      
     return NextResponse.json(
-      { message: error.message || '알 수 없는 오류가 발생했습니다' },
+      { message: errorMessage },
       { status: 500 }
     );
   }
