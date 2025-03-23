@@ -1,5 +1,5 @@
 // app/api/python/route.js
-export async function GET(request: any) {
+export async function GET() {
     try {
       const response = await fetch('https://us-central1-hy-lnk-453912.cloudfunctions.net/hello_world', {
         method: 'GET'
