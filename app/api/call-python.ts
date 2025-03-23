@@ -11,6 +11,8 @@ export default async function handler(
     );
     const text = await response.text();
     res.status(200).json({ message: text });
+    
+    // @typescript-eslint/no-unused-vars
   } catch (_error) {
     res.status(500).json({ error: "Python Cloud Function 호출 실패" });
   }
