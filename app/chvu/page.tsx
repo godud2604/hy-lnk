@@ -39,6 +39,24 @@ export default function ChvuPage() {
   const [error, setError] = useState("");
   const [expandedCampaign, setExpandedCampaign] = useState<string | null>(null);
 
+  // 함수 예시 - 버튼 클릭 시 API 호출
+  const callPythonApi = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('/api/chvu/call', {
+        method: 'GET',
+      });
+      
+      const data = await response.json();
+      console.log('Python API 응답:', data.message);
+      return data;
+    } catch (error) {
+      console.error('API 호출 실패:', error);
+    }
+  };
+
+  
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -127,7 +145,7 @@ export default function ChvuPage() {
               <CardTitle className="text-center text-white">체험뷰 로그인</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleLogin}>
+              <form onSubmit={callPythonApi}>
                 <div className="grid gap-4">
                   <div className="grid gap-2">
                     <label htmlFor="userId" className="text-sm text-white">아이디</label>

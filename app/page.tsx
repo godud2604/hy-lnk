@@ -1,210 +1,146 @@
-'use client';
-
-import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, Calendar, Gift, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { ExternalLink, PlayCircle, Music, Instagram, Youtube, BookText } from "lucide-react"
-import { useState } from "react"
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import HeroSection from "@/components/hero-section"
+import FeaturedPosts from "@/components/featured-posts"
+import SchedulePreview from "@/components/schedule-preview"
+import ToolsShowcase from "@/components/tool-showcase"
 
-interface StreamingService {
-  name: string;
-  icon?: React.ReactElement;
-  logo?: string;
-  action: string;
-  type: string;
-  url: string;
-}
-
-// 모달 컴포넌트 추가
-const CoupangModal = ({ isOpen, onClose,onConfirm, type, name }: { 
-  isOpen: boolean; 
-  onClose: () => void;
-  onConfirm: () => void;
-  type: string;
-  name: string;
-}) => {
-  if (!isOpen) return null;
-
-  const coupangUrl = "https://link.coupang.com/a/cdnkmC"
-
+export default function Home() {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg p-6 max-w-4xl w-full h-[60vh]">
-        <div className="flex justify-between items-center mb-4">
-          <Button 
-            onClick={onConfirm}
-            className="flex-1 mr-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg overflow-hidden text-ellipsis whitespace-nowrap"
-          >
-            {type === "pdf" ? "PDF 다운로드" : `${name} 이동`}
-          </Button>
-          <Button 
-            onClick={onClose} 
-            className="bg-gray-400 hover:opacity-90 text-white font-bold transition-all duration-200 shadow-lg"
-          >
-            닫기
-          </Button>
+    <div className="flex flex-col min-h-screen">
+      <HeroSection />
+
+      {/* Value Proposition */}
+      <section className="container py-12 md:py-24">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <Card className="border-none shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden">
+            <CardHeader className="space-y-1">
+              <div className="bg-lavender-100 w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                <Gift className="h-6 w-6 text-primary" />
+              </div>
+              <CardTitle>체험단 꿀팁</CardTitle>
+              <CardDescription>체험단 신청부터 리뷰 작성까지 전문가의 노하우를 공유합니다</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Link href="/tips" className="w-full">
+                <Button variant="outline" className="w-full group border-lavender-200 hover:bg-lavender-50">
+                  꿀팁 보러가기
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+
+          <Card className="border-none shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden">
+            <CardHeader className="space-y-1">
+              <div className="bg-lavender-100 w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                <Calendar className="h-6 w-6 text-primary" />
+              </div>
+              <CardTitle>일정 관리</CardTitle>
+              <CardDescription>체험단 일정을 한눈에 확인하고 효율적으로 관리하세요</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Link href="/schedule" className="w-full">
+                <Button variant="outline" className="w-full group border-lavender-200 hover:bg-lavender-50">
+                  일정 확인하기
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+
+          <Card className="border-none shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden">
+            <CardHeader className="space-y-1">
+              <div className="bg-lavender-100 w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                <Zap className="h-6 w-6 text-primary" />
+              </div>
+              <CardTitle>자동화 툴</CardTitle>
+              <CardDescription>시간을 절약하고 효율을 높이는 자동화 도구를 소개합니다</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Link href="/tools" className="w-full">
+                <Button variant="outline" className="w-full group border-lavender-200 hover:bg-lavender-50">
+                  툴 둘러보기
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
         </div>
+      </section>
 
-        <div className="h-[calc(100%-90px)] overflow-auto">
-          <iframe
-            src={coupangUrl}
-            className="w-full h-full rounded-lg"
-            title="Coupang Goldbox"
-          />
-        </div>
-        <p className="text-xs mt-4 text-gray-500 text-left">
-          이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-        </p>
-      </div>
-    </div>
-  );
-};
-
-const ServiceItem = ({ service }: { service: StreamingService }) => {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleServiceClick = () => {
-    setShowModal(true);
-  };
-
-  const executeAction = (url: string) => {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      // 모바일 기기에서 URL을 새 탭으로 열기
-      window.open(url, '_blank');
-    } else {
-      // 데스크탑에서는 다운로드 링크 생성
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = url.split('/').pop() || '6일만예_블로그_체험단_당첨.pdf'; // 파일 이름 지정
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-  
-  return (
-    <>
-      <div 
-        key={service.name} 
-        className="flex items-center justify-between p-4 hover:bg-white/5 transition-colors duration-200 cursor-pointer"
-        onClick={() => handleServiceClick()}
-      >
-        <div className="flex items-center gap-3">
-          {service.icon ? (
-            service.icon
-          ) : (
-            <Image
-              src={service.logo || "/placeholder.svg"}
-              alt={service.name}
-              width={24}
-              height={24}
-              className="w-6 h-6"
-            />
-          )}
-          <span className="font-medium">{service.name}</span>
-        </div>
-        <Button variant={service.type === "pdf" ? "default" : "secondary"} size="sm" className="min-w-[80px]">
-          {service.action === "Go To" ? (
-            <span className="flex items-center gap-1">
-              {service.action} <ExternalLink className="w-4 h-4" />
-            </span>
-          ) : service.action === "Play" ? (
-            <span className="flex items-center gap-1">
-              {service.action} <PlayCircle className="w-4 h-4" />
-            </span>
-          ) : (
-            service.action
-          )}
-        </Button>
-      </div>
-      
-      <CoupangModal 
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        onConfirm={() => {
-          setShowModal(false);
-          executeAction(service.url);
-        }}
-        type={service.type}
-        name={service.name}
-      />
-    </>
-  );
-};
-
-export default function Page() {
-  const streamingServices: StreamingService[] = [
-    { 
-      name: "[전자책] 6일만에 블로그 체험단 당첨", 
-      icon: <BookText className="w-6 h-6" />, 
-      action: "Download", 
-      type: "pdf",
-      url: "/ebook.pdf",
-    },
-    { 
-      name: "Naver", 
-      icon: <Music className="w-6 h-6" />, 
-      action: "Go To", 
-      type: "sns",
-      url: "https://m.blog.naver.com/ees238?tab=2"
-    },
-    { 
-      name: "Instagram", 
-      icon: <Instagram className="w-6 h-6" />, 
-      action: "Go To", 
-      type: "sns",
-      url: "https://www.instagram.com/nomad._hy"
-    },
-    { 
-      name: "TikTok", 
-      icon: <Music className="w-6 h-6" />, 
-      action: "Go To", 
-      type: "sns",
-      url: "https://www.tiktok.com/@user7424792417244"
-    },
-    { 
-      name: "Youtube", 
-      icon: <Youtube className="w-6 h-6" />, 
-      action: "Go To", 
-      type: "sns",
-      url: "https://www.youtube.com/channel/UCD2sfmi3lx6lQUiV6zMuNbA"
-    },
-  ]
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      <main className="container mx-auto px-4 py-8 max-w-md">
-        {/* Album Header */}
-        <div className="text-center mb-8">
-          <div className="relative w-64 h-64 mx-auto mb-4">
-            <Image
-              src="/profileImage.png"
-              alt="Album Cover"
-              fill
-              quality={100}  
-              priority 
-              className="rounded-lg object-cover"
-            />
+      {/* Featured Posts */}
+      <section className="bg-lavender-50/50 py-12">
+        <div className="container">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight">인기 꿀팁</h2>
+              <p className="text-muted-foreground mt-2">크리에이터들에게 가장 인기 있는 체험단 꿀팁을 확인하세요</p>
+            </div>
+            <Link href="/tips">
+              <Button variant="link" className="p-0 mt-4 md:mt-0 text-primary hover:text-primary/90">
+                모든 꿀팁 보기 <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
-          <h1 className="text-2xl font-bold mb-1">Hae Sick 해식</h1>
-          <h2 className="text-xl mb-2">퇴사(디지털 노마드)를 꿈꾸는, 개발자의 삶</h2>
-          <p className="text-gray-400">N잡러 블로그&자기계발&부업</p>
-        </div>
 
-        {/* Streaming Services List */}
-        <Card className="bg-white/10 backdrop-blur-sm border-none">
-          <div className="divide-y divide-gray-700">
-            {streamingServices.map((service) => (
-              <ServiceItem key={service.name} service={service} />
-            ))}
+          <FeaturedPosts />
+        </div>
+      </section>
+
+      {/* Schedule Preview */}
+      <section className="container py-12 md:py-24">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight">체험단 일정</h2>
+            <p className="text-muted-foreground mt-2">다가오는 체험단 일정을 확인하고 놓치지 마세요</p>
           </div>
-        </Card>
-
-        {/* Cookie Consent */}
-        <div className="text-center text-sm text-gray-400 mt-8">
-          <p className="mt-2">© 2025 해식. All rights reserved.</p>
+          <Link href="/schedule">
+            <Button variant="link" className="p-0 mt-4 md:mt-0 text-primary hover:text-primary/90">
+              전체 일정 보기 <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
-      </main>
+
+        <SchedulePreview />
+      </section>
+
+      {/* Tools Showcase */}
+      <section className="bg-softpink-50/50 py-12 md:py-24">
+        <div className="container">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight">추천 자동화 툴</h2>
+              <p className="text-muted-foreground mt-2">체험단 관리와 콘텐츠 제작을 더 효율적으로 만들어주는 도구들</p>
+            </div>
+            <Link href="/tools">
+              <Button variant="link" className="p-0 mt-4 md:mt-0 text-primary hover:text-primary/90">
+                모든 툴 보기 <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <ToolsShowcase />
+        </div>
+      </section>
+
+      {/* Premium Membership CTA */}
+      <section className="container py-12 md:py-24">
+        <div className="rounded-lg bg-gradient-to-r from-lavender-100 to-softpink-100 p-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-lavender-200/30 to-transparent" />
+          <div className="relative z-10 max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight mb-4">프리미엄 멤버십으로 더 많은 혜택을</h2>
+            <p className="text-muted-foreground mb-6">
+              VIP 멤버가 되어 독점 콘텐츠, 1:1 컨설팅, 비공개 커뮤니티 액세스 등 특별한 혜택을 누려보세요.
+            </p>
+            <Button size="lg" className="text-base">
+              멤버십 알아보기 <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
