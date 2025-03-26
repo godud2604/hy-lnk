@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
+import LoginButton from "./loginButton"
 
 export default function SiteHeader() {
   return (
@@ -43,6 +44,7 @@ export default function SiteHeader() {
             <Button variant="outline" className="border-lavender-200 hover:bg-lavender-50 text-primary" asChild>
               <Link href="/login">로그인</Link>
             </Button>
+            <LoginButton/>
             <Button asChild>
               <Link href="/register">회원가입</Link>
             </Button>
