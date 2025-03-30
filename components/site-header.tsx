@@ -1,10 +1,28 @@
-import Link from "next/link"
-import { Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
-import LoginButton from "./loginButton"
+"use client";
+
+import Link from "next/link";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import LoginButton from "./loginButton";
+import useAuth from "@/hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 export default function SiteHeader() {
+  const { user } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      // 로그아웃 후 추가 처리(예: 페이지 리다이렉션 등)를 여기에 구현할 수 있습니다.
+    } catch (error) {
+      console.error("로그아웃 실패:", error);
+    }
+  };
+
+  console.log('user',user)
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -40,15 +58,22 @@ export default function SiteHeader() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex gap-2">
-            <Button variant="outline" className="border-lavender-200 hover:bg-lavender-50 text-primary" asChild>
-              <Link href="/login">로그인</Link>
-            </Button>
-            <LoginButton/>
-            <Button asChild>
-              <Link href="/register">회원가입</Link>
-            </Button>
+          {/* 데스크탑용: 로그인한 경우 사용자 정보와 마이프로필 링크 표시 */}
+          <div className="hidden md:flex gap-2 items-center">
+            {user ? (
+              <>
+              <Button>
+                <Link href="/profile">마이프로필</Link>
+              </Button>
+              <Button variant="outline" className="border-lavender-200 hover:bg-lavender-50 text-primary" onClick={handleSignOut}>
+                로그아웃
+              </Button>
+              </>
+            ) : (
+              <LoginButton />
+            )}
           </div>
+          {/* 모바일용 Dropdown 메뉴 */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="md:hidden">
               <Button variant="outline" size="icon" className="border-lavender-200">
@@ -69,17 +94,29 @@ export default function SiteHeader() {
               <DropdownMenuItem asChild>
                 <Link href="/monetization">수익 창출</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/login">로그인</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/register">회원가입</Link>
-              </DropdownMenuItem>
+              {user ? (
+                <>
+                  <DropdownMenuItem asChild>
+                    <Link href="/profile">마이프로필</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onSelect={handleSignOut}>
+                    로그아웃
+                  </DropdownMenuItem>
+                </>
+              ) : (
+                <>
+                  <DropdownMenuItem asChild>
+                    <Link href="/login">로그인</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/register">회원가입</Link>
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </div>
     </header>
-  )
+  );
 }
-

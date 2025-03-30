@@ -1,0 +1,42 @@
+name: Firebase Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Node.js 설치
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # Next.js 앱 의존성 설치 및 빌드
+      - name: Install dependencies and build Next.js app
+        run: |
+          npm install
+          npm run build
+
+      # Functions 폴더 의존성 설치 및 TypeScript 빌드
+      - name: Install functions dependencies and build
+        working-directory: functions
+        run: |
+          npm install
+          npm run build
+
+      # Firebase CLI 설치
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      # Firebase 배포 (Hosting과 Functions 함께 배포)
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting,functions --token ${{ secrets.FIREBASE_TOKEN }}
