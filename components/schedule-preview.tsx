@@ -3,6 +3,7 @@ import { Calendar, Clock, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import ExperienceLoginForm from "./experience-login-button"
 
 export default function SchedulePreview() {
   // 실제 구현 시 데이터베이스에서 가져온 데이터를 사용
@@ -57,6 +58,7 @@ export default function SchedulePreview() {
             key={event.id}
             className="flex flex-col h-full border-none shadow-md hover:shadow-lg transition-shadow rounded-2xl overflow-hidden"
           >
+            <ExperienceLoginForm />
             <CardHeader className="pb-3">
               <div className="flex justify-between items-start">
                 <Badge
@@ -91,7 +93,7 @@ export default function SchedulePreview() {
                 asChild
               >
                 <Link href={`/schedule/${event.id}`}>
-                  상세 정보 <ExternalLink className="ml-1 h-3 w-3" />
+                  상세 정2보 <ExternalLink className="ml-1 h-3 w-3" />
                 </Link>
               </Button>
             </CardFooter>

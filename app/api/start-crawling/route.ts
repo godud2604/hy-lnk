@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     console.log("✅ '카카오 인증 대기' 화면 감지됨");
     await page.waitForSelector('.info_state', { hidden: true, timeout: 90 * 1000 });
     console.log("✅ 카카오톡 인증 완료");
-  } catch (err) {
+  } catch (err: any) {
     console.log("⚠️ '카카오 대기 화면' 없이 넘어가는 경우 (문제 아님)");
   }
 
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       page.click('button.btn_agree'),
     ]);
     console.log("✅ '계속하기' 버튼 클릭 및 리다이렉션 완료");
-  } catch (err) {
+  } catch (err: any) {
     console.log("⚠️ '계속하기' 버튼 없는 경우 (자동 리다이렉션 가능)");
   }
 
