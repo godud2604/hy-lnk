@@ -43,7 +43,7 @@ export default function SiteHeader() {
             >
               일정 관리
             </Link>
-            <Link
+            {/* <Link
               href="/tools"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
@@ -54,6 +54,12 @@ export default function SiteHeader() {
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               수익 창출
+            </Link> */}
+            <Link
+              href="/curriculum"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              6일 완성 커리큘렴
             </Link>
           </nav>
         </div>
@@ -88,12 +94,12 @@ export default function SiteHeader() {
               <DropdownMenuItem asChild>
                 <Link href="/schedule">일정 관리</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              {/* <DropdownMenuItem asChild>
                 <Link href="/tools">자동화 툴</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/monetization">수익 창출</Link>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               {user ? (
                 <>
                   <DropdownMenuItem asChild>
