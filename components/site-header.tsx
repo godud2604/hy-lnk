@@ -31,12 +31,12 @@ export default function SiteHeader() {
             체험단 마스터
           </Link>
           <nav className="hidden md:flex gap-6">
-            <Link
+            {/* <Link
               href="/tips"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               체험단 꿀팁
-            </Link>
+            </Link> */}
             <Link
               href="/schedule"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -88,9 +88,9 @@ export default function SiteHeader() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
+              {/* <DropdownMenuItem asChild>
                 <Link href="/tips">체험단 꿀팁</Link>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuItem asChild>
                 <Link href="/schedule">일정 관리</Link>
               </DropdownMenuItem>

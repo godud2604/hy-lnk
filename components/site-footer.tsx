@@ -16,17 +16,17 @@ export default function SiteFooter() {
           <div>
             <h3 className="font-medium mb-3">콘텐츠</h3>
             <ul className="space-y-2 text-sm">
-              <li>
+              {/* <li>
                 <Link href="/tips" className="text-muted-foreground hover:text-foreground transition-colors">
                   체험단 꿀팁
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/schedule" className="text-muted-foreground hover:text-foreground transition-colors">
                   일정 관리
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/tools" className="text-muted-foreground hover:text-foreground transition-colors">
                   자동화 툴
                 </Link>
@@ -34,6 +34,11 @@ export default function SiteFooter() {
               <li>
                 <Link href="/monetization" className="text-muted-foreground hover:text-foreground transition-colors">
                   수익 창출
+                </Link>
+              </li> */}
+              <li>
+                <Link href="/curriculum" className="text-muted-foreground hover:text-foreground transition-colors">
+                  6일 완성 커리큘럼
                 </Link>
               </li>
             </ul>
