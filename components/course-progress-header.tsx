@@ -2,18 +2,19 @@ import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 
 interface CourseProgressHeaderProps {
-  currentDay: number
-  totalDays: number
+  title: string;
+  currentDay: number;
+  totalDays: number;
 }
 
-export default function CourseProgressHeader({ currentDay, totalDays }: CourseProgressHeaderProps) {
+export default function CourseProgressHeader({ title, currentDay, totalDays }: CourseProgressHeaderProps) {
   const progress = (currentDay / totalDays) * 100
 
   return (
     <div className="space-y-4">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Day {currentDay}: 당첨 후 후기 포스팅 마스터</h1>
+          <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
           <p className="text-muted-foreground mt-1">
             체험단 당첨 후 브랜드와 독자 모두에게 호감을 얻는 후기 작성법을 배워봅시다.
           </p>
