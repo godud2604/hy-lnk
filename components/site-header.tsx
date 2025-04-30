@@ -7,10 +7,13 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import LoginButton from "./loginButton";
 import useAuth from "@/hooks/useAuth";
 import { signOut } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
+import { useRouter } from "next/navigation";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function SiteHeader() {
   const { user } = useAuth();
+  const router = useRouter();
 
   const handleSignOut = async () => {
     try {
@@ -21,7 +24,26 @@ export default function SiteHeader() {
     }
   };
 
-  console.log('user',user)
+  const handleProfileClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!user) return;
+
+    try {
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists() && userSnap.data().hasPaid) {
+        router.push('/dashboard');
+      } else {
+        alert('결제 완료 후 이용하실 수 있어요!');
+        router.push('/payment');
+      }
+    } catch (error) {
+      console.error("프로필 확인 중 오류 발생:", error);
+      alert('오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    }
+  };
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -68,12 +90,12 @@ export default function SiteHeader() {
           <div className="hidden md:flex gap-2 items-center">
             {user ? (
               <>
-              <Button>
-                <Link href="/profile">마이프로필</Link>
-              </Button>
-              <Button variant="outline" className="border-lavender-200 hover:bg-lavender-50 text-primary" onClick={handleSignOut}>
-                로그아웃
-              </Button>
+                <Button onClick={handleProfileClick}>
+                  마이프로필
+                </Button>
+                <Button variant="outline" className="border-lavender-200 hover:bg-lavender-50 text-primary" onClick={handleSignOut}>
+                  로그아웃
+                </Button>
               </>
             ) : (
               <LoginButton />
