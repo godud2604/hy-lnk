@@ -76,7 +76,7 @@ export default function Day6Page() {
 
   return (
     <div className="container py-8 md:py-12">
-      <CourseProgressHeader currentDay={6} totalDays={6} />
+      <CourseProgressHeader title="Day 6 Overview" currentDay={6} totalDays={6} />
 
       <div className="grid md:grid-cols-3 gap-8 mt-8">
         {/* 사이드바 */}
