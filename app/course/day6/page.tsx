@@ -212,43 +212,43 @@ export default function Day6Page() {
                       아래 9가지 항목을 모두 포함하면 완벽한 후기 포스팅이 완성됩니다!
                     </p>
 
-                    <div className="space-y-3">
-                      <ChecklistItem number={1} title="업체명 + 체험 제품명 명확히 작성">
+                    {/* <div className="space-y-3">
+                      <ChecklistItem title="업체명 + 체험 제품명 명확히 작성" description="검색 노출에 중요" checked={false}> 
                         제목과 본문 초반에 업체명과 제품명을 정확히 언급하세요. 검색 노출에 중요합니다.
                       </ChecklistItem>
 
-                      <ChecklistItem number={2} title="체험 전 기대했던 부분 솔직하게 적기">
+                      <ChecklistItem title="체험 전 기대했던 부분 솔직하게 적기">
                         제품을 사용하기 전 어떤 점이 궁금했는지, 어떤 효과를 기대했는지 작성하세요.
                       </ChecklistItem>
 
-                      <ChecklistItem number={3} title="실제 사용 후 모습 (착용/사용 전후 사진)">
+                      <ChecklistItem title="실제 사용 후 모습 (착용/사용 전후 사진)">
                         제품 사용 전/후 비교 사진이나 실제 사용 모습을 담은 사진을 포함하세요.
                       </ChecklistItem>
 
-                      <ChecklistItem number={4} title="본인의 한줄 요약 느낌">
+                      <ChecklistItem title="본인의 한줄 요약 느낌">
                         전체 경험을 한 문장으로 요약하여 독자들이 빠르게 파악할 수 있게 해주세요.
                       </ChecklistItem>
 
-                      <ChecklistItem number={5} title="추천할만한 포인트 2가지">
+                      <ChecklistItem title="추천할만한 포인트 2가지">
                         제품의 장점을 최소 2가지 이상 구체적으로 설명하세요.
                       </ChecklistItem>
 
-                      <ChecklistItem number={6} title="아쉬운 점 1가지 (부드럽게 표현)">
+                      <ChecklistItem title="아쉬운 점 1가지 (부드럽게 표현)">
                         너무 완벽한 리뷰보다는 작은 아쉬운 점을 언급하면 신뢰도가 높아집니다.
                       </ChecklistItem>
 
-                      <ChecklistItem number={7} title="키워드 자연스럽게 10회 이상 활용">
+                      <ChecklistItem title="키워드 자연스럽게 10회 이상 활용">
                         주요 키워드를 본문에 자연스럽게 10회 이상 포함시켜 검색 노출을 높이세요.
                       </ChecklistItem>
 
-                      <ChecklistItem number={8} title="포스팅 말미에 감사 멘트 + 재체험 희망">
+                      <ChecklistItem title="포스팅 말미에 감사 멘트 + 재체험 희망">
                         체험 기회에 감사하다는 멘트와 함께 재체험 희망 의사를 표현하세요.
                       </ChecklistItem>
 
-                      <ChecklistItem number={9} title="관련 해시태그 5개 이상 포함">
+                      <ChecklistItem title="관련 해시태그 5개 이상 포함">
                         포스팅 하단에 관련 해시태그를 5개 이상 포함시켜 검색 노출을 높이세요.
                       </ChecklistItem>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div>
