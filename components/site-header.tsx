@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
-import LoginButton from "./loginButton";
 import useAuth from "@/hooks/useAuth";
 import { signOut } from "firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
+import { LoginButton } from "./loginButton";
 
 export default function SiteHeader() {
   const { user } = useAuth();

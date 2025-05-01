@@ -1,59 +1,59 @@
-import { Check } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "./ui/button"
+import { Card } from "./ui/card"
+import { Check, Star } from "lucide-react"
 
 export default function PricingCard() {
   return (
-    <Card className="border-2 border-pink-200 shadow-lg relative overflow-hidden">
-      <div className="absolute top-0 right-0">
-        <Badge className="rounded-bl-lg rounded-tr-lg rounded-br-none rounded-tl-none bg-pink-600 text-white hover:bg-pink-600 border-none">
-          인기 상품
-        </Badge>
-      </div>
-      <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 pb-8">
-        <CardTitle className="text-2xl">6일 완성 체험단 클래스</CardTitle>
-        <CardDescription className="text-base">블로그 초보도 쉽게 따라하는 체험단 노하우</CardDescription>
-        <div className="mt-4">
-          <div className="flex items-baseline">
-            <span className="text-3xl font-bold">39,000원</span>
-            <span className="text-sm text-gray-500 line-through ml-2">49,000원</span>
+    <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-white to-gray-50 shadow-lg hover:shadow-xl transition-shadow duration-300">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-32 h-32 -translate-y-1/2 translate-x-1/2 bg-gradient-to-br from-pink-100 to-purple-100 rounded-full opacity-50 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 translate-y-1/2 -translate-x-1/2 bg-gradient-to-tr from-purple-100 to-pink-100 rounded-full opacity-50 blur-3xl"></div>
+      
+      {/* Content */}
+      <div className="relative p-6">
+        <div className="flex justify-between items-start mb-6">
+          <div>
+            <p className="text-sm font-medium text-pink-600 mb-1">프리미엄 패키지</p>
+            <div className="flex items-baseline">
+              <span className="text-4xl font-bold">199,000</span>
+              <span className="text-gray-500 ml-1">원</span>
+            </div>
+            <p className="text-sm text-gray-500 mt-1">6일 완성 체험단 코스</p>
           </div>
-          <p className="text-sm text-pink-600 font-medium mt-1">20% 할인 중! (3일 남음)</p>
+          <div className="bg-gradient-to-r from-pink-500 to-purple-500 p-2 rounded-xl">
+            <Star className="w-6 h-6 text-white fill-white" />
+          </div>
         </div>
-      </CardHeader>
-      <CardContent className="pt-6">
-        <ul className="space-y-3">
-          <li className="flex items-start">
-            <Check className="h-5 w-5 text-pink-600 mr-2 flex-shrink-0 mt-0.5" />
-            <span>6일 완성 단계별 커리큘럼 (평생 소장)</span>
-          </li>
-          <li className="flex items-start">
-            <Check className="h-5 w-5 text-pink-600 mr-2 flex-shrink-0 mt-0.5" />
-            <span>매일 미션에 대한 1:1 개인 피드백</span>
-          </li>
-          <li className="flex items-start">
-            <Check className="h-5 w-5 text-pink-600 mr-2 flex-shrink-0 mt-0.5" />
-            <span>체험단 합격 노하우 PDF 자료집</span>
-          </li>
-          <li className="flex items-start">
-            <Check className="h-5 w-5 text-pink-600 mr-2 flex-shrink-0 mt-0.5" />
-            <span>인기 키워드 분석 자료 (월 1회 업데이트)</span>
-          </li>
-          <li className="flex items-start">
-            <Check className="h-5 w-5 text-pink-600 mr-2 flex-shrink-0 mt-0.5" />
-            <span>수료 후 비공개 커뮤니티 초대</span>
-          </li>
-          <li className="flex items-start">
-            <Check className="h-5 w-5 text-pink-600 mr-2 flex-shrink-0 mt-0.5" />
-            <span>수료증 발급 및 우수 수강생 선물</span>
-          </li>
-        </ul>
-      </CardContent>
-      <CardFooter className="flex flex-col gap-4 pt-4">
-        <Button className="w-full bg-pink-600 hover:bg-pink-700 text-base py-6">지금 바로 시작하기</Button>
-        <div className="text-center text-sm text-gray-500">100% 환불 보장 - 첫 3일 이내 불만족 시 전액 환불</div>
-      </CardFooter>
+
+        <div className="space-y-4 mb-6">
+          {features.map((feature, index) => (
+            <div key={index} className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center mt-0.5">
+                <Check className="w-3 h-3 text-white" />
+              </div>
+              <span className="text-gray-600">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        <Button className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-lg shadow-pink-500/25">
+          지금 바로 시작하기
+        </Button>
+        
+        <p className="text-xs text-center text-gray-500 mt-4">
+          2주 환불 보장 정책이 적용됩니다
+        </p>
+      </div>
     </Card>
   )
 }
+
+const features = [
+  "6일 완성 스텝별 실전 미션",
+  "전문가의 1:1 맞춤 피드백",
+  "실제 당첨된 리뷰 예시 제공",
+  "프리미엄 템플릿 30종 제공",
+  "체험단 합격률 분석 리포트",
+  "24시간 커뮤니티 액세스",
+  "평생 수강 가능"
+]

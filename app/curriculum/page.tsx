@@ -12,28 +12,29 @@ export default function Curriculum() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-pink-50 to-purple-50 py-20 md:py-32">
-        <div className="absolute inset-0 bg-[url('/patterns/dots.svg')] opacity-10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 py-20 md:py-32">
+        <div className="absolute inset-0 bg-[url('/patterns/dots.svg')] opacity-5 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
         <div className="container relative z-10 px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
-                <Badge className="mb-2 bg-pink-100 text-pink-800 hover:bg-pink-100 border-none">
+                <Badge className="mb-2 bg-gradient-to-r from-pink-100 to-pink-200 text-pink-800 hover:from-pink-200 hover:to-pink-300 border-none backdrop-blur-sm">
                   6일 완성 커리큘럼
                 </Badge>
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                  <span className="text-pink-600">6일만에</span> 체험단 당첨되는 노하우
+                <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-purple-600">
+                  6일만에 체험단 당첨되는 노하우
                 </h1>
-                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed font-medium">
                   블로그 초보도 쉽게 따라할 수 있는 단계별 미션으로 체험단 당첨의 기회를 잡아보세요.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="bg-pink-600 hover:bg-pink-700">
+              <div className="flex flex-col gap-3 min-[400px]:flex-row">
+                <Button size="lg" className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-lg shadow-pink-500/25">
                   지금 바로 시작하기
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-pink-200 text-pink-600 hover:bg-pink-50">
+                <Button size="lg" variant="outline" className="border-2 border-pink-200 text-pink-600 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50">
                   커리큘럼 살펴보기
                 </Button>
               </div>
