@@ -145,7 +145,7 @@ export default function Day5Course() {
                     <ChecklistItem
                       title="꾸준한 포스팅"
                       description="주 3-4회 이상 꾸준히 포스팅하는 것이 중요합니다."
-                      checked={true}
+                      checked={false}
                     />
                     <ChecklistItem
                       title="양질의 콘텐츠 작성"

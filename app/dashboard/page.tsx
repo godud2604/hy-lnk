@@ -1,71 +1,74 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight, CheckCircle, Clock, FileText, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
+import { useEffect, useState } from "react"
+import useAuth from "@/hooks/useAuth"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "@/lib/firebase"
+import _ from "lodash"
+
 
 export default function DashboardPage() {
-  // 실제 구현 시 API에서 데이터를 가져와야 함
-  const courseProgress = {
-    currentDay: 6,
+  const { user } = useAuth()
+  const [courseProgress, setCourseProgress] = useState({
+    currentDay: 1,
     totalDays: 6,
-    completedDays: 5,
-    lastActivity: "2023-07-15",
-    pendingFeedback: true,
-    certificate: false,
-  }
+    completedDays: 0,
+    lastActivity: "",
+    pendingFeedback: false,
+  })
+
+
+  const baseModules = [
+    { day: 1, title: "블로그 개설 및 주제 설정" },
+    { day: 2, title: "첫 번째 포스팅 작성" },
+    { day: 3, title: "키워드 선정 및 상위노출 연습" },
+    { day: 4, title: "체험단 사이트 가입 + 신청 실습" },
+    { day: 5, title: "블로그 지수 관리 + 블덱스 활용" },
+    { day: 6, title: "당첨 후기 포스팅 마스터"},
+  ]
+  
+  // Lodash map으로 status 설정
+  const courseModules: { day: number; status: string; title: string; feedback?: boolean; feedbackText?: string; }[] = _.map(baseModules, (module) => {
+    return {
+      ...module,
+      status:
+        module.day < courseProgress.currentDay
+          ? "completed"
+          : module.day === courseProgress.currentDay
+          ? "in-progress"
+          : "locked",
+    }
+  })
+
+  useEffect(() => {
+    if (!user) return
+
+    const fetchUserProgress = async () => {
+      const userRef = doc(db, "users", user.uid)
+      const userSnap = await getDoc(userRef)
+
+      if (userSnap.exists()) {
+        const data = userSnap.data()
+        setCourseProgress({
+          currentDay: data.currentDay ?? 1,
+          totalDays: data.totalDays ?? 6,
+          completedDays: data.completedDays ?? 0,
+          lastActivity: data.lastActivity ?? "",
+          pendingFeedback: data.pendingFeedback ?? false,
+        })
+      }
+    }
+
+    fetchUserProgress()
+  }, [user])
 
   const progress = (courseProgress.completedDays / courseProgress.totalDays) * 100
-
-  const courseModules = [
-    {
-      day: 1,
-      title: "블로그 개설 및 주제 설정",
-      status: "completed", // completed, in-progress, locked
-      feedback: true,
-      feedbackText:
-        "블로그 주제 선정이 명확하고 프로필 설정도 잘 되었습니다. 카테고리 구성을 조금 더 체계적으로 해보세요.",
-    },
-    {
-      day: 2,
-      title: "첫 번째 포스팅 작성",
-      status: "completed",
-      feedback: true,
-      feedbackText:
-        "첫 포스팅 잘 작성하셨습니다! 사진 품질이 좋고 글의 구성도 자연스럽습니다. 다음에는 소제목을 활용해보세요.",
-    },
-    {
-      day: 3,
-      title: "키워드 선정 및 상위노출 연습",
-      status: "completed",
-      feedback: true,
-      feedbackText: "키워드 선정이 탁월합니다. 다만 본문에 키워드가 조금 더 자연스럽게 녹아들 수 있도록 해보세요.",
-    },
-    {
-      day: 4,
-      title: "체험단 사이트 가입 + 신청 실습",
-      status: "completed",
-      feedback: true,
-      feedbackText:
-        "다양한 체험단에 신청하셨네요! 신청서 작성도 구체적이고 좋습니다. 화장품 체험단에 당첨될 확률이 높아 보입니다.",
-    },
-    {
-      day: 5,
-      title: "블로그 지수 관리 + 블덱스 활용",
-      status: "completed",
-      feedback: true,
-      feedbackText:
-        "블로그 지수 관리를 위한 계획이 체계적입니다. 꾸준히 실천하시면 1개월 내 지수가 크게 상승할 것으로 예상됩니다.",
-    },
-    {
-      day: 6,
-      title: "당첨 후기 포스팅 마스터",
-      status: "in-progress",
-      feedback: false,
-      feedbackText: "",
-    },
-  ]
 
   return (
     <div className="container py-8 md:py-12">
@@ -133,13 +136,6 @@ export default function DashboardPage() {
                   <div className="font-medium mb-1">피드백 대기 중</div>
                   <p>제출한 과제에 대한 피드백이 곧 도착할 예정입니다.</p>
                 </div>
-              ) : courseProgress.certificate ? (
-                <Button className="w-full" asChild>
-                  <Link href="/certificate">
-                    <FileText className="mr-2 h-4 w-4" />
-                    수료증 다운로드
-                  </Link>
-                </Button>
               ) : (
                 <Button className="w-full bg-pink-600 hover:bg-pink-700" asChild>
                   <Link href={`/course/day${courseProgress.currentDay}`}>
@@ -196,12 +192,12 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {courseModules.map((module) => (
+                {courseModules.map((module: { day: number; status: string; title: string; feedback?: boolean; feedbackText?: string; }) => (
                   <div
                     key={module.day}
                     className={`border rounded-lg overflow-hidden ${
                       module.status === "in-progress" ? "border-pink-200" : "border-gray-200"
-                    }`}
+                    } ${module.status === "locked" ? "cursor-not-allowed opacity-75" : ""}`}
                   >
                     <div
                       className={`p-4 flex items-start justify-between ${
@@ -244,13 +240,13 @@ export default function DashboardPage() {
                         className={module.status === "in-progress" ? "bg-pink-600 hover:bg-pink-700" : ""}
                         asChild
                       >
-                        <Link href={`/course/day${module.day}`}>
-                          {module.status === "completed"
-                            ? "다시 보기"
-                            : module.status === "in-progress"
-                              ? "계속하기"
-                              : "잠김"}
-                        </Link>
+                        {module.status === "locked" ? (
+                          <span className="cursor-not-allowed">잠김</span>
+                        ) : (
+                          <Link href={`/course/day${module.day}`}>
+                            {module.status === "completed" ? "다시 보기" : "계속하기"}
+                          </Link>
+                        )}
                       </Button>
                     </div>
 
