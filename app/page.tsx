@@ -13,7 +13,7 @@ export default function Home() {
       <HeroSection />
 
       {/* Value Proposition */}
-      <section className="container py-12 md:py-24">
+      {/* <section className="container py-12 md:py-24">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <Card className="border-none shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden">
             <CardHeader className="space-y-1">
@@ -69,10 +69,10 @@ export default function Home() {
             </CardFooter>
           </Card>
         </div>
-      </section>
+      </section> */}
 
       {/* Featured Posts */}
-      <section className="bg-lavender-50/50 py-12">
+      {/* <section className="bg-lavender-50/50 py-12">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div>
@@ -88,7 +88,7 @@ export default function Home() {
 
           <FeaturedPosts />
         </div>
-      </section>
+      </section> */}
 
       {/* Schedule Preview */}
       <section className="container py-12 md:py-24">
@@ -108,7 +108,7 @@ export default function Home() {
       </section>
 
       {/* Tools Showcase */}
-      <section className="bg-softpink-50/50 py-12 md:py-24">
+      {/* <section className="bg-softpink-50/50 py-12 md:py-24">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div>
@@ -124,10 +124,10 @@ export default function Home() {
 
           <ToolsShowcase />
         </div>
-      </section>
+      </section> */}
 
       {/* Premium Membership CTA */}
-      <section className="container py-12 md:py-24">
+      <section className="container py-12">
         <div className="rounded-lg bg-gradient-to-r from-lavender-100 to-softpink-100 p-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-lavender-200/30 to-transparent" />
           <div className="relative z-10 max-w-2xl">
@@ -135,9 +135,11 @@ export default function Home() {
             <p className="text-muted-foreground mb-6">
               VIP 멤버가 되어 독점 콘텐츠, 1:1 컨설팅, 비공개 커뮤니티 액세스 등 특별한 혜택을 누려보세요.
             </p>
-            <Button size="lg" className="text-base">
-              멤버십 알아보기 <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/curriculum">
+              <Button size="lg" className="text-base">
+                멤버십 알아보기 <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
