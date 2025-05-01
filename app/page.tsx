@@ -131,13 +131,13 @@ export default function Home() {
         <div className="rounded-lg bg-gradient-to-r from-lavender-100 to-softpink-100 p-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-lavender-200/30 to-transparent" />
           <div className="relative z-10 max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">프리미엄 멤버십으로 더 많은 혜택을</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">6일 완성 체험단 마스터 클래스</h2>
             <p className="text-muted-foreground mb-6">
-              VIP 멤버가 되어 독점 콘텐츠, 1:1 컨설팅, 비공개 커뮤니티 액세스 등 특별한 혜택을 누려보세요.
+              블로그 개설부터 실전 체험단 참여까지, 6일 완성 커리큘럼으로 체계적인 학습을 시작하세요. 전문가의 1:1 피드백과 함께 성장할 수 있습니다.
             </p>
             <Link href="/curriculum">
               <Button size="lg" className="text-base">
-                멤버십 알아보기 <ArrowRight className="ml-2 h-4 w-4" />
+                커리큘럼 둘러보기 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>

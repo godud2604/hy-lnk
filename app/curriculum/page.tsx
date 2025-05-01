@@ -23,33 +23,33 @@ export default function Curriculum() {
                   6일 완성 커리큘럼
                 </Badge>
                 <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-purple-600">
-                  6일만에 체험단 당첨되는 노하우
+                  체험단 당첨되는 블로그 만들기
                 </h1>
                 <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed font-medium">
-                  블로그 초보도 쉽게 따라할 수 있는 단계별 미션으로 체험단 당첨의 기회를 잡아보세요.
+                  블로그 개설부터 첫 체험단 당첨까지, 6일 완성 커리큘럼으로 전문가와 함께 성장하세요. 초보자도 쉽게 따라할 수 있는 단계별 미션으로 체험단 당첨의 기회를 높여드립니다.
                 </p>
               </div>
               <div className="flex flex-col gap-3 min-[400px]:flex-row">
                 <Button size="lg" className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-lg shadow-pink-500/25">
-                  지금 바로 시작하기
+                  첫 미션 시작하기
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-2 border-pink-200 text-pink-600 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50">
-                  커리큘럼 살펴보기
+                  전체 과정 살펴보기
                 </Button>
               </div>
               <div className="flex items-center gap-4 text-sm">
                 <div className="flex items-center gap-1">
                   <Users className="h-4 w-4 text-pink-600" />
-                  <span>300+ 수강생</span>
+                  <span>1:1 전문가 피드백</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Star className="h-4 w-4 text-pink-600 fill-pink-600" />
-                  <span>4.9/5 평점</span>
+                  <span>체계적인 6단계</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Gift className="h-4 w-4 text-pink-600" />
-                  <span>80% 당첨률</span>
+                  <span>실전 당첨 노하우</span>
                 </div>
               </div>
             </div>
@@ -86,11 +86,43 @@ export default function Curriculum() {
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-purple-100 text-purple-800 hover:bg-purple-100 border-none">커리큘럼 소개</Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              누구나 따라할 수 있는 6일 코스
+              체계적인 6일 완성 커리큘럼
             </h2>
             <p className="mt-4 max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              매일 15-30분씩 미션을 수행하며 체험단 당첨의 기회를 높여보세요.
+              블로그 개설부터 실전 체험단 참여까지, <br/> 전문가의 1:1 피드백과 함께 매일 15-30분씩 성장하세요.
             </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-18">
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <Calendar className="h-6 w-6 text-pink-600" />
+                </div>
+                <CardTitle>Day 1-2: 블로그 기초 다지기</CardTitle>
+                <CardDescription>블로그 개설과 주제 선정부터 첫 포스팅 작성까지, 체험단에 최적화된 블로그 환경을 구축합니다.</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <Star className="h-6 w-6 text-purple-600" />
+                </div>
+                <CardTitle>Day 3-4: 검색 노출과 체험단 신청</CardTitle>
+                <CardDescription>효과적인 키워드 활용법을 배우고, 주요 체험단 사이트 가입 및 신청 실습을 진행합니다.</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <Gift className="h-6 w-6 text-pink-600" />
+                </div>
+                <CardTitle>Day 5-6: 당첨률 높이기</CardTitle>
+                <CardDescription>블로그 지수 관리와 블덱스 활용법을 배우고, 실전 후기 작성 노하우를 습득합니다.</CardDescription>
+              </CardHeader>
+            </Card>
           </div>
 
           <CourseStages />
@@ -103,10 +135,10 @@ export default function Curriculum() {
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-pink-100 text-pink-800 hover:bg-pink-100 border-none">특별한 혜택</Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              왜 우리 클래스를 선택해야 할까요?
+              블로그 초보도 쉽게 시작할 수 있어요
             </h2>
             <p className="mt-4 max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              단순한 이론이 아닌, 실제 당첨으로 이어지는 실전 노하우를 제공합니다.
+              6일간의 체계적인 커리큘럼과 전문가의 1:1 피드백으로 체험단 당첨의 기회를 높여드립니다.
             </p>
           </div>
 
@@ -116,8 +148,8 @@ export default function Curriculum() {
                 <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Calendar className="h-6 w-6 text-pink-600" />
                 </div>
-                <CardTitle>단계별 미션 시스템</CardTitle>
-                <CardDescription>매일 15-30분씩 실천 가능한 미션으로 부담 없이 시작할 수 있어요.</CardDescription>
+                <CardTitle>매일 15-30분 실전 미션</CardTitle>
+                <CardDescription>블로그 개설부터 체험단 신청까지, 하루 30분이면 충분한 단계별 미션을 제공합니다.</CardDescription>
               </CardHeader>
             </Card>
 
@@ -126,8 +158,8 @@ export default function Curriculum() {
                 <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Users className="h-6 w-6 text-purple-600" />
                 </div>
-                <CardTitle>1:1 피드백 제공</CardTitle>
-                <CardDescription>매 미션마다 전문가의 개인 피드백을 받아 빠르게 성장할 수 있어요.</CardDescription>
+                <CardTitle>24시간 이내 피드백</CardTitle>
+                <CardDescription>매일 제출하는 과제마다 전문가의 꼼꼼한 피드백을 받아 빠르게 개선할 수 있습니다.</CardDescription>
               </CardHeader>
             </Card>
 
@@ -136,8 +168,8 @@ export default function Curriculum() {
                 <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Gift className="h-6 w-6 text-pink-600" />
                 </div>
-                <CardTitle>실제 당첨 노하우</CardTitle>
-                <CardDescription>300명 이상의 수강생이 검증한 실전 노하우로 당첨률을 높여드려요.</CardDescription>
+                <CardTitle>실전 키워드 전략</CardTitle>
+                <CardDescription>검색 노출부터 블로그 지수 관리까지, 체험단 당첨을 위한 실전 노하우를 배웁니다.</CardDescription>
               </CardHeader>
             </Card>
           </div>
@@ -193,23 +225,23 @@ export default function Curriculum() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Final CTA Section */}
       <section className="py-16 md:py-24 bg-gradient-to-r from-pink-600 to-purple-600 text-white">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
-              지금 시작하고 6일 후 체험단에 도전하세요
+              6일 후, 당신의 첫 체험단 도전
             </h2>
             <p className="max-w-[700px] mb-8 text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              블로그 초보도, 휴면 계정 소유자도 모두 가능합니다. 지금 바로 시작해보세요!
+              블로그 초보도 걱정 없이 도전할 수 있습니다. 전문가의 1:1 피드백으로 6일 동안 체계적으로 성장하세요.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Button size="lg" className="bg-white text-pink-600 hover:bg-white/90">
-                수강 신청하기
+                6일 코스 시작하기
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                더 알아보기
+                상세 커리큘럼 보기
               </Button>
             </div>
           </div>
