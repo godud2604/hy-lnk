@@ -72,7 +72,7 @@ export default function Home() {
       </section> */}
 
       {/* Featured Posts */}
-      {/* <section className="bg-lavender-50/50 py-12">
+      <section className="bg-lavender-50/50 py-12">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div>
@@ -88,10 +88,10 @@ export default function Home() {
 
           <FeaturedPosts />
         </div>
-      </section> */}
+      </section>
 
       {/* Schedule Preview */}
-      <section className="container py-12 md:py-24">
+      {/* <section className="container py-12 md:py-24">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
             <h2 className="text-3xl font-bold tracking-tight">체험단 일정</h2>
@@ -105,7 +105,7 @@ export default function Home() {
         </div>
 
         <SchedulePreview />
-      </section>
+      </section> */}
 
       {/* Tools Showcase */}
       {/* <section className="bg-softpink-50/50 py-12 md:py-24">

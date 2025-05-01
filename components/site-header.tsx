@@ -53,12 +53,6 @@ export default function SiteHeader() {
             체험단 마스터
           </Link>
           <nav className="hidden md:flex gap-6">
-            {/* <Link
-              href="/tips"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              체험단 꿀팁
-            </Link> */}
             <Link
               href="/curriculum"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -66,11 +60,17 @@ export default function SiteHeader() {
               6일 완성 커리큘렴
             </Link>
             <Link
+              href="/tips"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              체험단 꿀팁
+            </Link>
+            {/* <Link
               href="/schedule"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               일정 관리
-            </Link>
+            </Link> */}
             {/* <Link
               href="/tools"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -111,11 +111,11 @@ export default function SiteHeader() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              {/* <DropdownMenuItem asChild>
-                <Link href="/tips">체험단 꿀팁</Link>
-              </DropdownMenuItem> */}
               <DropdownMenuItem asChild>
                 <Link href="/curriculum">6일 완성 커리큘렴</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/tips">체험단 꿀팁</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/schedule">일정 관리</Link>
