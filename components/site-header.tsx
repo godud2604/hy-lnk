@@ -60,6 +60,12 @@ export default function SiteHeader() {
               체험단 꿀팁
             </Link> */}
             <Link
+              href="/curriculum"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              6일 완성 커리큘렴
+            </Link>
+            <Link
               href="/schedule"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
@@ -77,12 +83,7 @@ export default function SiteHeader() {
             >
               수익 창출
             </Link> */}
-            <Link
-              href="/curriculum"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              6일 완성 커리큘렴
-            </Link>
+          
           </nav>
         </div>
         <div className="flex items-center gap-4">
@@ -114,10 +115,10 @@ export default function SiteHeader() {
                 <Link href="/tips">체험단 꿀팁</Link>
               </DropdownMenuItem> */}
               <DropdownMenuItem asChild>
-                <Link href="/schedule">일정 관리</Link>
+                <Link href="/curriculum">6일 완성 커리큘렴</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/curriculum">6일 완성 커리큘렴</Link>
+                <Link href="/schedule">일정 관리</Link>
               </DropdownMenuItem>
               {/* <DropdownMenuItem asChild>
                 <Link href="/tools">자동화 툴</Link>
