@@ -22,7 +22,7 @@ export default function Curriculum() {
                 <Badge className="mb-2 bg-gradient-to-r from-pink-100 to-pink-200 text-pink-800 hover:from-pink-200 hover:to-pink-300 border-none backdrop-blur-sm">
                   6일 완성 커리큘럼
                 </Badge>
-                <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-purple-600">
+                <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-purple-600 whitespace-nowrap">
                   체험단 당첨되는 블로그 만들기
                 </h1>
                 <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed font-medium">
@@ -54,23 +54,43 @@ export default function Curriculum() {
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 bg-white rounded-lg shadow-lg p-3 z-10">
-                  <CountdownTimer />
-                </div>
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                  <img src="/colorful-blogging.png" alt="블로그 체험단 일러스트" className="w-full h-auto" />
-                  <div className="p-6 bg-gradient-to-r from-purple-50 to-pink-50">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="bg-pink-100 rounded-full p-2">
-                        <CheckCircle className="h-5 w-5 text-pink-600" />
+              <div className="relative transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl rounded-2xl">
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-100/50">
+                  <div className="p-6 space-y-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="bg-pink-500/10 rounded-full p-2.5 shadow-sm ring-4 ring-pink-500/5">
+                        <CheckCircle className="h-5 w-5 text-pink-500" />
                       </div>
-                      <div className="text-sm font-medium">실제 수강생 당첨 인증</div>
+                      <div className="text-lg font-semibold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+                        6일 코스의 핵심 혜택
+                      </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-2">
-                      <img src="/vibrant-beauty-reveal.png" alt="당첨 인증 1" className="rounded-lg w-full h-auto" />
-                      <img src="/vibrant-makeup-swatches.png" alt="당첨 인증 2" className="rounded-lg w-full h-auto" />
-                      <img src="/food-blogger-review.png" alt="당첨 인증 3" className="rounded-lg w-full h-auto" />
+                    
+                    <div className="grid gap-4">
+                      <div className="bg-gradient-to-br from-pink-500/5 via-pink-500/[0.07] to-purple-500/10 p-4 rounded-xl backdrop-blur-sm border border-pink-500/10">
+                        <h3 className="font-semibold text-pink-600 mb-2">1. 실전 체험단 노하우</h3>
+                        <p className="text-gray-600">최신 트렌드를 반영한 체험단 합격 전략과 실제 사례 분석을 통한 학습</p>
+                      </div>
+                      
+                      <div className="bg-gradient-to-br from-purple-500/5 via-purple-500/[0.07] to-pink-500/10 p-4 rounded-xl backdrop-blur-sm border border-purple-500/10">
+                        <h3 className="font-semibold text-purple-600 mb-2">2. 맞춤형 피드백</h3>
+                        <p className="text-gray-600">매일 제출하는 과제에 대한 전문가의 1:1 피드백으로 빠른 실력 향상</p>
+                      </div>
+                      
+                      <div className="bg-gradient-to-br from-pink-500/5 via-pink-500/[0.07] to-purple-500/10 p-4 rounded-xl backdrop-blur-sm border border-pink-500/10">
+                        <h3 className="font-semibold text-pink-600 mb-2">3. 커뮤니티 지원</h3>
+                        <p className="text-gray-600">수강생 전용 커뮤니티에서 정보 공유와 네트워킹 기회 제공</p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 p-4 rounded-xl border border-gray-200/50">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-medium text-gray-700">현재 수강생 만족도</span>
+                        <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-semibold">98%</span>
+                      </div>
+                      <div className="w-full bg-gray-200/50 rounded-full h-2 overflow-hidden">
+                        <div className="bg-gradient-to-r from-pink-500 to-purple-500 h-2 rounded-full shadow-sm" style={{ width: '98%' }}></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -85,7 +105,7 @@ export default function Curriculum() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-purple-100 text-purple-800 hover:bg-purple-100 border-none">커리큘럼 소개</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl whitespace-nowrap">
               체계적인 6일 완성 커리큘럼
             </h2>
             <p className="mt-4 max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -134,7 +154,7 @@ export default function Curriculum() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-pink-100 text-pink-800 hover:bg-pink-100 border-none">특별한 혜택</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl whitespace-nowrap">
               블로그 초보도 쉽게 시작할 수 있어요
             </h2>
             <p className="mt-4 max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -181,7 +201,7 @@ export default function Curriculum() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-purple-100 text-purple-800 hover:bg-purple-100 border-none">수강생 후기</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">실제 수강생들의 생생한 후기</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl whitespace-nowrap">실제 수강생들의 생생한 후기</h2>
             <p className="mt-4 max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               6일 코스를 통해 체험단에 당첨된 수강생들의 이야기를 들어보세요.
             </p>
@@ -196,7 +216,7 @@ export default function Curriculum() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-pink-100 text-pink-800 hover:bg-pink-100 border-none">수강 신청</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">지금 바로 시작하세요</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl whitespace-nowrap">지금 바로 시작하세요</h2>
             <p className="mt-4 max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               6일 후 당신의 블로그에도 체험단 제품이 도착할 수 있습니다.
             </p>
@@ -215,7 +235,7 @@ export default function Curriculum() {
         <div className="container px-4 md:px-6 max-w-4xl">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-purple-100 text-purple-800 hover:bg-purple-100 border-none">자주 묻는 질문</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">궁금한 점이 있으신가요?</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl whitespace-nowrap">궁금한 점이 있으신가요?</h2>
             <p className="mt-4 max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               수강생들이 자주 묻는 질문들을 모았습니다.
             </p>
@@ -229,7 +249,7 @@ export default function Curriculum() {
       <section className="py-16 md:py-24 bg-gradient-to-r from-pink-600 to-purple-600 text-white">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6 whitespace-nowrap">
               6일 후, 당신의 첫 체험단 도전
             </h2>
             <p className="max-w-[700px] mb-8 text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
