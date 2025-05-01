@@ -116,6 +116,9 @@ export default function SiteHeader() {
               <DropdownMenuItem asChild>
                 <Link href="/schedule">일정 관리</Link>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/curriculum">6일 완성 커리큘렴</Link>
+              </DropdownMenuItem>
               {/* <DropdownMenuItem asChild>
                 <Link href="/tools">자동화 툴</Link>
               </DropdownMenuItem>
@@ -125,7 +128,7 @@ export default function SiteHeader() {
               {user ? (
                 <>
                   <DropdownMenuItem asChild>
-                    <Link href="/profile">마이프로필</Link>
+                    <Link href="/dashboard">마이프로필</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onSelect={handleSignOut}>
                     로그아웃
