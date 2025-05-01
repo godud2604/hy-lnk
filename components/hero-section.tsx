@@ -17,7 +17,7 @@ export default function HeroSection() {
               체험단 일정 관리부터 수익 창출까지, 크리에이터를 위한 모든 노하우를 공유합니다
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" asChild className="text-base">
               <Link href="/tips">
                 체험단 꿀팁 보기 <ArrowRight className="ml-2 h-4 w-4" />
@@ -28,7 +28,7 @@ export default function HeroSection() {
                 자동화 툴 둘러보기 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
