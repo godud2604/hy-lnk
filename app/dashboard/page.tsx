@@ -78,9 +78,9 @@ export default function DashboardPage() {
           <p className="text-muted-foreground mt-1">6일 체험단 마스터 과정의 진행 상황을 확인하고 관리하세요.</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="outline" asChild>
+          {/* <Button variant="outline" asChild>
             <Link href="/community">커뮤니티 방문</Link>
-          </Button>
+          </Button> */}
           <Button className="bg-pink-600 hover:bg-pink-700" asChild>
             <Link href={`/course/day${courseProgress.currentDay}`}>학습 계속하기</Link>
           </Button>
@@ -263,7 +263,7 @@ export default function DashboardPage() {
           </Card>
 
           {/* 추천 자료 */}
-          <Card>
+          {/* <Card>
             <CardHeader className="pb-2">
               <CardTitle>추천 자료</CardTitle>
               <CardDescription>학습에 도움이 되는 추가 자료를 확인하세요.</CardDescription>
@@ -297,7 +297,7 @@ export default function DashboardPage() {
                 </div>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </div>
