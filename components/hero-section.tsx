@@ -20,7 +20,7 @@ export default function HeroSection() {
             </h1>
             <p className="mx-auto max-w-[700px] text-lg md:text-xl text-gray-600 leading-loose tracking-wide">
               체계적인 일정관리와 6일 완성 커리큘럼으로
-              <br className="hidden sm:inline" />
+              <br className="" />
               확실한 노하우로 당첨되는 체험단 리뷰어의 비밀을 알려드립니다
             </p>
           </div>
