@@ -4,34 +4,33 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/comp
 import { Badge } from "@/components/ui/badge"
 
 export default function FeaturedPosts() {
-  // 실제 구현 시 데이터베이스나 CMS에서 가져온 데이터를 사용
   const featuredPosts = [
     {
       id: 1,
-      title: "체험단 신청 시 합격률 높이는 5가지 방법",
-      description: "체험단 신청서 작성부터 포트폴리오 준비까지, 합격률을 높이는 전문가의 팁을 공유합니다.",
-      category: "초보 가이드",
-      date: "2023-05-15",
-      readTime: "5분",
-      slug: "increase-acceptance-rate",
+      title: "체험단에 당첨되는 블로그는 다릅니다. 딱 3가지만 바꿔보세요",
+      description: "프로필부터 신청 메시지까지, 체험단 당첨률을 높이는 실전 꿀팁을 알려드립니다. 검증된 방법으로 주 3-4건 당첨되는 노하우를 공개합니다.",
+      category: "초보자 가이드",
+      date: "2025-05-02",
+      readTime: "10분",
+      slug: "top-3-changes-for-selection",
     },
     {
       id: 2,
-      title: "인스타그램 체험단 리뷰 작성법 완벽 가이드",
-      description: "인스타그램에서 높은 인게이지먼트를 얻는 체험단 리뷰 작성 노하우를 알아봅니다.",
-      category: "콘텐츠 제작",
-      date: "2023-06-02",
-      readTime: "8분",
-      slug: "instagram-review-guide",
+      title: "체험단 리뷰로 월 30만원 만드는 현실적인 방법",
+      description: "체험단 외에도 기자단, 네이버 인플루언서 등 다양한 수익화 방법을 알려드립니다. 실제 수익 구조와 함께 단계별 성장 전략을 소개합니다.",
+      category: "수익화",
+      date: "2025-05-02",
+      readTime: "15분",
+      slug: "monthly-300k-guide",
     },
     {
       id: 3,
-      title: "체험단 일정 관리를 위한 자동화 툴 TOP 5",
-      description: "체험단 일정을 효율적으로 관리하고 마감일을 놓치지 않게 도와주는 자동화 도구를 소개합니다.",
-      category: "자동화 툴",
-      date: "2023-06-20",
-      readTime: "6분",
-      slug: "schedule-automation-tools",
+      title: "핸드폰만으로 완성하는 프리미엄급 후기 사진",
+      description: "비싼 장비 없이도 고퀄리티 사진을 찍는 방법을 알려드립니다. 조명, 구도부터 무료 보정 앱 활용법까지 상세히 설명합니다.",
+      category: "사진 팁",
+      date: "2025-05-02",
+      readTime: "8분",
+      slug: "premium-photo-tips",
     },
   ]
 
