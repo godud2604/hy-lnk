@@ -501,8 +501,11 @@ const tipsDetails = {
 }
 
 // Add PageProps type for Next.js 13+
-type PageProps = {
-  params: { slug: string }
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
