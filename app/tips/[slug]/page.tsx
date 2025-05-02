@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -580,6 +580,21 @@ export default function TipDetailPage({ params }: { params: { slug: string } }) 
             </ul>
           </div>
         </article>
+
+        {/* 커리큘럼 연결 섹션 */}
+        <div className="mt-16 p-6 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg">
+          <h2 className="text-2xl font-bold mb-4">🎯 더 빠르게 성장하고 싶다면?</h2>
+          <p className="text-lg mb-6">
+            "6일만에 체험단 당첨" 커리큘럼으로 체계적인 학습을 시작하세요.<br />
+            전문가의 1:1 피드백과 함께 성장할 수 있습니다.
+          </p>
+          <Button asChild>
+            <Link href="/course/day1">
+              커리큘럼 시작하기
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   )
