@@ -53,6 +53,22 @@
     --input: 240 3.7% 15.9%;
     --ring: 267 83% 60%;
   }
+
+  @media (max-width: 640px) {
+    h1 + p {
+      margin-top: 0.75rem;
+    }
+    
+    span + span {
+      margin-top: 0.25rem;
+    }
+    
+    .space-y-4 {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+    }
+  }
 }
 
 @layer base {
