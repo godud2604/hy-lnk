@@ -50,7 +50,7 @@ export default function SiteHeader() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
           <Link href="/" className="font-bold text-xl text-primary">
-            체험단 마스터
+            에듀테크단
           </Link>
           <nav className="hidden md:flex gap-6">
             <Link

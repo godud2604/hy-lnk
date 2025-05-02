@@ -7,7 +7,7 @@ export default function SiteFooter() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="font-bold text-xl mb-4 inline-block">
-              체험단 마스터
+              에듀테크단
             </Link>
             <p className="text-sm text-muted-foreground mt-2">
               체험단 활동과 콘텐츠 제작을 위한 모든 정보와 도구를 제공합니다.
@@ -80,7 +80,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} 체험단 마스터. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} 에듀테크단. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -5,7 +5,7 @@ import SiteFooter from "@/components/site-footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
-  title: "체험단 마스터 - 체험단 꿀팁과 자동화 툴 공유 플랫폼",
+  title: "에듀테크단 - 체험단 꿀팁과 자동화 툴 공유 플랫폼",
   description: "체험단 일정 관리, 꿀팁 공유, 자동화 툴 소개 및 수익 창출 방법을 알려드립니다.",
 }
 
