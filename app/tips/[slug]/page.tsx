@@ -500,7 +500,12 @@ const tipsDetails = {
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+// Add PageProps type for Next.js 13+
+type PageProps = {
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
 
   if (!tip) {
@@ -516,7 +521,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function TipDetailPage({ params }: { params: { slug: string } }) {
+export default function TipDetailPage({ params }: PageProps) {
   const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
 
   if (!tip) {

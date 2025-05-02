@@ -177,7 +177,7 @@ export default function TipsPage() {
 
       {/* 구독 섹션 */}
       <div className="bg-gray-50 rounded-lg p-8 text-center">
-        <h3 className="text-xl font-bold mb-4">📮 매주 새로운 체험단 꿀팁 받아보기</h3>
+        <h3 className="text-xl font-bold mb-4">매주 새로운 체험단 꿀팁 받아보기</h3>
         <p className="text-muted-foreground mb-6">
           매주 1회, 엄선된 체험단 꿀팁과 모집 정보를 보내드립니다.
         </p>
