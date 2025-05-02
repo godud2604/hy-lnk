@@ -117,9 +117,9 @@ export default function SiteHeader() {
               <DropdownMenuItem asChild>
                 <Link href="/tips">체험단 꿀팁</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              {/* <DropdownMenuItem asChild>
                 <Link href="/schedule">일정 관리</Link>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               {/* <DropdownMenuItem asChild>
                 <Link href="/tools">자동화 툴</Link>
               </DropdownMenuItem>
@@ -128,22 +128,19 @@ export default function SiteHeader() {
               </DropdownMenuItem> */}
               {user ? (
                 <>
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem asChild className="p-2">
                     <Link href="/dashboard">마이프로필</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onSelect={handleSignOut}>
+                  <DropdownMenuItem onSelect={handleSignOut} className="p-2">
                     로그아웃
                   </DropdownMenuItem>
                 </>
               ) : (
-                <>
-                  <DropdownMenuItem asChild>
-                    <Link href="/login">로그인</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/register">회원가입</Link>
-                  </DropdownMenuItem>
-                </>
+                <DropdownMenuItem className="p-0 hover:bg-transparent focus:bg-transparent">
+                  <div className="w-full px-2 py-1">
+                    <LoginButton className="w-full justify-center text-sm h-9" size="sm" />
+                  </div>
+                </DropdownMenuItem>
               )}
             </DropdownMenuContent>
           </DropdownMenu>

@@ -1,9 +1,14 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-
+import { cn } from "@/lib/utils";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-export function LoginButton() {
+interface LoginButtonProps {
+  className?: string;
+  size?: "default" | "sm" | "lg" | "icon";
+}
+
+export function LoginButton({ className, size = "default" }: LoginButtonProps) {
   const handleGoogleLogin = async () => {
     try {
       const auth = getAuth();
@@ -40,8 +45,16 @@ export function LoginButton() {
       console.error("로그인 에러:", error);
     }
   };
+
   return (
-    <Button className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300" onClick={handleGoogleLogin}>
+    <Button 
+      className={cn(
+        "bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300",
+        className
+      )}
+      size={size}
+      onClick={handleGoogleLogin}
+    >
       시작하기
     </Button>
   );
