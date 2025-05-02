@@ -500,17 +500,9 @@ const tipsDetails = {
   }
 }
 
-// Add PageProps type for Next.js 13+
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
-
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
+  
   if (!tip) {
     return {
       title: "페이지를 찾을 수 없습니다",
@@ -524,7 +516,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default function TipDetailPage({ params }: PageProps) {
+export default function TipDetailPage({ params }: { params: { slug: string } }) {
   const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
 
   if (!tip) {
