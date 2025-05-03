@@ -4,6 +4,12 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 
+interface PageProps {
+  params: {
+    slug: string
+  }
+}
+
 // 각 팁의 상세 내용 데이터
 const tipsDetails = {
   "top-3-changes-for-selection": {
@@ -500,8 +506,14 @@ const tipsDetails = {
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
+export async function generateStaticParams() {
+  return Object.keys(tipsDetails).map((slug) => ({
+    slug,
+  }))
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
   
   if (!tip) {
     return {
@@ -516,7 +528,7 @@ const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
   }
 }
 
-export default function TipDetailPage({ params }: { params: { slug: string } }) {
+export default function TipDetailPage({ params }: PageProps) {
   const tip = tipsDetails[params.slug as keyof typeof tipsDetails]
 
   if (!tip) {
@@ -581,7 +593,6 @@ export default function TipDetailPage({ params }: { params: { slug: string } }) 
           </div>
         </article>
 
-        {/* 커리큘럼 연결 섹션 */}
         <div className="mt-16 p-6 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg">
           <h2 className="text-2xl font-bold mb-4">🎯 더 빠르게 성장하고 싶다면?</h2>
           <p className="text-lg mb-6">
