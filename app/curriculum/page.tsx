@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import CourseStages from "@/components/course-stages"
-import CountdownTimer from "@/components/countdown-timer"
 import TestimonialSlider from "@/components/testimonial-slider"
 import PricingCard from "@/components/pricing-card"
 import FAQAccordion from "@/components/faq-accordion"
@@ -16,7 +15,7 @@ export default function Curriculum() {
         <div className="absolute inset-0 bg-[url('/patterns/dots.svg')] opacity-5 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
         <div className="container relative z-10 px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+          <div className="grid gap-6 lg:grid-cols-[3fr_2fr] lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <Badge className="mb-2 bg-gradient-to-r from-pink-100 to-pink-200 text-pink-800 hover:from-pink-200 hover:to-pink-300 border-none backdrop-blur-sm">
@@ -80,16 +79,6 @@ export default function Curriculum() {
                       <div className="bg-gradient-to-br from-pink-500/5 via-pink-500/[0.07] to-purple-500/10 p-4 rounded-xl backdrop-blur-sm border border-pink-500/10">
                         <h3 className="font-semibold text-pink-600 mb-2">3. 커뮤니티 지원</h3>
                         <p className="text-gray-600">수강생 전용 커뮤니티에서 정보 공유와 네트워킹 기회 제공</p>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 p-4 rounded-xl border border-gray-200/50">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-gray-700">현재 수강생 만족도</span>
-                        <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-semibold">98%</span>
-                      </div>
-                      <div className="w-full bg-gray-200/50 rounded-full h-2 overflow-hidden">
-                        <div className="bg-gradient-to-r from-pink-500 to-purple-500 h-2 rounded-full shadow-sm" style={{ width: '98%' }}></div>
                       </div>
                     </div>
                   </div>
