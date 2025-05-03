@@ -70,13 +70,13 @@ export default function SiteHeader() {
             </Link>
             <div className="flex items-center gap-2 relative group">
               <Link
-                href="/tools"
+                href="/"
                 className="text-sm font-medium text-gray-600 transition-colors hover:text-primary relative"
               >
                 블로그 자동화
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </Link>
-              <span className="absolute -top-2 -right-8 text-[10px] py-0.5 px-1.5 rounded-full bg-gradient-to-r from-yellow-100/80 to-orange-100/80 text-yellow-800 font-medium backdrop-blur-sm border border-yellow-200/50">
+              <span className="absolute -top-3 -right-10 text-[10px] py-0.5 px-1.5 rounded-full bg-gradient-to-r from-yellow-100/80 to-orange-100/80 text-yellow-800 font-medium backdrop-blur-sm border border-yellow-200/50">
                 출시예정
               </span>
             </div>
@@ -122,7 +122,7 @@ export default function SiteHeader() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
                 <div className="flex items-center gap-2 w-full relative">
-                  <Link href="/tools">블로그 자동화</Link>
+                  <Link href="/">블로그 자동화</Link>
                   <span className="text-[10px] py-0.5 px-1.5 rounded-full bg-gradient-to-r from-yellow-100/80 to-orange-100/80 text-yellow-800 font-medium">
                     출시예정
                   </span>
