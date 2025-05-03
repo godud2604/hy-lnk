@@ -125,15 +125,11 @@ export default function TipsPage() {
           <div className="flex items-center justify-between mb-6">
             <TabsList className="flex-wrap h-auto">
               {categories.map((category) => (
-                <TabsTrigger key={category} value={category} className="mb-2">
+                <TabsTrigger key={category} value={category}>
                   {category}
                 </TabsTrigger>
               ))}
             </TabsList>
-            <select className="border rounded-md px-3 py-1 text-sm">
-              <option value="latest">최신순</option>
-              <option value="popular">인기순</option>
-            </select>
           </div>
 
           {categories.map((category) => (
@@ -147,10 +143,9 @@ export default function TipsPage() {
                       className="group relative border rounded-lg p-6 hover:shadow-md transition-shadow"
                     >
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-1 rounded">
+                        <span className="text-xs font-medium text-primary-600 bg-primary-50 py-1 rounded">
                           {tip.category}
                         </span>
-                        <span className="text-xs text-gray-500">조회수 {tip.views}</span>
                       </div>
                       <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                         <a href={`/tips/${tip.slug}`}>{tip.title}</a>
@@ -176,7 +171,8 @@ export default function TipsPage() {
       </div>
 
       {/* 구독 섹션 */}
-      <div className="bg-gray-50 rounded-lg p-8 text-center">
+      {/* TODO: 뉴스레터 할 때, 활성화 */}
+      {/* <div className="bg-gray-50 rounded-lg p-8 text-center">
         <h3 className="text-xl font-bold mb-4">매주 새로운 체험단 꿀팁 받아보기</h3>
         <p className="text-muted-foreground mb-6">
           매주 1회, 엄선된 체험단 꿀팁과 모집 정보를 보내드립니다.
@@ -191,7 +187,7 @@ export default function TipsPage() {
             구독하기
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
