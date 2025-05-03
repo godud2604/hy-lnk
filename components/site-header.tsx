@@ -57,7 +57,7 @@ export default function SiteHeader() {
               href="/curriculum"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
-              6일 완성 커리큘렴
+              6일 완성 커리큘럼
             </Link>
             <Link
               href="/tips"
@@ -112,7 +112,7 @@ export default function SiteHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
-                <Link href="/curriculum">6일 완성 커리큘렴</Link>
+                <Link href="/curriculum">6일 완성 커리큘럼</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/tips">체험단 꿀팁</Link>
