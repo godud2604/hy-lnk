@@ -59,7 +59,7 @@ export default function Day3Page() {
 
   return (
     <div className="container py-8 md:py-12">
-      <CourseProgressHeader title="Day 3: 키워드 찾기 & 상위노출 연습" currentDay={3} totalDays={6} />
+      <CourseProgressHeader title="Day 3: 황금 키워드 찾기 + SEO 최적화" currentDay={3} totalDays={6} />
 
       <div className="grid md:grid-cols-3 gap-8 mt-8">
         {/* 사이드바 */}
@@ -67,14 +67,14 @@ export default function Day3Page() {
           <Card>
             <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
               <CardTitle className="text-xl">Day 3</CardTitle>
-              <CardDescription className="text-base font-medium">키워드 찾기 & 상위노출 연습</CardDescription>
+              <CardDescription className="text-base font-medium">황금 키워드 찾기 + SEO 최적화</CardDescription>
             </CardHeader>
             <CardContent className="pt-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 text-pink-600 mr-2" />
-                    <span className="text-sm">예상 학습 시간: 40분</span>
+                    <span className="text-sm">예상 학습 시간: 50분</span>
                   </div>
                   <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
                     3/6 단계
@@ -88,15 +88,15 @@ export default function Day3Page() {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>검색 노출에 유리한 키워드 선정 방법 배우기</span>
+                      <span>효과적인 키워드 리서치 방법 익히기</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>키워드 분석 도구 활용법 익히기</span>
+                      <span>검색 상위노출을 위한 SEO 전략 수립</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>키워드를 활용한 포스팅 작성 연습하기</span>
+                      <span>블로그 최적화 요소 이해하기</span>
                     </li>
                   </ul>
                 </div>
@@ -161,305 +161,183 @@ export default function Day3Page() {
             <TabsContent value="learn" className="mt-0">
               <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>키워드 찾기 & 상위노출 연습</CardTitle>
+                  <CardTitle>효과적인 키워드 전략</CardTitle>
                   <CardDescription className="text-base">
-                    검색 노출에 유리한 키워드를 찾고 포스팅에 활용하는 방법을 배워봅시다.
+                    체험단 선정률을 높이는 키워드 전략과 SEO 최적화 방법을 알아봅시다.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-6 space-y-6">
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">키워드의 중요성</h3>
-                    <p className="text-gray-600 mb-4">
-                      블로그 포스팅에서 키워드는 검색 노출의 핵심입니다. 적절한 키워드를 선정하고 효과적으로 활용하면
-                      검색 결과 상위에 노출될 확률이 높아집니다.
-                    </p>
-                    <div className="bg-pink-50 p-4 rounded-lg mb-4">
-                      <h4 className="font-medium mb-2">핵심 포인트</h4>
-                      <p className="text-sm text-gray-600">
-                        노출되는 글은 키워드 전략이 절반입니다. 좋은 콘텐츠도 적절한 키워드 없이는 독자에게 도달하기
-                        어렵습니다.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">효과적인 키워드 찾기</h3>
-                    <p className="text-gray-600 mb-4">
-                      효과적인 키워드는 검색량은 많지만 경쟁이 적은 키워드입니다. 이런 키워드를 찾기 위한 도구와 방법을
-                      알아봅시다.
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                      <div className="border rounded-lg overflow-hidden">
-                        <img
-                          src="/black-kiwi-keyword-tool.png"
-                          alt="블랙키위 키워드 도구"
-                          className="w-full h-40 object-cover"
-                        />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">블랙키위</h5>
-                          <p className="text-xs text-gray-500 mt-1">네이버 검색 데이터 기반의 키워드 분석 도구</p>
-                        </div>
-                      </div>
-
-                      <div className="border rounded-lg overflow-hidden">
-                        <img
-                          src="/naver-trend-interface.png"
-                          alt="네이버 트렌드"
-                          className="w-full h-40 object-cover"
-                        />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">네이버 트렌드</h5>
-                          <p className="text-xs text-gray-500 mt-1">네이버 검색어 트렌드를 확인할 수 있는 공식 도구</p>
-                        </div>
-                      </div>
-
-                      <div className="border rounded-lg overflow-hidden">
-                        <img src="/blog-top-posts-analysis.png" alt="상위 글 분석" className="w-full h-40 object-cover" />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">상위 글 분석</h5>
-                          <p className="text-xs text-gray-500 mt-1">검색 결과 상위 글의 키워드 활용법 분석하기</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-yellow-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">💡 키워드 선정 기준</h4>
-                      <p className="text-sm text-gray-600 mb-2">
-                        이상적인 키워드는 <span className="font-medium">검색량은 많지만 경쟁이 적은</span> 키워드입니다.
-                        아래 기준으로 키워드를 평가해보세요:
-                      </p>
+                <CardContent className="pt-6 space-y-8">
+                  {/* 황금 키워드 찾기 섹션 */}
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">황금 키워드의 조건</h3>
+                    <div className="bg-yellow-50 p-4 rounded-lg mb-6">
                       <ul className="space-y-1 text-sm text-gray-600">
-                        <li>• 월간 검색량: 최소 100회 이상</li>
-                        <li>• 경쟁 정도: 블로그 발행량이 적을수록 좋음</li>
-                        <li>• 관련성: 내 블로그 주제와 연관성이 높을수록 좋음</li>
-                        <li>• 트렌드: 상승 추세에 있는 키워드가 유리함</li>
+                        <li>• 검색량은 많지만 경쟁이 적은 키워드</li>
+                        <li>• 블로그 주제와의 높은 연관성</li>
+                        <li>• 트렌드 성장세에 있는 키워드</li>
                       </ul>
                     </div>
-                  </div>
 
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">황금 키워드 찾기</h3>
-                    <p className="text-gray-600 mb-4">
-                      황금 키워드란 검색량은 많지만 발행량이 적은 키워드를 말합니다. 이런 키워드를 활용하면 상위 노출
-                      확률이 높아집니다.
-                    </p>
-
-                    <div className="border rounded-lg overflow-hidden mb-4">
-                      <div className="bg-pink-50 p-3 border-b">
-                        <h4 className="font-medium">황금 키워드 찾는 방법</h4>
-                      </div>
-                      <div className="p-4">
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-blue-700 mb-3">황금 키워드 찾기 전략</h4>
                         <ul className="space-y-3 text-sm">
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
                               <span className="font-medium">롱테일 키워드 활용</span>
-                              <p className="text-gray-600 mt-0.5">
-                                단일 키워드보다 2-3개 단어로 구성된 구체적인 키워드가 경쟁이 적습니다.
+                              <p className="text-gray-600">
+                                2-3개 단어로 구성된 구체적인 키워드
                                 <br />
-                                예: '화장품' 대신 '민감성 피부 화장품 추천'
+                                예: '화장품' → '민감성 피부 화장품 추천'
                               </p>
                             </div>
                           </li>
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
                               <span className="font-medium">지역명 활용</span>
-                              <p className="text-gray-600 mt-0.5">
-                                지역명을 포함한 키워드는 경쟁이 적은 경우가 많습니다.
+                              <p className="text-gray-600">
+                                지역 특화 키워드로 경쟁 낮추기
                                 <br />
-                                예: '맛집' 대신 '강남역 파스타 맛집'
+                                예: '맛집' → '강남역 파스타 맛집'
                               </p>
                             </div>
                           </li>
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
-                              <span className="font-medium">시즌 키워드 활용</span>
-                              <p className="text-gray-600 mt-0.5">
-                                계절, 명절, 이벤트 등 시즌 관련 키워드는 특정 시기에 검색량이 급증합니다.
+                              <span className="font-medium">시즌 키워드</span>
+                              <p className="text-gray-600">
+                                계절/이벤트 연계 키워드
                                 <br />
-                                예: '여름 자외선 차단제 추천', '크리스마스 데이트 코스'
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">신제품/트렌드 키워드</span>
-                              <p className="text-gray-600 mt-0.5">
-                                새롭게 출시된 제품이나 최신 트렌드 관련 키워드는 초기에 경쟁이 적습니다.
-                                <br />
-                                예: '2023 신상 립스틱', '최신 트렌드 헤어스타일'
+                                예: '여름 자외선 차단제 추천'
                               </p>
                             </div>
                           </li>
                         </ul>
                       </div>
-                    </div>
 
-                    <div className="bg-softblue-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-softblue-900 mb-2">키워드 분석 예시</h4>
-                      <div className="space-y-3 text-sm text-gray-600">
-                        <div className="flex justify-between items-center border-b pb-2">
-                          <span className="font-medium">키워드</span>
-                          <div className="flex gap-4">
-                            <span className="font-medium">월 검색량</span>
-                            <span className="font-medium">발행량</span>
-                            <span className="font-medium">평가</span>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span>화장품</span>
-                          <div className="flex gap-4">
-                            <span>50,000+</span>
-                            <span>30,000+</span>
-                            <span className="text-red-500">어려움</span>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span>민감성 피부 화장품</span>
-                          <div className="flex gap-4">
-                            <span>5,000+</span>
-                            <span>2,000+</span>
-                            <span className="text-yellow-500">보통</span>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span>지성 민감성 피부 수분크림 추천</span>
-                          <div className="flex gap-4">
-                            <span>1,200+</span>
-                            <span>200+</span>
-                            <span className="text-green-500">좋음</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">키워드 활용 전략</h3>
-                    <p className="text-gray-600 mb-4">
-                      키워드를 찾았다면, 이제 포스팅에 효과적으로 활용하는 방법을 알아봅시다. 키워드 배치와 밀도가
-                      중요합니다.
-                    </p>
-
-                    <div className="border rounded-lg overflow-hidden mb-4">
-                      <div className="bg-green-50 p-3 border-b">
-                        <h4 className="font-medium">키워드 배치 전략</h4>
-                      </div>
-                      <div className="p-4">
-                        <ul className="space-y-3 text-sm">
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">제목에 키워드 포함</span>
-                              <p className="text-gray-600 mt-0.5">
-                                포스팅 제목에 메인 키워드를 자연스럽게 포함시키세요. 가능하면 앞부분에 배치하는 것이
-                                좋습니다.
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">첫 문단에 키워드 포함</span>
-                              <p className="text-gray-600 mt-0.5">
-                                포스팅의 첫 문단에 메인 키워드를 자연스럽게 포함시키세요. 검색 엔진은 첫 문단을 중요하게
-                                평가합니다.
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">소제목에 키워드 활용</span>
-                              <p className="text-gray-600 mt-0.5">
-                                H2, H3 태그(소제목)에 키워드나 관련 키워드를 포함시키세요. 검색 엔진은 소제목을 중요하게
-                                평가합니다.
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">본문에 자연스럽게 반복</span>
-                              <p className="text-gray-600 mt-0.5">
-                                본문에 키워드를 자연스럽게 반복해서 사용하세요. 하지만 과도한 반복은 오히려 역효과를 낼
-                                수 있습니다.
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">이미지 파일명과 대체 텍스트</span>
-                              <p className="text-gray-600 mt-0.5">
-                                이미지 파일명과 대체 텍스트(alt 태그)에도 키워드를 포함시키세요. 검색 엔진은 이미지
-                                정보도 분석합니다.
-                              </p>
-                            </div>
-                          </li>
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700 mb-3">키워드 분석 도구 활용</h4>
+                        <ul className="space-y-2 text-sm">
+                          <li>• 네이버 검색어 트렌드</li>
+                          <li>• 구글 트렌드</li>
+                          <li>• 네이버 연관 검색어</li>
+                          <li>• 블로그 내 인기 검색어 분석</li>
                         </ul>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">키워드 밀도 가이드</h4>
-                      <p className="text-sm text-gray-600 mb-2">
-                        키워드 밀도는 전체 텍스트 중 키워드가 차지하는 비율을 말합니다. 적절한 키워드 밀도를 유지하는
-                        것이 중요합니다.
-                      </p>
-                      <ul className="space-y-1 text-sm text-gray-600">
-                        <li>• 이상적인 키워드 밀도: 전체 텍스트의 1-3%</li>
-                        <li>• 1,000자 글에서 메인 키워드 사용 횟수: 약 10회 내외</li>
-                        <li>• 과도한 키워드 반복은 스팸으로 인식될 수 있으니 주의</li>
-                        <li>• 동의어, 유사어를 함께 사용하면 자연스러움</li>
-                      </ul>
+                  {/* SEO 최적화 섹션 */}
+                  <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">검색 최적화 (SEO) 전략</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">1. 제목 최적화</h4>
+                        <div className="mt-3 space-y-2">
+                          <div className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">제목 작성 원칙</span>
+                              <ul className="mt-1 space-y-1 text-sm text-gray-600">
+                                <li>• 25자 이내로 작성</li>
+                                <li>• 핵심 키워드 포함</li>
+                                <li>• 특수문자 최소화</li>
+                                <li>• 지역명/브랜드명 활용</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">2. 본문 최적화</h4>
+                        <div className="mt-3 space-y-2">
+                          <div className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">본문 작성 원칙</span>
+                              <ul className="mt-1 space-y-1 text-sm text-gray-600">
+                                <li>• 1200자 이상 작성</li>
+                                <li>• 키워드 자연스럽게 배치</li>
+                                <li>• 단락 구분 명확히</li>
+                                <li>• 이미지 5장 이상 첨부</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">3. 검색 노출 최적화</h4>
+                        <div className="mt-3 space-y-2">
+                          <ul className="space-y-2 text-sm">
+                            <li className="flex items-start">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                              <span>상위노출이 잘 되는 시간대에 포스팅 (오전 10-11시, 저녁 8-10시)</span>
+                            </li>
+                            <li className="flex items-start">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                              <span>적절한 태그 활용 (10-15개)</span>
+                            </li>
+                            <li className="flex items-start">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                              <span>이미지 파일명에 키워드 포함</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">실전 연습: 키워드 활용 포스팅</h3>
-                    <p className="text-gray-600 mb-4">
-                      이제 배운 내용을 바탕으로 키워드를 활용한 포스팅을 작성해봅시다. 아래는 '가을 니트 코디 추천'
-                      키워드를 활용한 포스팅 예시입니다.
-                    </p>
+                  {/* 실전 예시 섹션 */}
+                  <div className="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">실전 키워드 분석 예시</h3>
+                    
+                    <div className="bg-white rounded-lg p-4 shadow-sm">
+                      <div className="space-y-4">
+                        <div className="border-b pb-2">
+                          <div className="flex justify-between items-center text-sm font-medium">
+                            <span>키워드</span>
+                            <div className="flex gap-4">
+                              <span>월 검색량</span>
+                              <span>발행량</span>
+                              <span>평가</span>
+                            </div>
+                          </div>
+                        </div>
 
-                    <div className="border rounded-lg overflow-hidden">
-                      <div className="bg-pink-50 p-3 border-b">
-                        <h4 className="font-medium">포스팅 예시: 가을 니트 코디 추천</h4>
-                      </div>
-                      <div className="p-4 text-sm text-gray-600">
-                        <p className="font-medium text-base mb-2">
-                          [2023 가을 니트 코디 추천] 날씨 별 니트 스타일링 총정리
-                        </p>
-                        <p className="mb-3">
-                          안녕하세요, 오늘은 선선해진 날씨에 맞춰 <strong>가을 니트 코디 추천</strong>을 준비해봤어요.
-                          가을이 되면 니트는 필수 아이템인데요, 다양한 스타일링 방법과 함께 날씨별{" "}
-                          <strong>가을 니트 코디</strong>를 소개해드릴게요.
-                        </p>
-                        <p className="font-medium mb-1">1. 쌀쌀한 가을 아침을 위한 두꺼운 니트 코디</p>
-                        <p className="mb-3">
-                          아침저녁으로 쌀쌀해지는 가을, 두꺼운 니트는 필수입니다. <strong>가을 니트 코디</strong>의
-                          기본은 단색 니트와 청바지의 조합인데요...
-                        </p>
-                        <p className="font-medium mb-1">2. 일교차 큰 날씨를 위한 니트 레이어드</p>
-                        <p className="mb-3">
-                          가을은 일교차가 큰 계절이죠. <strong>가을 니트 코디</strong>에서 레이어드는 실용적이면서도
-                          스타일리시한 방법입니다...
-                        </p>
-                        <p className="font-medium mb-1">3. 가을 데이트를 위한 니트 원피스 코디</p>
-                        <p className="mb-3">
-                          데이트나 특별한 모임이 있다면 <strong>가을 니트 원피스 코디</strong>를 추천해요. 편안하면서도
-                          여성스러운 느낌을 줄 수 있어요...
-                        </p>
-                        <p className="italic text-xs mt-4">
-                          * 위 예시에서 메인 키워드인 '가을 니트 코디 추천'이 제목에 포함되어 있고, 본문에서는 '가을
-                          니트 코디'가 자연스럽게 반복되고 있습니다. 또한 소제목에서도 키워드와 관련된 내용을 다루고
-                          있습니다.
-                        </p>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center text-sm">
+                            <span>"강남역 브런치 맛집"</span>
+                            <div className="flex gap-4">
+                              <span>15,000</span>
+                              <span>250</span>
+                              <span className="text-green-600">좋음</span>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-between items-center text-sm">
+                            <span>"민감성 피부 선크림"</span>
+                            <div className="flex gap-4">
+                              <span>8,000</span>
+                              <span>120</span>
+                              <span className="text-green-600">매우 좋음</span>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-between items-center text-sm">
+                            <span>"브런치 카페"</span>
+                            <div className="flex gap-4">
+                              <span>25,000</span>
+                              <span>1,500</span>
+                              <span className="text-red-600">경쟁 높음</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

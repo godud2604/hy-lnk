@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ChevronLeft, ChevronRight, Download, FileText, CheckCircle2, Clock } from "lucide-react"
+import { ChevronLeft, ChevronRight, Download, FileText, CheckCircle2, Clock, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import ChecklistItem from "@/components/checklist-item"
 import CourseProgressHeader from "@/components/course-progress-header"
@@ -134,102 +134,164 @@ export default function Day4Course() {
             <TabsContent value="learn" className="mt-0">
               <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>체험단 사이트 가입 및 신청하기</CardTitle>
+                  <CardTitle>체험단 신청의 모든 것</CardTitle>
                   <CardDescription className="text-base">
-                    체험단 활동을 시작하기 위한 첫 걸음을 시작해봅시다.
+                    트래픽 기준 TOP 체험단 사이트별 특징과 신청 노하우를 알아봅시다.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6 space-y-8">
-                  <Card>
-                    <CardContent className="p-6">
-                      <h2 className="text-2xl font-bold mb-4">주요 체험단 사이트 소개</h2>
-                      <p className="mb-4">
-                        체험단 활동을 시작하기 위해서는 다양한 체험단 사이트에 가입하는 것이 중요합니다. 아래는 추천하는
-                        주요 체험단 사이트입니다:
-                      </p>
-
-                      <div className="space-y-4 mb-6">
-                        <div className="p-4 bg-blue-50 rounded-lg">
-                          <h3 className="font-bold text-blue-700">1. 위블로그</h3>
-                          <p>국내 최대 규모의 체험단 사이트로, 다양한 카테고리의 제품과 서비스를 체험할 수 있습니다.</p>
-                        </div>
-                        <div className="p-4 bg-purple-50 rounded-lg">
-                          <h3 className="font-bold text-purple-700">2. 레뷰</h3>
-                          <p>식품, 뷰티, 생활용품 등 다양한 제품 체험 기회가 많은 사이트입니다.</p>
-                        </div>
-                        <div className="p-4 bg-green-50 rounded-lg">
-                          <h3 className="font-bold text-green-700">3. 체험뷰</h3>
-                          <p>방문형 체험단이 많아 맛집, 카페, 숙소 등의 체험 기회가 많습니다.</p>
-                        </div>
-                        <div className="p-4 bg-amber-50 rounded-lg">
-                          <h3 className="font-bold text-amber-700">4. 리뷰플레이스</h3>
-                          <p>초보 블로거도 선정 확률이 높은 체험단 사이트입니다.</p>
+                  {/* 체험단 사이트 소개 섹션 */}
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">인기 체험단 사이트 TOP 5</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-blue-700">1. 리뷰노트 (435,000회)</h4>
+                        <div className="mt-2 space-y-2 text-sm">
+                          <div className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <p className="font-medium">특징</p>
+                              <ul className="mt-1 text-gray-600 space-y-1">
+                                <li>• 국내 최대 규모</li>
+                                <li>• 다양한 카테고리</li>
+                                <li>• 신규 블로거 진입 장벽 낮음</li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
 
-                  <Card>
-                    <CardContent className="p-6">
-                      <h2 className="text-2xl font-bold mb-4">체험단 신청 방법</h2>
-                      <p className="mb-4">체험단 신청은 각 사이트마다 약간의 차이가 있지만, 기본적인 절차는 비슷합니다:</p>
-
-                      <ol className="list-decimal pl-5 space-y-3 mb-6">
-                        <li>체험단 사이트에 로그인합니다.</li>
-                        <li>관심 있는 체험단 모집 공고를 찾습니다.</li>
-                        <li>신청서 양식에 맞게 정보를 입력합니다.</li>
-                        <li>블로그 정보와 체험 후기 작성 계획을 상세히 작성합니다.</li>
-                        <li>신청 완료 후 선정 결과를 기다립니다.</li>
-                      </ol>
-
-                      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-                        <h3 className="font-bold text-yellow-700">중요 팁!</h3>
-                        <p>신청서 작성 시 성의 있고 구체적인 계획을 작성하는 것이 선정 확률을 높이는 핵심입니다.</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardContent className="p-6">
-                      <h2 className="text-2xl font-bold mb-4">체험단 선정 확률 높이는 방법</h2>
-
-                      <div className="space-y-4 mb-6">
-                        <ChecklistItem
-                          title="블로그 꾸미기"
-                          description="프로필, 소개글, 카테고리 등을 깔끔하게 정리하여 신뢰도를 높입니다."
-                          checked={true}
-                        />
-                        <ChecklistItem
-                          title="관련 포스팅 미리 작성하기"
-                          description="신청하려는 제품/서비스와 관련된 포스팅을 미리 작성해두면 선정 확률이 높아집니다."
-                          checked={true}
-                        />
-                        <ChecklistItem
-                          title="구체적인 후기 계획 작성하기"
-                          description="어떤 내용으로, 어떻게 후기를 작성할지 구체적인 계획을 제시합니다."
-                          checked={true}
-                        />
-                        <ChecklistItem
-                          title="꾸준한 포스팅 활동"
-                          description="블로그 활동이 꾸준하다는 것을 보여주는 것이 중요합니다."
-                          checked={true}
-                        />
-                        <ChecklistItem
-                          title="신청서 맞춤화하기"
-                          description="각 체험단마다 신청서를 맞춤화하여 작성하는 것이 중요합니다."
-                          checked={true}
-                        />
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700">2. 레뷰 (172,000회)</h4>
+                        <div className="mt-2 space-y-2 text-sm">
+                          <div className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-purple-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <p className="font-medium">특징</p>
+                              <ul className="mt-1 text-gray-600 space-y-1">
+                                <li>• 식품/뷰티 전문</li>
+                                <li>• 고가 제품 체험 기회 많음</li>
+                                <li>• 선정 확률 중간</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
-                      <div className="bg-softblue-50 p-4 rounded-lg">
-                        <h3 className="font-bold text-softblue-700 mb-2">실습 과제</h3>
-                        <p>
-                          오늘 배운 내용을 바탕으로 최소 2개의 체험단 사이트에 가입하고, 관심 있는 체험단에 1개 이상
-                          신청해보세요.
-                        </p>
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">3. 리뷰플레이스 (67,700회)</h4>
+                        <div className="mt-2 space-y-2 text-sm">
+                          <div className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <p className="font-medium">특징</p>
+                              <ul className="mt-1 text-gray-600 space-y-1">
+                                <li>• 초보 블로거 친화적</li>
+                                <li>• 다양한 지역 업체</li>
+                                <li>• 빠른 선정 결과</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
+
+                  {/* 체험단 신청 전략 섹션 */}
+                  <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">체험단 신청 전략</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">1. 신청서 작성 팁</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">친근하고 자연스러운 톤</span>
+                              <p className="text-gray-600">
+                                예시: "안녕하세요? 월급이 적으신가요? 블로그 체험단으로
+                                부수입을 만들어보세요!"
+                              </p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">구체적인 리뷰 계획</span>
+                              <p className="text-gray-600">촬영 계획, 콘텐츠 구성, 홍보 방안 등 상세히 기술</p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">차별화 포인트</span>
+                              <p className="text-gray-600">본인만의 특별한 리뷰 방식이나 전문성 어필</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-blue-700">2. 신청 시기 전략</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li>• 새벽 시간대 신청 경쟁 낮음 (새벽 1-4시)</li>
+                          <li>• 월요일 오전 신규 모집 공고 많음</li>
+                          <li>• 계절성 제품은 1-2개월 전 미리 신청</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700">3. 업체별 맞춤 전략</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li>• 식당/카페: 사진 촬영 실력 강조</li>
+                          <li>• 뷰티: 피부 타입/관련 지식 언급</li>
+                          <li>• 숙소: 여행 콘텐츠 제작 경험 강조</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 실전 신청서 작성 예시 */}
+                  <div className="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">실전 신청서 작성 예시</h3>
+                    
+                    <div className="bg-white rounded-lg p-4 shadow-sm">
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="font-medium text-pink-700">✅ 좋은 예시</h4>
+                          <div className="mt-2 p-4 bg-pink-50 rounded-lg text-sm">
+                            <p className="italic">
+                              "안녕하세요, 3년차 카페 리뷰어 '커피탐험가'입니다.
+                              DSLR과 미러리스 카메라로 매장의 분위기를 가장 아름답게
+                              담아내는 것이 제 리뷰의 특징입니다. 
+                              
+                              촬영 계획:
+                              1. 오픈 직후 햇살 가득한 매장 전경
+                              2. 시그니처 메뉴 상세 컷 (탑뷰/측면)
+                              3. 디저트 플레이팅 연출컷
+                              
+                              홍보 계획:
+                              - 인스타그램 스토리 3회 이상 공유
+                              - 맛집 카페 채널 공유
+                              - 블로그 상단 고정 1주일"
+                            </p>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="font-medium text-red-700">❌ 나쁜 예시</h4>
+                          <div className="mt-2 p-4 bg-red-50 rounded-lg text-sm">
+                            <p className="italic">
+                              "체험하고 싶어요! 꼭 선정해주세요 ㅠㅠ 
+                              열심히 리뷰 쓸게요! 예쁘게 찍어서 많이 홍보해드릴게요~"
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>
