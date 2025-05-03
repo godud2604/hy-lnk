@@ -14,7 +14,7 @@ export default function HeroSection() {
                 체험단 초보자도
               </span>
               <br className="hidden sm:block" />
-              <span className="inline-block sm:mt-2 md:mt-3 bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <span className="ml-2 inline-block sm:mt-2 md:mt-3 bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">
                 6일만에 전문가처럼
               </span>
             </h1>

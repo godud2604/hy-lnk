@@ -21,11 +21,11 @@ export default function SiteFooter() {
                   6일 완성 커리큘럼
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/tips" className="text-muted-foreground hover:text-foreground transition-colors">
                   체험단 꿀팁
                 </Link>
-              </li>
+              </li> */}
               {/* <li>
                 <Link href="/schedule" className="text-muted-foreground hover:text-foreground transition-colors">
                   일정 관리

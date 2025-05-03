@@ -65,7 +65,7 @@ export default function SiteHeader() {
                 href="/"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               >
-                Make 자동화
+                블로그 자동화
               </Link>
               <Badge variant="secondary" className="absolute -top-2.5 -right-8 text-[10px] py-0 px-1.5 h-4 bg-yellow-100/70 text-yellow-800 hover:bg-yellow-100/70">
                 출시예정
@@ -109,7 +109,7 @@ export default function SiteHeader() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <div className="flex items-center gap-2 w-full relative">
-                  <Link href="/">Make 자동화</Link>
+                  <Link href="/">블로그 자동화</Link>
                   <Badge variant="secondary" className="text-[10px] py-0 px-1.5 h-4 bg-yellow-100/70 text-yellow-800 hover:bg-yellow-100/70">
                     출시예정
                   </Badge>
