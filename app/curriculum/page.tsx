@@ -261,7 +261,7 @@ export default function Curriculum() {
               6일 후, 당신의 첫 체험단 도전
             </h2>
             <p className="max-w-[700px] mb-8 text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              블로그 초보도 걱정 없이 도전할 수 있습니다. 전문가의 1:1 피드백으로 6일 동안 체계적으로 성장하세요.
+              블로그 초보도 걱정 없이 도전할 수 있습니다. <br/> 전문가의 1:1 피드백으로 6일 동안 체계적으로 성장하세요.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link href="/course/day1">
