@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowRight, Calendar, CheckCircle, Gift, Star, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -6,8 +8,16 @@ import CourseStages from "@/components/course-stages"
 import TestimonialSlider from "@/components/testimonial-slider"
 import PricingCard from "@/components/pricing-card"
 import FAQAccordion from "@/components/faq-accordion"
+import Link from "next/link"
+import { useRef } from "react"
 
 export default function Curriculum() {
+  const overviewRef = useRef<HTMLDivElement | null>(null)
+
+  const scrollToOverview = () => {
+    overviewRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -15,7 +25,7 @@ export default function Curriculum() {
         <div className="absolute inset-0 bg-[url('/patterns/dots.svg')] opacity-5 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
         <div className="container relative z-10 px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[3fr_2fr] lg:gap-12 items-center">
+          <div className="grid gap-y-16 gap-x-6 lg:grid-cols-[3fr_2fr] lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <Badge className="mb-2 bg-gradient-to-r from-pink-100 to-pink-200 text-pink-800 hover:from-pink-200 hover:to-pink-300 border-none backdrop-blur-sm">
@@ -29,11 +39,20 @@ export default function Curriculum() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 min-[400px]:flex-row">
-                <Button size="lg" className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-lg shadow-pink-500/25">
-                  첫 미션 시작하기
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-2 border-pink-200 text-pink-600 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50">
+                <Link href="/course/day1">
+                  <Button size="lg" className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-lg shadow-pink-500/25">
+                    6일 코스 체험하기
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-2 border-pink-200 text-pink-600 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50"
+                  onClick={() => {
+                    scrollToOverview()
+                  }}
+                >
                   전체 과정 살펴보기
                 </Button>
               </div>
@@ -90,7 +109,7 @@ export default function Curriculum() {
       </section>
 
       {/* Course Overview Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="course-overview" className="py-16 md:py-24 bg-white" ref={overviewRef}>
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-purple-100 text-purple-800 hover:bg-purple-100 border-none">커리큘럼 소개</Badge>
@@ -102,7 +121,7 @@ export default function Curriculum() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-18">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-20">
             <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
@@ -245,13 +264,13 @@ export default function Curriculum() {
               블로그 초보도 걱정 없이 도전할 수 있습니다. 전문가의 1:1 피드백으로 6일 동안 체계적으로 성장하세요.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" className="bg-white text-pink-600 hover:bg-white/90">
-                6일 코스 시작하기
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                상세 커리큘럼 보기
-              </Button>
+              <Link href="/course/day1">
+                <Button size="lg" className="bg-white text-pink-600 hover:bg-white/90">
+                  6일 코스 체험하기 
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            
             </div>
           </div>
         </div>
