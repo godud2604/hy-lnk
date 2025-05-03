@@ -174,8 +174,8 @@ export default function Day4Course() {
                     />
                   </div>
 
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h3 className="font-bold text-blue-700 mb-2">실습 과제</h3>
+                  <div className="bg-softblue-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-softblue-700 mb-2">실습 과제</h3>
                     <p>
                       오늘 배운 내용을 바탕으로 최소 2개의 체험단 사이트에 가입하고, 관심 있는 체험단에 1개 이상
                       신청해보세요.

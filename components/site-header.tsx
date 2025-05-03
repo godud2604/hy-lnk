@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { LoginButton } from "./loginButton";
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 export default function SiteHeader() {
   const { user } = useAuth();
@@ -45,93 +46,103 @@ export default function SiteHeader() {
     }
   };
 
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-6 md:gap-10">
-          <Link href="/" className="font-bold text-xl text-primary">
+    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/80">
+      <div className="container flex h-14 sm:h-16 items-center justify-between">
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-10">
+          <Link href="/" className="font-bold text-lg sm:text-xl bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
             에듀테크단
           </Link>
-          <nav className="hidden md:flex gap-6">
+          <nav className="hidden md:flex gap-8">
             <Link
               href="/curriculum"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-sm font-medium text-gray-600 transition-colors hover:text-primary relative group"
             >
               6일 완성 커리큘럼
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
             </Link>
-            <div className="flex items-center gap-4 relative">
-              <Link
-                href="/"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                블로그 자동화
-              </Link>
-              <Badge variant="secondary" className="absolute -top-2.5 -right-8 text-[10px] py-0 px-1.5 h-4 bg-yellow-100/70 text-yellow-800 hover:bg-yellow-100/70">
-                출시예정
-              </Badge>
-            </div>
-            {/* <Link
+            <Link
               href="/tips"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-sm font-medium text-gray-600 transition-colors hover:text-primary relative group"
             >
               체험단 꿀팁
-            </Link> */}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+            </Link>
+            <div className="flex items-center gap-2 relative group">
+              <Link
+                href="/tools"
+                className="text-sm font-medium text-gray-600 transition-colors hover:text-primary relative"
+              >
+                블로그 자동화
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+              </Link>
+              <span className="absolute -top-2 -right-8 text-[10px] py-0.5 px-1.5 rounded-full bg-gradient-to-r from-yellow-100/80 to-orange-100/80 text-yellow-800 font-medium backdrop-blur-sm border border-yellow-200/50">
+                출시예정
+              </span>
+            </div>
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          {/* 데스크탑용: 로그인한 경우 사용자 정보와 마이프로필 링크 표시 */}
-          <div className="hidden md:flex gap-2 items-center">
+          {/* 데스크탑용 */}
+          <div className="hidden md:flex gap-3 items-center">
             {user ? (
               <>
-                <Button onClick={handleProfileClick}>
+                <Button 
+                  onClick={handleProfileClick}
+                  className="h-9 px-4 rounded-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white shadow-sm"
+                >
                   마이프로필
                 </Button>
-                <Button variant="outline" className="border-lavender-200 hover:bg-lavender-50 text-primary" onClick={handleSignOut}>
+                <Button 
+                  variant="outline" 
+                  className="h-9 px-4 rounded-full border-2 border-lavender-200 text-primary hover:bg-lavender-50/50" 
+                  onClick={handleSignOut}
+                >
                   로그아웃
                 </Button>
               </>
             ) : (
-              <LoginButton />
+              <LoginButton className="h-9 px-4 rounded-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white shadow-sm" />
             )}
           </div>
           {/* 모바일용 Dropdown 메뉴 */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon" className="border-lavender-200">
+              <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-primary">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">메뉴 열기</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
+            <DropdownMenuContent align="end" className="w-[200px] p-2 bg-white/80 backdrop-blur-md border border-gray-100">
+              <DropdownMenuItem asChild className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
                 <Link href="/curriculum">6일 완성 커리큘럼</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem asChild className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
+                <Link href="/tips">체험단 꿀팁</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
                 <div className="flex items-center gap-2 w-full relative">
-                  <Link href="/">블로그 자동화</Link>
-                  <Badge variant="secondary" className="text-[10px] py-0 px-1.5 h-4 bg-yellow-100/70 text-yellow-800 hover:bg-yellow-100/70">
+                  <Link href="/tools">블로그 자동화</Link>
+                  <span className="text-[10px] py-0.5 px-1.5 rounded-full bg-gradient-to-r from-yellow-100/80 to-orange-100/80 text-yellow-800 font-medium">
                     출시예정
-                  </Badge>
+                  </span>
                 </div>
               </DropdownMenuItem>
-              {/* <DropdownMenuItem asChild>
-                <Link href="/">체험단 꿀팁</Link>
-              </DropdownMenuItem> */}
+              <DropdownMenuItem className="px-1 focus:bg-transparent">
+                <Separator className="my-1" />
+              </DropdownMenuItem>
               {user ? (
                 <>
-                  <DropdownMenuItem asChild className="p-2">
+                  <DropdownMenuItem asChild className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
                     <Link href="/dashboard">마이프로필</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onSelect={handleSignOut} className="p-2">
+                  <DropdownMenuItem onSelect={handleSignOut} className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
                     로그아웃
                   </DropdownMenuItem>
                 </>
               ) : (
                 <DropdownMenuItem className="p-0 hover:bg-transparent focus:bg-transparent">
-                  <div className="w-full px-2 py-1">
-                    <LoginButton className="w-full justify-center text-sm h-9" size="sm" />
-                  </div>
+                  <LoginButton className="w-full h-9 rounded-lg text-sm justify-center bg-gradient-to-r from-primary to-primary/90" />
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>
@@ -139,5 +150,5 @@ export default function SiteHeader() {
         </div>
       </div>
     </header>
-  );
+  )
 }

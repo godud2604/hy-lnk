@@ -203,8 +203,8 @@ export default function Day1Page() {
                       </div>
 
                       <div className="border rounded-lg overflow-hidden">
-                        <div className="bg-blue-50 p-3 border-b">
-                          <h4 className="font-medium">티스토리 장점</h4>
+                        <div className="bg-softblue-50 p-3 border-b">
+                          <h4 className="font-medium text-softblue-900">티스토리 장점</h4>
                         </div>
                         <div className="p-3">
                           <ul className="space-y-1 text-sm">
@@ -347,7 +347,7 @@ export default function Day1Page() {
                     <h3 className="text-lg font-medium mb-3">카테고리 구성</h3>
                     <p className="text-gray-600 mb-4">
                       체계적인 카테고리 구성은 블로그의 전문성을 높이고 방문자의 탐색을 돕습니다. 최소 5개 이상의
-                      카테고리를 구성하��� 것이 좋습니다.
+                      카테고리를 구성하는 것이 좋습니다.
                     </p>
 
                     <div className="border rounded-lg overflow-hidden mb-4">

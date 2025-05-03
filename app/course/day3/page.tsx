@@ -299,8 +299,8 @@ export default function Day3Page() {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">키워드 분석 예시</h4>
+                    <div className="bg-softblue-50 p-4 rounded-lg">
+                      <h4 className="font-medium text-softblue-900 mb-2">키워드 분석 예시</h4>
                       <div className="space-y-3 text-sm text-gray-600">
                         <div className="flex justify-between items-center border-b pb-2">
                           <span className="font-medium">키워드</span>
