@@ -176,29 +176,30 @@ export default function Day6Page() {
             <TabsContent value="learn" className="mt-0">
               <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>당첨 후 후기 포스팅 마스터</CardTitle>
+                  <CardTitle>체험단 당첨을 위한 필수 전략</CardTitle>
                   <CardDescription className="text-base">
-                    체험단 당첨 후 브랜드와 독자 모두에게 호감을 얻는 후기 작성법을 배워봅시다.
+                    체험단에 지속적으로 선정되기 위한 핵심 전략과 노하우를 배워봅시다.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6 space-y-6">
                   <div>
-                    <h3 className="text-lg font-medium mb-3">후기 포스팅의 중요성</h3>
+                    <h3 className="text-lg font-medium mb-3">체험단 선정의 핵심 요소</h3>
                     <p className="text-gray-600 mb-4">
-                      후기 포스팅은 체험단 활동의 꽃이자 마무리입니다. 잘 작성된 후기는 다음과 같은 효과가 있습니다:
+                      체험단 담당자들이 블로거를 선정할 때 중요하게 보는 요소들을 알아봅시다:
                     </p>
                     <ul className="space-y-2 pl-5 list-disc text-gray-600">
                       <li>
-                        브랜드에게 좋은 인상을 주어 <span className="font-medium">재선정 확률이 높아집니다.</span>
+                        <span className="font-medium">블로그 프로필의 전문성</span> - 특정 분야에 대한 전문성이 드러나는
+                        프로필
                       </li>
                       <li>
-                        독자들에게 <span className="font-medium">신뢰도 높은 정보</span>를 제공합니다.
+                        <span className="font-medium">포스팅 품질과 일관성</span> - 꾸준하고 양질의 콘텐츠 작성
                       </li>
                       <li>
-                        블로그 <span className="font-medium">방문자 수와 체류 시간이 증가</span>합니다.
+                        <span className="font-medium">블로그 지수</span> - 방문자 수, 이웃 수, 포스팅 주기 등
                       </li>
                       <li>
-                        검색 노출이 잘 되어 <span className="font-medium">블로그 지수 상승</span>에 도움이 됩니다.
+                        <span className="font-medium">이전 체험단 리뷰 이력</span> - 성실한 리뷰 작성 이력
                       </li>
                     </ul>
                   </div>
@@ -206,227 +207,114 @@ export default function Day6Page() {
                   <div className="bg-pink-50 p-4 rounded-lg">
                     <h4 className="font-medium flex items-center mb-2">
                       <CheckCircle className="h-5 w-5 text-pink-600 mr-2" />
-                      후기 포스팅 9가지 체크리스트
+                      체험단 선정률 높이는 8가지 팁
                     </h4>
-                    <p className="text-sm text-gray-600 mb-4">
-                      아래 9가지 항목을 모두 포함하면 완벽한 후기 포스팅이 완성됩니다!
-                    </p>
-
-                    {/* <div className="space-y-3">
-                      <ChecklistItem title="업체명 + 체험 제품명 명확히 작성" description="검색 노출에 중요" checked={false}> 
-                        제목과 본문 초반에 업체명과 제품명을 정확히 언급하세요. 검색 노출에 중요합니다.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="체험 전 기대했던 부분 솔직하게 적기">
-                        제품을 사용하기 전 어떤 점이 궁금했는지, 어떤 효과를 기대했는지 작성하세요.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="실제 사용 후 모습 (착용/사용 전후 사진)">
-                        제품 사용 전/후 비교 사진이나 실제 사용 모습을 담은 사진을 포함하세요.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="본인의 한줄 요약 느낌">
-                        전체 경험을 한 문장으로 요약하여 독자들이 빠르게 파악할 수 있게 해주세요.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="추천할만한 포인트 2가지">
-                        제품의 장점을 최소 2가지 이상 구체적으로 설명하세요.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="아쉬운 점 1가지 (부드럽게 표현)">
-                        너무 완벽한 리뷰보다는 작은 아쉬운 점을 언급하면 신뢰도가 높아집니다.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="키워드 자연스럽게 10회 이상 활용">
-                        주요 키워드를 본문에 자연스럽게 10회 이상 포함시켜 검색 노출을 높이세요.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="포스팅 말미에 감사 멘트 + 재체험 희망">
-                        체험 기회에 감사하다는 멘트와 함께 재체험 희망 의사를 표현하세요.
-                      </ChecklistItem>
-
-                      <ChecklistItem title="관련 해시태그 5개 이상 포함">
-                        포스팅 하단에 관련 해시태그를 5개 이상 포함시켜 검색 노출을 높이세요.
-                      </ChecklistItem>
-                    </div> */}
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">샘플 이미지 구성</h3>
-                    <p className="text-gray-600 mb-4">
-                      효과적인 후기 포스팅을 위해 다음과 같은 이미지를 포함하는 것이 좋습니다:
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                      <div className="bg-white border rounded-lg overflow-hidden">
-                        <img
-                          src="/before-after-comparison.png"
-                          alt="전/후 비교 사진"
-                          className="w-full h-40 object-cover"
-                        />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">전/후 비교 사진</h5>
-                          <p className="text-xs text-gray-500">제품 사용 효과를 시각적으로 보여줍니다.</p>
-                        </div>
-                      </div>
-
-                      <div className="bg-white border rounded-lg overflow-hidden">
-                        <img src="/product-usage.png" alt="제품 사용 컷" className="w-full h-40 object-cover" />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">제품 사용 컷</h5>
-                          <p className="text-xs text-gray-500">실제 사용 모습을 담아 현실감을 높입니다.</p>
-                        </div>
-                      </div>
-
-                      <div className="bg-white border rounded-lg overflow-hidden">
-                        <img src="/visit-proof.png" alt="방문 인증샷" className="w-full h-40 object-cover" />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">방문 인증샷 / 후기 메시지</h5>
-                          <p className="text-xs text-gray-500">실제 체험 증명과 신뢰도를 높입니다.</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">📸 사진 촬영 팁</h4>
-                      <ul className="space-y-1 text-sm text-gray-600">
-                        <li>• 자연광에서 촬영하면 제품 색상이 가장 정확하게 표현됩니다.</li>
-                        <li>• 같은 각도, 같은 조명에서 전/후 사진을 촬영하세요.</li>
-                        <li>• 제품 패키지, 성분표, 사용법 등 상세 정보도 촬영하세요.</li>
-                        <li>• 사진은 최소 10장 이상 포함하는 것이 좋습니다.</li>
-                      </ul>
+                    <div className="space-y-3">
+                      <ChecklistItem
+                        title="관련 분야 포스팅 미리 작성하기"
+                        description="신청하려는 제품/서비스와 관련된 포스팅을 3-4개 이상 작성해두세요."
+                        checked={true}
+                      />
+                      <ChecklistItem
+                        title="프로필에 전문성 강조하기"
+                        description="특정 분야에 대한 관심과 전문성을 프로필에 효과적으로 표현하세요."
+                        checked={true}
+                      />
+                      <ChecklistItem
+                        title="신청서 차별화하기"
+                        description="복사/붙여넣기가 아닌, 해당 제품만의 특별한 리뷰 계획을 작성하세요."
+                        checked={true}
+                      />
+                      <ChecklistItem
+                        title="포스팅 주기 유지하기"
+                        description="최소 주 2-3회 이상 꾸준한 포스팅으로 활성화된 블로그임을 보여주세요."
+                        checked={true}
+                      />
+                      <ChecklistItem
+                        title="사진 촬영 실력 어필하기"
+                        description="기존 포스팅에서 고품질 사진 촬영 능력을 보여주세요."
+                        checked={true}
+                      />
+                      <ChecklistItem
+                        title="성의있는 컨텐츠 보여주기"
+                        description="단순 정보 나열이 아닌, 실제 경험과 인사이트가 담긴 콘텐츠를 작성하세요."
+                        checked={true}
+                      />
+                      <ChecklistItem
+                        title="블로그 테마 일관성 유지하기"
+                        description="산발적인 주제보다는 특정 분야에 집중된 전문성을 보여주세요."
+                        checked={true}
+                      />
+                      <ChecklistItem
+                        title="검색 노출 최적화하기"
+                        description="키워드 선정과 활용으로 검색 노출이 잘 되는 블로그임을 증명하세요."
+                        checked={true}
+                      />
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-medium mb-3">후기 포스팅 예시</h3>
+                    <h3 className="text-lg font-medium mb-3">효과적인 체험단 신청서 작성법</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                      <div className="bg-white border rounded-lg overflow-hidden">
+                        <div className="p-4 bg-green-50">
+                          <h4 className="font-medium text-green-800">권장하는 작성 방식</h4>
+                          <ul className="mt-2 space-y-2 text-sm">
+                            <li>• 제품/서비스만의 특별한 점 언급</li>
+                            <li>• 구체적인 리뷰 계획 제시</li>
+                            <li>• 관련 경험이나 전문성 어필</li>
+                            <li>• 차별화된 촬영 계획 포함</li>
+                          </ul>
+                        </div>
+                      </div>
 
-                    <Accordion type="single" collapsible className="w-full">
-                      <AccordionItem value="example1">
-                        <AccordionTrigger className="font-medium">뷰티 제품 후기 포스팅 예시</AccordionTrigger>
-                        <AccordionContent>
-                          <div className="space-y-3 text-sm">
-                            <p className="font-medium">
-                              제목: [체험단] 피부 결점 커버력 최강! 브랜드A 파운데이션 솔직 리뷰
-                            </p>
+                      <div className="bg-white border rounded-lg overflow-hidden">
+                        <div className="p-4 bg-red-50">
+                          <h4 className="font-medium text-red-800">피해야 할 작성 방식</h4>
+                          <ul className="mt-2 space-y-2 text-sm">
+                            <li>• 단순 복사/붙여넣기 신청서</li>
+                            <li>• 구체성 없는 모호한 계획</li>
+                            <li>• 성의 없는 짧은 내용</li>
+                            <li>• 과도한 감정 표현</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                            <p className="text-gray-600">
-                              안녕하세요, 오늘은 <span className="text-pink-600">브랜드A의 신제품 파운데이션</span>을
-                              체험해볼 기회가 있어 솔직한 후기를 들고 왔습니다. 평소 커버력 있는 파운데이션을 찾고
-                              있었는데, 이 제품이 정말 기대되더라고요.
-                            </p>
+                  <div>
+                    <h3 className="text-lg font-medium mb-3">신청서 작성 예시</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg space-y-4">
+                      <div>
+                        <h4 className="font-medium text-pink-600">좋은 예시</h4>
+                        <div className="mt-2 p-4 bg-white rounded border text-sm space-y-2">
+                          <p>
+                            "안녕하세요. 3년차 뷰티 블로거입니다. 현재까지 50여개의 기초케어 제품을 리뷰해왔으며, 특히
+                            민감성 피부를 위한 제품 리뷰에 전문성이 있습니다.
+                          </p>
+                          <p>이번 제품의 특별한 점인 저자극 포뮬러에 대해 다음과 같이 리뷰하고자 합니다:</p>
+                          <ul className="list-disc pl-5 space-y-1">
+                            <li>전성분 분석 및 민감성 피부 적합성 테스트</li>
+                            <li>2주간의 사용 기록 (아침/저녁 진행상황 사진 첨부)</li>
+                            <li>기존 사용 제품과의 비교 분석</li>
+                            <li>피부 타입별 추천 여부</li>
+                          </ul>
+                          <p>
+                            매크로렌즈를 활용한 텍스처 클로즈업 촬영으로 제품의 특징을 상세히 보여드리겠습니다."
+                          </p>
+                        </div>
+                      </div>
 
-                            <p className="text-gray-600">[제품 외관 및 패키지 사진]</p>
-
-                            <p className="text-gray-600">
-                              먼저 <span className="text-pink-600">브랜드A 파운데이션</span>의 패키지는 고급스러운
-                              디자인으로 선물용으로도 좋을 것 같아요. 제품 용량은 30ml로 일반적인 파운데이션과 비슷한
-                              양입니다.
-                            </p>
-
-                            <p className="text-gray-600">[사용 전 피부 사진]</p>
-
-                            <p className="text-gray-600">
-                              제 피부는 볼 부분에 붉은 기가 있고, 이마에 여드름 자국이 있는 편인데요. 과연{" "}
-                              <span className="text-pink-600">브랜드A 파운데이션</span>이 이런 결점을 잘 커버해줄지 정말
-                              궁금했어요.
-                            </p>
-
-                            <p className="text-gray-600">[사용 후 피부 사진]</p>
-
-                            <p className="text-gray-600">
-                              와우! 정말 놀라운 커버력이에요. 붉은 기와 여드름 자국이 자연스럽게 가려졌어요. 한 줄
-                              요약하자면 "
-                              <span className="font-medium">가볍게 발리면서도 커버력은 강한 파운데이션</span>"이라고 할
-                              수 있겠네요.
-                            </p>
-
-                            <p className="text-gray-600">
-                              <span className="font-medium">추천 포인트 2가지:</span>
-                              <br />
-                              1. 가볍게 발리면서도 놀라운 커버력을 제공합니다.
-                              <br />
-                              2. 10시간 이상 지속되어 수정 메이크업이 필요 없어요.
-                            </p>
-
-                            <p className="text-gray-600">
-                              <span className="font-medium">아쉬운 점:</span>
-                              <br />
-                              색상 선택의 폭이 5가지로 조금 제한적인 점이 아쉬웠어요. 더 다양한 피부톤을 위한 색상이
-                              추가되면 좋을 것 같습니다.
-                            </p>
-
-                            <p className="text-gray-600">
-                              이번에 <span className="text-pink-600">브랜드A 파운데이션</span>을 체험할 수 있는 기회를
-                              주셔서 정말 감사합니다. 앞으로도 브랜드A의 새로운 제품들을 체험해보고 싶네요! 여러분도
-                              커버력 좋은 파운데이션을 찾고 계시다면{" "}
-                              <span className="text-pink-600">브랜드A 파운데이션</span>을 추천드립니다.
-                            </p>
-
-                            <p className="text-gray-600">
-                              #브랜드A #파운데이션 #커버력좋은파운데이션 #메이크업 #뷰티템 #체험단
-                            </p>
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-
-                      <AccordionItem value="example2">
-                        <AccordionTrigger className="font-medium">맛집 방문 후기 포스팅 예시</AccordionTrigger>
-                        <AccordionContent>
-                          <div className="space-y-3 text-sm">
-                            <p className="font-medium">
-                              제목: [서울 강남] 분위기 갑! 레스토랑B에서 즐긴 특별한 코스 요리
-                            </p>
-
-                            <p className="text-gray-600">
-                              안녕하세요, 오늘은 <span className="text-pink-600">강남 레스토랑B</span>에 방문한 후기를
-                              들고 왔습니다. 인스타그램에서 자주 보이던 곳이라 기대가 컸는데요, 과연 그 맛은 어땠을지
-                              솔직하게 알려드릴게요!
-                            </p>
-
-                            <p className="text-gray-600">[레스토랑 외관 및 내부 사진]</p>
-
-                            <p className="text-gray-600">
-                              <span className="text-pink-600">레스토랑B</span>는 강남역에서 도보 5분 거리에 위치해 있어
-                              접근성이 좋았어요. 내부는 모던한 인테리어로 데이트하기 좋은 분위기였습니다.
-                            </p>
-
-                            <p className="text-gray-600">[메뉴판 및 주문 음식 사진]</p>
-
-                            <p className="text-gray-600">
-                              이번에 <span className="text-pink-600">레스토랑B</span>에서는 시그니처 코스 요리를
-                              주문했어요. 전채, 수프, 메인, 디저트로 구성된 풀코스였는데요, 한 줄 요약하자면 "
-                              <span className="font-medium">맛과 비주얼 모두 만족스러운 프리미엄 다이닝</span>
-                              "이었습니다.
-                            </p>
-
-                            <p className="text-gray-600">
-                              <span className="font-medium">추천 포인트 2가지:</span>
-                              <br />
-                              1. 신선한 재료로 만든 요리들의 맛이 일품입니다.
-                              <br />
-                              2. 인스타그래머블한 플레이팅으로 사진 찍기 좋아요.
-                            </p>
-
-                            <p className="text-gray-600">
-                              <span className="font-medium">아쉬운 점:</span>
-                              <br />
-                              주말에는 예약이 필수인데, 2주 전부터 예약해야 원하는 시간에 방문할 수 있어요.
-                            </p>
-
-                            <p className="text-gray-600">
-                              이번에 <span className="text-pink-600">레스토랑B</span>를 방문할 수 있는 기회를 주셔서
-                              정말 감사합니다. 다음에도 새로운 메뉴가 출시되면 꼭 다시 방문하고 싶네요! 특별한 날 맛있는
-                              식사를 원하신다면 <span className="text-pink-600">강남 레스토랑B</span>를 추천드립니다.
-                            </p>
-
-                            <p className="text-gray-600">
-                              #강남맛집 #레스토랑B #데이트코스 #프리미엄다이닝 #코스요리 #체험단
-                            </p>
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
+                      <div>
+                        <h4 className="font-medium text-red-600">피해야 할 예시</h4>
+                        <div className="mt-2 p-4 bg-white rounded border text-sm">
+                          <p>
+                            "안녕하세요~ 이 제품 너무 좋아보여서 꼭 써보고 싶어요! 제품 받으면 열심히 리뷰 작성해드릴게요!
+                            예쁘게 촬영해서 솔직한 후기 올리도록 하겠습니다. 선정해주시면 감사하겠습니다!"
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-end border-t pt-6">

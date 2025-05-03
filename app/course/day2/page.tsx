@@ -27,6 +27,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { toast } from "@/hooks/use-toast"
 import CourseProgressHeader from "@/components/course-progress-header"
+import ChecklistItem from "@/components/checklist-item"
 
 export default function Day2Page() {
   const [activeTab, setActiveTab] = useState("learn")
@@ -174,255 +175,205 @@ export default function Day2Page() {
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
                   <CardTitle>첫 번째 포스팅 작성</CardTitle>
                   <CardDescription className="text-base">
-                    체험단 심사에 좋은 인상을 줄 수 있는 첫 포스팅을 작성해봅시다.
+                    체험단 심사에서 좋은 인상을 남길 수 있는 포스팅을 작성해봅시다.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-6 space-y-6">
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">첫 포스팅의 중요성</h3>
-                    <p className="text-gray-600 mb-4">
-                      체험단 심사 시 블로그의 첫인상을 결정하는 것은 바로 포스팅입니다. 초반 포스팅은 내용의 깊이보다
-                      꾸준한 기록과 성실함을 보여주는 것이 중요합니다.
-                    </p>
-                    <div className="bg-pink-50 p-4 rounded-lg mb-4">
-                      <h4 className="font-medium mb-2">핵심 포인트</h4>
-                      <p className="text-sm text-gray-600">
-                        첫 포스팅은 완벽하지 않아도 괜찮습니다. 사진 3장 이상, 300자 이상의 글이면 충분합니다. 중요한
-                        것은 <span className="font-medium">시작하는 것</span>입니다.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">포스팅 주제 선정</h3>
-                    <p className="text-gray-600 mb-4">
-                      첫 포스팅은 자신이 편안하게 작성할 수 있는 주제로 선택하는 것이 좋습니다. 복잡한 리뷰보다는
-                      일상적인 경험을 담은 글로 시작해보세요.
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                      <div className="border rounded-lg overflow-hidden">
-                        <img src="/cafe-visit-post.png" alt="카페 방문 포스팅" className="w-full h-40 object-cover" />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">카페 방문</h5>
-                          <p className="text-xs text-gray-500 mt-1">
-                            최근 방문한 카페의 분위기, 메뉴, 맛 등을 소개하는 글
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="border rounded-lg overflow-hidden">
-                        <img
-                          src="/product-review-post.png"
-                          alt="제품 리뷰 포스팅"
-                          className="w-full h-40 object-cover"
-                        />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">제품 리뷰</h5>
-                          <p className="text-xs text-gray-500 mt-1">
-                            최근 구매한 제품의 사용 경험과 장단점을 소개하는 글
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="border rounded-lg overflow-hidden">
-                        <img src="/daily-life-post.png" alt="일상 기록 포스팅" className="w-full h-40 object-cover" />
-                        <div className="p-3">
-                          <h5 className="font-medium text-sm">일상 기록</h5>
-                          <p className="text-xs text-gray-500 mt-1">주말 나들이, 요리, 취미 활동 등 일상을 담은 글</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-yellow-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">💡 추천 주제</h4>
-                      <p className="text-sm text-gray-600">
-                        블로그 주제와 연관된 내용으로 선택하되, 너무 어렵게 생각하지 마세요. 예를 들어 뷰티 블로그라면
-                        '오늘의 메이크업', 맛집 블로그라면 '동네 맛집 탐방' 등이 좋은 시작점입니다.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">효과적인 포스팅 구성</h3>
-                    <p className="text-gray-600 mb-4">
-                      체험단 심사관이 보는 포스팅의 핵심 요소와 구성 방법을 알아봅시다. 잘 구성된 포스팅은 읽기 쉽고
-                      정보 전달력이 높습니다.
-                    </p>
-
-                    <div className="border rounded-lg overflow-hidden mb-4">
-                      <div className="bg-pink-50 p-3 border-b">
-                        <h4 className="font-medium">포스팅 구성 요소</h4>
-                      </div>
-                      <div className="p-4">
+                <CardContent className="pt-6 space-y-8">
+                  {/* Step 1: Understanding Post Structure */}
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">Step 1: 첫 포스팅의 기본 구조</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-white rounded-lg p-4 shadow-sm space-y-4">
+                        <h4 className="font-medium text-blue-600">필수 포함 요소</h4>
                         <ul className="space-y-3 text-sm">
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
                               <span className="font-medium">매력적인 제목</span>
-                              <p className="text-gray-600 mt-0.5">
-                                호기심을 자극하고 내용을 명확히 알려주는 제목을 작성하세요.
-                                <br />
-                                예: "[서울 강남] 분위기 좋은 카페 OOO에서 여유로운 오후"
-                              </p>
+                              <p className="text-gray-600">주요 키워드 포함, 독자의 관심을 끄는 제목</p>
                             </div>
                           </li>
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
-                              <span className="font-medium">인트로 (도입부)</span>
-                              <p className="text-gray-600 mt-0.5">
-                                방문 계기, 기대했던 점 등을 간략히 소개하며 글을 시작하세요.
-                              </p>
+                              <span className="font-medium">고품질 이미지</span>
+                              <p className="text-gray-600">최소 5장 이상의 잘 촬영된 사진</p>
                             </div>
                           </li>
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
-                              <span className="font-medium">본문 (소제목 활용)</span>
-                              <p className="text-gray-600 mt-0.5">
-                                소제목을 활용해 내용을 구분하고, 각 부분에 관련 사진을 첨부하세요.
-                                <br />
-                                예: "카페 외관 및 분위기", "주문한 메뉴", "맛과 가격", "총평"
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">마무리</span>
-                              <p className="text-gray-600 mt-0.5">
-                                전체 경험을 요약하고 추천 여부, 다음 방문 계획 등을 언급하며 마무리하세요.
-                              </p>
+                              <span className="font-medium">상세한 설명</span>
+                              <p className="text-gray-600">300자 이상의 정보가 풍부한 본문</p>
                             </div>
                           </li>
                         </ul>
                       </div>
-                    </div>
-
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">포스팅 길이 가이드</h4>
-                      <ul className="space-y-1 text-sm text-gray-600">
-                        <li>• 최소 300자 이상, 이상적으로는 500-1000자 정도가 적당합니다.</li>
-                        <li>• 너무 짧으면 정보가 부족하고, 너무 길면 읽기 어려울 수 있습니다.</li>
-                        <li>• 문단은 2-3문장으로 짧게 나누어 가독성을 높이세요.</li>
-                        <li>• 소제목을 활용해 내용을 구분하면 읽기 쉬워집니다.</li>
-                      </ul>
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-600 mb-3">포스팅 구조</h4>
+                        <div className="space-y-3">
+                          <div className="p-2 bg-purple-50 rounded">
+                            <p className="font-medium">1. 도입부</p>
+                            <p className="text-sm text-gray-600">주제 소개 및 글쓰기 계기</p>
+                          </div>
+                          <div className="p-2 bg-purple-50 rounded">
+                            <p className="font-medium">2. 본문</p>
+                            <p className="text-sm text-gray-600">3-4개의 소제목으로 구분된 상세 내용</p>
+                          </div>
+                          <div className="p-2 bg-purple-50 rounded">
+                            <p className="font-medium">3. 마무리</p>
+                            <p className="text-sm text-gray-600">총평 및 추천사항</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">사진 촬영 및 활용 팁</h3>
-                    <p className="text-gray-600 mb-4">
-                      포스팅의 퀄리티를 결정하는 중요한 요소는 바로 사진입니다. 고품질 사진은 글의 신뢰도를 높이고
-                      독자의 관심을 끌 수 있습니다.
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                      <div className="border rounded-lg overflow-hidden">
-                        <div className="bg-green-50 p-3 border-b">
-                          <h4 className="font-medium">사진 촬영 팁</h4>
-                        </div>
-                        <div className="p-3">
-                          <ul className="space-y-1 text-sm">
-                            <li>• 자연광을 활용하면 색감이 더 선명하게 표현됩니다.</li>
-                            <li>• 배경이 지저분하지 않도록 주의하세요.</li>
-                            <li>• 다양한 각도에서 촬영하여 여러 모습을 보여주세요.</li>
-                            <li>• 스마트폰 카메라도 충분하지만, 밝은 곳에서 촬영하세요.</li>
-                            <li>• 흔들림을 방지하기 위해 양손으로 안정적으로 잡으세요.</li>
-                          </ul>
+                  {/* Step 2: Image Composition */}
+                  <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">Step 2: 이미지 구성하기</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-600 mb-3">사진 촬영 팁</h4>
+                        <ul className="space-y-2 text-sm">
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">밝은 조명</span>
+                              <p className="text-gray-600">자연광을 활용하거나 밝은 실내에서 촬영</p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">깔끔한 배경</span>
+                              <p className="text-gray-600">산만하지 않은 깔끔한 배경 사용</p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">다양한 각도</span>
+                              <p className="text-gray-600">전체샷, 근접샷 등 다양한 구도 활용</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-blue-600 mb-3">필수 사진 구성</h4>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-blue-50 rounded">
+                            <p className="font-medium">메인 이미지</p>
+                            <p className="text-sm text-gray-600">주제를 대표하는 전체 컷</p>
+                          </div>
+                          <div className="p-2 bg-blue-50 rounded">
+                            <p className="font-medium">디테일 이미지</p>
+                            <p className="text-sm text-gray-600">중요 포인트를 보여주는 근접 촬영</p>
+                          </div>
+                          <div className="p-2 bg-blue-50 rounded">
+                            <p className="font-medium">분위기 이미지</p>
+                            <p className="text-sm text-gray-600">전체적인 상황이나 환경을 보여주는 컷</p>
+                          </div>
                         </div>
                       </div>
-
-                      <div className="border rounded-lg overflow-hidden">
-                        <div className="bg-green-50 p-3 border-b">
-                          <h4 className="font-medium">사진 구성 팁</h4>
-                        </div>
-                        <div className="p-3">
-                          <ul className="space-y-1 text-sm">
-                            <li>• 최소 3장, 이상적으로는 5-10장의 사진을 포함하세요.</li>
-                            <li>• 전체 모습과 세부 모습을 모두 담아주세요.</li>
-                            <li>• 맛집이라면: 외관, 내부, 메뉴판, 음식, 디테일 샷</li>
-                            <li>• 제품이라면: 패키지, 제품 전체, 텍스처, 사용 모습</li>
-                            <li>• 사진마다 간단한 설명을 추가하면 더 좋습니다.</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">사진 편집 앱 추천</h4>
-                      <p className="text-sm text-gray-600 mb-2">
-                        간단한 편집으로도 사진의 퀄리티를 높일 수 있습니다. 아래 앱들을 활용해보세요:
-                      </p>
-                      <ul className="space-y-1 text-sm text-gray-600">
-                        <li>• VSCO: 자연스러운 필터와 편집 기능</li>
-                        <li>• Snapseed: 세부적인 보정이 가능한 무료 앱</li>
-                        <li>• Lightroom Mobile: 전문적인 편집이 가능한 앱</li>
-                        <li>• Foodie: 음식 사진에 특화된 카메라 앱</li>
-                      </ul>
                     </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-lg font-medium mb-3">포스팅 예시</h3>
-                    <p className="text-gray-600 mb-4">
-                      아래는 카페 방문 포스팅의 간단한 예시입니다. 구성과 흐름을 참고하세요.
-                    </p>
-
-                    <div className="border rounded-lg p-4 space-y-4">
-                      <div>
-                        <h4 className="font-medium">[서울 강남] 분위기 좋은 카페 '커피 오아시스'에서 여유로운 오후</h4>
-                        <p className="text-sm text-gray-500 mt-1">2023.07.15 | 카페 탐방</p>
+                  {/* Step 3: Writing Content */}
+                  <div className="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">Step 3: 본문 작성하기</h3>
+                    <div className="bg-white rounded-lg p-4 shadow-sm space-y-4">
+                      <div className="border-l-4 border-pink-200 pl-4">
+                        <h4 className="font-medium text-lg">[제주 브런치 카페] 바다뷰 맛집 '오션사이드'에서의 여유로운 아침</h4>
+                        <p className="text-sm text-gray-500 mt-1">2025.05.03 | 카페 탐방</p>
                       </div>
 
-                      <div className="text-sm text-gray-600 space-y-3">
-                        <p>
-                          안녕하세요! 오늘은 강남역 근처에서 발견한 숨은 보석 같은 카페를 소개해드리려고 합니다. 회사
-                          미팅 후 잠시 들른 '커피 오아시스'는 번화가 속 작은 휴식처 같은 곳이었어요.
-                        </p>
+                      <div className="space-y-4">
+                        <div className="space-y-2">
+                          <h5 className="font-medium text-pink-600">도입부</h5>
+                          <p className="text-sm text-gray-600">
+                            "제주의 봄날, 에메랄드빛 바다를 바라보며 즐기는 브런치는 어떨까요? 
+                            오늘은 제주 애월읍에 위치한, 바다뷰 맛집으로 유명한 '오션사이드'를 
+                            방문했습니다. 특별한 아침을 찾는 제주 여행자들에게 완벽한 
+                            브런치 카페를 소개해드릴게요."
+                          </p>
+                        </div>
 
-                        <p className="text-pink-600">[카페 외관 및 내부 사진]</p>
+                        <div className="space-y-2">
+                          <h5 className="font-medium text-pink-600">위치 및 분위기</h5>
+                          <p className="text-sm text-gray-600">
+                            "애월읍 해안도로 중간에 위치한 오션사이드는 통유리창 너머로 제주 
+                            바다를 한눈에 담을 수 있는 카페입니다. 화이트톤의 모던한 인테리어와 
+                            높은 천장이 개방감을 더해줍니다."
+                          </p>
+                        </div>
 
-                        <h5 className="font-medium">☕ 카페 위치 및 분위기</h5>
-                        <p>
-                          강남역 3번 출구에서 도보 5분 거리에 위치한 이 카페는 외관부터 시선을 사로잡았어요. 통유리창과
-                          녹색 식물들로 장식된 입구가 특히 인상적이었습니다. 내부는 우드톤의 따뜻한 인테리어와 곳곳에
-                          배치된 식물들이 편안한 분위기를 만들어냅니다.
-                        </p>
+                        <div className="space-y-2">
+                          <h5 className="font-medium text-pink-600">메뉴 소개</h5>
+                          <p className="text-sm text-gray-600">
+                            "시그니처 메뉴인 '에그 베네딕트'(19,000원)는 촉촉한 잉글리시 머핀 위에 
+                            수비드 에그와 홀란데이즈 소스가 조화를 이룹니다. 제주 당근으로 만든 
+                            '당근 케이크'(8,000원)는 달콤함이 적절해 브런치와 잘 어울립니다."
+                          </p>
+                        </div>
 
-                        <p className="text-pink-600">[메뉴판 및 주문한 음료 사진]</p>
+                        <div className="space-y-2">
+                          <h5 className="font-medium text-pink-600">총평</h5>
+                          <p className="text-sm text-gray-600">
+                            "뛰어난 전망과 정성스러운 플레이팅, 그리고 맛까지 삼박자를 고루 갖춘 
+                            브런치 카페입니다. 가격대가 다소 있지만, 특별한 아침을 즐기기에 충분히 
+                            가치 있는 곳이라고 생각합니다. 제주 여행 중 인생 사진을 남기고 싶은 
+                            분들께 강력 추천드립니다!"
+                          </p>
+                        </div>
+                      </div>
 
-                        <h5 className="font-medium">☕ 메뉴 및 가격</h5>
-                        <p>
-                          아메리카노 5,500원, 카페라떼 6,000원으로 강남 지역 치고는 양호한 가격대를 유지하고 있어요.
-                          시그니처 메뉴인 '오아시스 라떼'(7,000원)를 주문했는데, 바닐라와 헤이즐넛의 달콤함이 어우러진
-                          맛이 일품이었습니다. 디저트로는 수제 티라미수(6,500원)를 함께 즐겼어요.
-                        </p>
+                      <div className="text-sm text-gray-500 mt-4">
+                        <p>주소: 제주특별자치도 제주시 애월읍 애월해안로 456</p>
+                        <p>영업시간: 매일 09:00-20:00 (라스트오더 19:00)</p>
+                        <p>주차: 건물 내 20대 가능</p>
+                        <p>#제주카페 #애월카페 #제주브런치 #바다뷰 #오션뷰 #카페스타그램</p>
+                      </div>
+                    </div>
+                  </div>
 
-                        <p className="text-pink-600">[음료와 디저트 클로즈업 사진]</p>
-
-                        <h5 className="font-medium">☕ 맛과 서비스</h5>
-                        <p>
-                          오아시스 라떼는 달콤하면서도 커피 본연의 맛을 잘 살린 균형 잡힌 맛이었어요. 티라미수는 촉촉한
-                          식감과 진한 마스카포네 치즈 맛이 인상적이었습니다. 직원분들도 친절하게 메뉴를 추천해주시고
-                          자리까지 안내해주셔서 기분 좋게 방문할 수 있었어요.
-                        </p>
-
-                        <h5 className="font-medium">☕ 총평</h5>
-                        <p>
-                          바쁜 강남 한복판에서 잠시 휴식을 취하기 좋은 카페였습니다. 맛있는 음료와 디저트, 편안한
-                          분위기까지 모두 만족스러웠어요. 다음에는 다른 시그니처 메뉴도 시도해보고 싶네요. 강남에서
-                          여유로운 시간을 보내고 싶으신 분들께 추천드립니다!
-                        </p>
-
-                        <p>
-                          <span className="text-gray-500">주소: 서울시 강남구 강남대로 123</span>
-                          <br />
-                          <span className="text-gray-500">영업시간: 매일 10:00-22:00</span>
-                        </p>
-
-                        <p>#강남카페 #강남역카페 #커피오아시스 #분위기좋은카페 #카페탐방 #디저트맛집 #서울카페</p>
+                  {/* Step 4: Final Checklist */}
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">Step 4: 최종 체크리스트</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-3">
+                        <ChecklistItem
+                          title="이미지 품질"
+                          description="고화질의 깔끔한 사진이 준비되었나요?"
+                          checked={true}
+                        />
+                        <ChecklistItem
+                          title="맞춤법 검사"
+                          description="본문의 맞춤법을 검토했나요?"
+                          checked={true}
+                        />
+                        <ChecklistItem
+                          title="정보 정확성"
+                          description="가격, 위치 등 정보가 정확한가요?"
+                          checked={true}
+                        />
+                      </div>
+                      <div className="space-y-3">
+                        <ChecklistItem
+                          title="태그 활용"
+                          description="관련 키워드로 태그를 추가했나요?"
+                          checked={true}
+                        />
+                        <ChecklistItem
+                          title="가독성"
+                          description="단락 구분이 잘 되어있나요?"
+                          checked={true}
+                        />
+                        <ChecklistItem
+                          title="완성도"
+                          description="전체적인 글의 흐름이 자연스러운가요?"
+                          checked={true}
+                        />
                       </div>
                     </div>
                   </div>
