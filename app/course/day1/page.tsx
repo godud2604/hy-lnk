@@ -21,6 +21,8 @@ export default function Day1Page() {
   const [activeTab, setActiveTab] = useState("learn")
   const [formData, setFormData] = useState({
     blogUrl: "",
+    categories: "",
+    introPost: "",
     blogTopic: "",
     keywords: "",
     file: null as File | null,
@@ -47,7 +49,6 @@ export default function Day1Page() {
   const handleSubmit = () => {
     setIsSubmitting(true)
 
-    // 실제 구현에서는 API 호출로 대체
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubmitted(true)
@@ -60,47 +61,47 @@ export default function Day1Page() {
 
   return (
     <div className="container py-8 md:py-12">
-      <CourseProgressHeader title="Day 1: 체험단 특화 블로그 만들기" currentDay={1} totalDays={6} />
+      <CourseProgressHeader title="Day 1: 블로그 개설부터 완성까지" currentDay={1} totalDays={7} />
 
       <div className="grid md:grid-cols-3 gap-8 mt-8">
-        {/* 사이드바 */}
         <div className="md:col-span-1">
-          <Card>
-            <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-              <CardTitle className="text-xl">Day 1</CardTitle>
+          <div className="sticky top-24">
+            <Card className="max-h-[calc(100vh-8rem)] overflow-y-auto">
+              <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
+                <CardTitle className="text-xl">Day 1</CardTitle>
               <CardDescription className="text-base font-medium">체험단 특화 블로그 만들기</CardDescription>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <Clock className="h-4 w-4 text-pink-600 mr-2" />
-                    <span className="text-sm">예상 학습 시간: 30분</span>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Clock className="h-4 w-4 text-pink-600 mr-2" />
+                      <span className="text-sm">예상 학습 시간: 30분</span>
+                    </div>
+                    <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
+                      첫 단계
+                    </Badge>
                   </div>
-                  <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
-                    첫 단계
-                  </Badge>
-                </div>
 
-                <Separator />
+                  <Separator />
 
-                <div className="space-y-3">
-                  <h3 className="font-medium">학습 목표</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                  <div className="space-y-3">
+                    <h3 className="font-medium">학습 목표</h3>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start">
+                        <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
                       <span>체험단에 유리한 블로그 플랫폼 선택하기</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
                       <span>체험단 선정에 최적화된 블로그 주소 설정하기</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
                       <span>체험단 리뷰어로서의 프로필 구성하기</span>
-                    </li>
-                  </ul>
-                </div>
+                      </li>
+                    </ul>
+                  </div>
 
                 <Separator />
 
@@ -109,12 +110,12 @@ export default function Day1Page() {
                   <div className="space-y-2">
                     <Button variant="outline" size="sm" className="w-full justify-start text-sm">
                       <FileText className="h-4 w-4 mr-2" />
-                      블로그 주제 선정 가이드.pdf
+                      블로그 세팅 운영 가이드.pdf
                       <Download className="h-4 w-4 ml-auto" />
                     </Button>
                     <Button variant="outline" size="sm" className="w-full justify-start text-sm">
                       <FileText className="h-4 w-4 mr-2" />
-                      프로필 작성 템플릿.docx
+                      블로그 세팅을 도와주는 AI 활용법.docx
                       <Download className="h-4 w-4 ml-auto" />
                     </Button>
                   </div>
@@ -137,22 +138,19 @@ export default function Day1Page() {
                     </Button>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
-        {/* 메인 콘텐츠 */}
         <div className="md:col-span-2">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid grid-cols-2 mb-6">
               <TabsTrigger value="learn" className="data-[state=active]:bg-pink-100 data-[state=active]:text-pink-800">
                 학습하기
               </TabsTrigger>
-              <TabsTrigger
-                value="assignment"
-                className="data-[state=active]:bg-pink-100 data-[state=active]:text-pink-800"
-              >
+              <TabsTrigger value="assignment" className="data-[state=active]:bg-pink-100 data-[state=active]:text-pink-800">
                 과제 제출
               </TabsTrigger>
             </TabsList>
@@ -160,82 +158,67 @@ export default function Day1Page() {
             <TabsContent value="learn" className="mt-0">
               <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>체험단 특화 블로그 설정</CardTitle>
+                  <CardTitle>블로그 개설과 기본 세팅</CardTitle>
                   <CardDescription className="text-base">
-                    체험단 선정에 유리한 블로그 환경을 조성해봅시다.
+                    처음부터 차근차근 블로그를 만들어봅시다.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6 space-y-8">
-                  {/* Step 1: Platform Selection */}
-                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">Step 1: 블로그 플랫폼 선택</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-pink-600 mb-2">네이버 블로그 추천 이유</h4>
-                        <ul className="space-y-2 text-sm">
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                            <span>체험단 사이트 선호도 1위 (90% 이상이 네이버 블로그 선호)</span>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                            <span>블로그 지수(블덱스) 제공으로 성장 관리 용이</span>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                            <span>다양한 체험단 사이트와의 호환성</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-purple-600 mb-2">주요 체험단 사이트</h4>
-                        <div className="space-y-2 text-sm">
-                          <div>
-                            <p className="font-medium text-purple-700">리뷰노트 (435,000회)</p>
-                            <p className="text-gray-600">국내 최대 규모의 체험단 사이트</p>
-                          </div>
-                          <div>
-                            <p className="font-medium text-purple-700">레뷰 (172,000회)</p>
-                            <p className="text-gray-600">식품, 뷰티 체험 기회 다수</p>
-                          </div>
-                          <div>
-                            <p className="font-medium text-purple-700">리뷰플레이스 (67,700회)</p>
-                            <p className="text-gray-600">초보 블로거도 선정 확률 높음</p>
-                          </div>
+                  {/* 블로그 체험단 소개 */}
+                  <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">블로그 체험단이란?</h3>
+                    <div className="bg-white rounded-lg p-4 shadow-sm">
+                      <div className="space-y-4">
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <p className="text-sm text-blue-800">
+                            블로그 체험단은 기업이나 브랜드가 자사의 제품이나 서비스를 블로거들에게 무료로 제공하고, 
+                            블로거들이 이를 체험한 후 솔직한 후기를 작성하는 마케팅 활동입니다. 
+                            블로거는 무료 체험 기회를, 기업은 진정성 있는 홍보 효과를 얻을 수 있습니다.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h4 className="font-medium text-purple-700 mb-2">체험단의 장점</h4>
+                          <ul className="space-y-2 text-sm text-gray-600">
+                            <li>• 다양한 제품과 서비스를 무료로 체험</li>
+                            <li>• 제품 리뷰 작성을 통한 블로그 콘텐츠 확보</li>
+                            <li>• 브랜드와의 지속적인 협업 기회</li>
+                            <li>• 소정의 원고료나 추가 혜택 제공</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-yellow-50 p-4 rounded-lg">
+                          <h4 className="font-medium text-yellow-800 mb-2">체험단 선정 기준</h4>
+                          <ul className="space-y-2 text-sm text-yellow-700">
+                            <li>• 블로그 방문자 수와 조회수</li>
+                            <li>• 게시글의 퀄리티와 작성 빈도</li>
+                            <li>• 해당 분야의 전문성과 관련 포스팅</li>
+                            <li>• 블로그 운영 기간과 성실성</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Step 2: Blog Address Setup */}
-                  <div className="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">Step 2: 블로그 주소 설정하기</h3>
+                  {/* Step 1: 블로그 개설 */}
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">Step 1: 네이버 블로그 개설</h3>
+                    
                     <div className="space-y-4">
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-pink-700 mb-3">효과적인 블로그 주소 설정 방법</h4>
-                        <ul className="space-y-3 text-sm">
+                        <h4 className="font-medium text-blue-700">기본 개설 단계</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-1 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
-                              <span className="font-medium">주제 연관성</span>
-                              <p className="text-gray-600">리뷰, 체험 등의 키워드 포함</p>
-                              <p className="text-sm text-pink-600 mt-1">예: beauty_review, daily_food</p>
+                              <span className="font-medium">네이버 로그인</span>
+                              <p className="text-gray-600">네이버 계정으로 로그인 후 블로그 개설 클릭</p>
                             </div>
                           </li>
                           <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-1 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
                             <div>
-                              <span className="font-medium">전문성 표현</span>
-                              <p className="text-gray-600">전문 분야나 특징을 드러내는 단어 활용</p>
-                              <p className="text-sm text-pink-600 mt-1">예: skincare_expert, food_taster</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">기억하기 쉬운 주소</span>
-                              <p className="text-gray-600">단순하고 직관적인 주소 선택</p>
-                              <p className="text-sm text-pink-600 mt-1">예: seoul_cafe_review, beauty_daily</p>
+                              <span className="font-medium">블로그 주소 설정</span>
                             </div>
                           </li>
                         </ul>
@@ -243,60 +226,344 @@ export default function Day1Page() {
                     </div>
                   </div>
 
-                  {/* Step 3: Profile Setup */}
+                  {/* Step 2: 프로필 설정 */}
                   <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">Step 3: 프로필 설정하기</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <h3 className="text-xl font-medium mb-4">Step 2: 프로필 설정</h3>
+                    
+                    <div className="space-y-4">
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-blue-600 mb-3">필수 프로필 요소</h4>
-                        <ul className="space-y-3 text-sm">
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">프로필 닉네임</span>
-                              <p className="text-gray-600">전문성이 드러나는 닉네임</p>
-                              <p className="text-blue-600 text-xs mt-1">예: 화장품탐험가, 맛집헌터</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">소개글</span>
-                              <p className="text-gray-600">전문성과 신뢰도를 강조한 소개</p>
-                              <p className="text-blue-600 text-xs mt-1">- 관련 경험/자격증 언급</p>
-                              <p className="text-blue-600 text-xs">- 포스팅 주기 명시</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">프로필 이미지</span>
-                              <p className="text-gray-600">전문적이고 신뢰감 있는 이미지</p>
-                            </div>
-                          </li>
-                        </ul>
+                        <h4 className="font-medium text-green-700">기본 설정</h4>
+                        <p className="text-sm text-gray-600 mt-2">관리 {`>`} 기본설정 {`>`} 기본 정보관리 {`>`} 블로그 정보에서 설정할 수 있습니다.</p>
                       </div>
+
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-green-600 mb-3">프로필 작성 예시</h4>
-                        <div className="space-y-4">
-                          <div className="border-l-4 border-green-200 pl-4">
-                            <p className="text-sm italic">
-                              "4년차 뷰티 블로거 '화장품연구소장' 입니다.
-                              화장품제조관리사 자격증을 보유하고 있으며,
-                              민감성 피부를 위한 제품 리뷰를 전문적으로 
-                              다룹니다. 매주 2-3회 정직한 리뷰로 찾아뵙겠습니다."
+                        <h4 className="font-medium text-green-700">블로그 주제 선정</h4>
+                        <div className="mt-3 space-y-2">
+                          <div className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">내 관심사 기반 선정</span>
+                              <p className="text-gray-600">관심도가 높은 주제를 선정하여 지속적인 컨텐츠 제작이 가능하도록 합니다.</p>
+                            </div>
+                          </div>
+
+                          
+                          <div className="bg-yellow-50 p-3 rounded-lg mt-4">
+                            <p className="text-sm font-medium text-yellow-800">TIP</p>
+                            <ul className="mt-2 space-y-2 text-sm text-yellow-700">
+                              <li>• 하나의 주력 카테고리를 정하고 전문성을 키우세요.</li>
+                              <li>• 선택한 카테고리에서 꾸준히 양질의 콘텐츠를 제작하세요.</li>
+                              <li>• 사진, 글쓰기 등 콘텐츠 제작 능력을 향상시키세요.</li>
+                              <li>• 댓글 소통과 이웃 맺기로 커뮤니티를 형성하세요.</li>
+                              <li>• 체험단 주최측은 제품을 잘 설명할 수 있는 블로거를 선호합니다.</li>
+                              <li>• 블로그 주제와 제목을 체험하고 싶은 분야와 연관되게 설정하면 선정 확률이 높아집니다.</li>
+                              <li>• 처음에는 "일상"으로 시작하고 점차 특정 분야로 발전시켜도 좋습니다.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">블로그 주제 선정</h4>
+                        <div className="mt-3 space-y-4">
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-pink-50 p-4 rounded-lg">
+                              <p className="font-medium text-sm text-pink-800 mb-2">패션 / 뷰티 / 화장품 후기</p>
+                              <ul className="text-sm text-pink-700 space-y-1">
+                                <li>• 체험단 당첨률 높음 / 협찬 기회 많음</li>
+                                <li>• 스킨케어, 메이크업 제품</li>
+                                <li>• 신제품 리뷰 기회 많음</li>
+                              </ul>
+                            </div>
+                            <div className="bg-purple-50 p-4 rounded-lg">
+                              <p className="font-medium text-sm text-purple-800 mb-2">육아 / 유아용품</p>
+                              <ul className="text-sm text-purple-700 space-y-1">
+                                <li>• 엄마 인플루언서 수요 높음</li>
+                                <li>• 육아용품 체험 기회 많음</li>
+                                <li>• 장기적 콘텐츠 확보 가능</li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-yellow-50 p-4 rounded-lg">
+                              <p className="font-medium text-sm text-yellow-800 mb-2">일상 / 브이로그</p>
+                              <ul className="text-sm text-yellow-700 space-y-1">
+                                <li>• 초보 블로거에게 적합</li>
+                                <li>• 다양한 주제 시도 가능</li>
+                                <li>• 자연스러운 제품 리뷰</li>
+                              </ul>
+                            </div>
+                            <div className="bg-blue-50 p-4 rounded-lg">
+                              <p className="font-medium text-sm text-blue-800 mb-2">전자기기 / 생활가전</p>
+                              <ul className="text-sm text-blue-700 space-y-1">
+                                <li>• 체험단 수요 높음</li>
+                                <li>• 고가 제품 체험 기회</li>
+                                <li>• 상세한 리뷰 선호</li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-indigo-50 p-4 rounded-lg">
+                              <p className="font-medium text-sm text-indigo-800 mb-2">반려동물</p>
+                              <ul className="text-sm text-indigo-700 space-y-1">
+                                <li>• 애견/애묘용품 체험단</li>
+                                <li>• 일상적인 콘텐츠 확보</li>
+                                <li>• 반려인 커뮤니티</li>
+                              </ul>
+                            </div>
+                            <div className="bg-red-50 p-4 rounded-lg">
+                              <p className="font-medium text-sm text-red-800 mb-2">맛집 / 음식</p>
+                              <ul className="text-sm text-red-700 space-y-1">
+                                <li>• 지역 기반 확장 가능</li>
+                                <li>• 사진 촬영 용이</li>
+                                <li>• 맛집 체험단 기회</li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h5 className="font-medium text-gray-800 mb-3">🧠 주제 선정 시 고려사항</h5>
+                            <ul className="space-y-2 text-sm text-gray-700">
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>꾸준한 관심과 콘텐츠 생산이 가능한 주제인가?</span>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>제품 리뷰나 체험단 연계가 용이한가?</span>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>이미지나 콘텐츠 수집이 쉬운 주제인가?</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">블로그 제목과 닉네임 설정</h4>
+                        <div className="mt-3 space-y-4">
+                          <div>
+                            <h5 className="text-sm font-medium mb-2">블로그 제목</h5>
+                            <div className="space-y-2">
+                              <div className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                                <div>
+                                  <span className="font-medium">주제 연관성</span>
+                                  <p className="text-gray-600">블로그의 주제와 연관된 키워드 포함</p>
+                                </div>
+                              </div>
+                              <div className="bg-blue-50 p-3 rounded-lg">
+                                <p className="text-sm font-medium text-blue-800 mb-2">제목 예시</p>
+                                <ul className="space-y-1 text-sm text-blue-700">
+                                  <li>• 리뷰하는 지은 (리뷰 블로거)</li>
+                                  <li>• 맛있는 일상의 기록 (맛집/요리 블로거)</li>
+                                  <li>• 건강한 라이프 스타일 (건강/운동 블로거)</li>
+                                  <li>• 육아맘의 솔직리뷰 (육아 블로거)</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h5 className="text-sm font-medium mb-2">닉네임</h5>
+                            <div className="flex items-start">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                              <div>
+                                <span className="font-medium">블로그 컨셉과 일치</span>
+                                <p className="text-gray-600">예: 맛집탐험가, 뷰티로그, 육아하는집콕맘</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-yellow-50 p-4 rounded-lg">
+                            <h5 className="font-medium text-yellow-800 mb-2">제목과 닉네임 설정 TIP</h5>
+                            <ul className="space-y-2 text-sm text-yellow-700">
+                              <li>• 기억하기 쉽고 검색하기 좋은 이름 선택</li>
+                              <li>• 전문성과 신뢰성을 담은 키워드 활용</li>
+                              <li>• 차별화된 특징을 담아내기</li>
+                              <li>• 향후 체험단 모집 시 해당 분야의 전문성 어필</li>
+                            </ul>
+                          </div>
+
+                          <div className="bg-blue-50 p-3 rounded-lg">
+                            <p className="text-sm text-blue-700">
+                              네이버 인플루언서들의 블로그를 벤치마킹하여 좋은 제목과 닉네임 아이디어를 얻어보세요.
                             </p>
                           </div>
-                          <div className="mt-4 bg-green-50 p-3 rounded">
-                            <p className="text-xs text-green-800">
-                              💡 위 예시는 구체적인 경력, 자격, 전문분야, 
-                              포스팅 주기를 명시하여 신뢰도를 높입니다.
+                        </div>
+                      </div>
+            
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-blue-700">프로필 이미지</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li>• 밝고 심플한 이미지 선택</li>
+                          <li>• 전문성을 강조하기 위한 깔끔한 이미지 사용</li>
+                          <li>• 스노우앱 등 AI 툴을 활용한 프로필 사진 제작 추천</li>
+                          <li>• 블로그 주제와 연관된 이미지</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700">프로필 설정 완성하기</h4>
+                        <div className="space-y-4">
+                          <div className="mt-2 p-4 bg-purple-50 rounded text-sm">
+                            <p className="italic text-purple-800 mb-3 font-medium">블로그 소개글 예시</p>
+                            <p className="italic">
+                              "안녕하세요! 일상과 후기 중심의 블로그입니다 ✨
+                              맛집, 뷰티 제품, 여행 등 다양한 경험을
+                              정직하고 솔직하게 기록하고 공유합니다.
+                              
+                              유튜브, 인스타그램, 틱톡 등 다양한 플랫폼에서도
+                              여러분과 소통하고 있어요! 😊
+                              
+                              📱 Instagram: @your_instagram
+                              🎥 YouTube: (채널명)
+                              ✨ TikTok: @your_tiktok
+                              
+                              ✉️ 협찬/제휴 문의: example@email.com"
+                            </p>
+                          </div>
+
+                          <div className="bg-yellow-50 p-4 rounded-lg">
+                            <h5 className="font-medium text-yellow-800 mb-2">멀티 플랫폼 활동의 장점</h5>
+                            <ul className="space-y-2 text-sm text-yellow-700">
+                              <li>• 광고주/체험단 운영자들의 높은 선호도</li>
+                              <li>• 다양한 플랫폼을 통한 콘텐츠 확산 가능</li>
+                              <li>• 체험단 선정 확률 상승</li>
+                              <li>• 브랜드 협업 기회 증가</li>
+                            </ul>
+                          </div>
+
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <h5 className="font-medium text-blue-800 mb-2">💡 AI 활용 팁</h5>
+                            <p className="text-sm text-blue-700 mb-2">
+                              ChatGPT를 활용하여 멀티 플랫폼 활동을 강조하는 소개글을 작성해보세요:
+                            </p>
+                            <div className="bg-white p-3 rounded text-sm">
+                              <p className="italic text-gray-600">
+                                "내가 블로그, 인스타그램, 유튜브, 틱톡도 같이 하고 있다는 걸 강조해서 소개글을 작성해줘. 친근한 말투로!"
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* Step 3: 카테고리 구성 */}
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">Step 3: 카테고리 구성</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-yellow-700">카테고리 구성 방법</h4>
+                        <div className="mt-3">
+                          <div className="bg-yellow-50 p-4 rounded-lg mb-4">
+                            <p className="text-sm text-yellow-800">
+                              카테고리는 블로그의 성격과 운영 방향을 보여주는 중요한 요소입니다.
+                              처음에는 기본적인 카테고리로 시작하고, 블로그 성장에 따라 세분화하여 발전시켜 나가세요.
+                            </p>
+                          </div>
+
+                          <div className="grid grid-cols-1 gap-4">
+                            <div className="space-y-2">
+                              <div className="bg-orange-50 p-4 rounded-lg">
+                                <p className="font-medium text-sm text-orange-800 mb-2">기본 카테고리</p>
+                                <ul className="space-y-2 text-sm text-orange-700">
+                                  <li>• 공지사항</li>
+                                  <li>• 일상</li>
+                                  <li>• 제품 리뷰</li>
+                                  <li>• 방문 후기</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-yellow-700">카테고리 설정 TIP</h4>
+                        <div className="mt-3 space-y-4">
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <ul className="space-y-2 text-sm text-gray-700">
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>주제별로 명확하게 구분하여 방문자가 찾기 쉽게 구성하기</span>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>너무 많은 카테고리는 피하고, 핵심 주제 중심으로 설정</span>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>체험단/협찬 포스팅을 위한 별도 카테고리 만들기</span>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>내 주제의 인기 인플루언서 블로그를 벤치마킹하여 효과적인 카테고리 구조 참고하기</span>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <h5 className="font-medium text-green-800 mb-2">💡 카테고리 활용 예시</h5>
+                            <div className="space-y-3 text-sm text-green-700">
+                              <p className="font-medium">맛집 블로거의 경우:</p>
+                              <ul className="space-y-1 ml-4">
+                                <li>• 공지사항</li>
+                                <li>• 일상</li>
+                                <li>• 맛집리뷰 - 서울</li>
+                                <li>• 맛집리뷰 - 경기</li>
+                                <li>• 카페/디저트</li>
+                                <li>• 제품리뷰</li>
+                                <li>• 요리/레시피</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 마무리 조언 */}
+                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">💝 마무리 조언</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700 mb-3">완벽보다는 꾸준함이 중요합니다!</h4>
+                        
+                        <div className="space-y-4">
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <ul className="space-y-2 text-sm text-blue-700">
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>처음부터 모든 것을 완벽하게 할 필요 없습니다</span>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                                <span>1일 1포스팅의 꾸준함이 실력 향상의 지름길입니다</span>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <p className="text-sm text-green-700">
+                              완벽한 시작을 기다리다 보면 시작조차 하지 못할 수 있습니다. 
+                              지금 시작하고, 매일 조금씩 발전하는 것이 성공의 비결입니다.
+                              작은 실천이 모여 큰 변화를 만듭니다! ✨
                             </p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+
                 </CardContent>
               </Card>
             </TabsContent>
@@ -316,7 +583,7 @@ export default function Day1Page() {
                         <h3 className="font-medium mb-2">과제 안내</h3>
                         <p className="text-sm text-gray-600">아래 항목을 작성하여 제출해주세요:</p>
                         <ul className="mt-2 space-y-1 text-sm text-gray-600">
-                          <li>• 블로그 URL (네이버 블로그 또는 다른 플랫폼)</li>
+                          <li>• 블로그 URL</li>
                           <li>• 선정한 블로그 주제</li>
                           <li>• 관심 있는 키워드 3개 이상</li>
                         </ul>
@@ -348,7 +615,7 @@ export default function Day1Page() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="keywords">관심 키워드 (3개 이상)</Label>
+                          <Label htmlFor="keywords">관심 키워드 (2개 이상)</Label>
                           <Textarea
                             id="keywords"
                             placeholder="예: 스킨케어, 선크림, 안티에이징, 민감성 피부"
@@ -359,33 +626,6 @@ export default function Day1Page() {
                           <p className="text-xs text-muted-foreground">
                             블로그에서 다루고 싶은 구체적인 키워드를 쉼표로 구분하여 입력해주세요.
                           </p>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="file">블로그 스크린샷 (선택사항)</Label>
-                          <div className="flex items-center justify-center border border-dashed border-input rounded-md p-6 bg-muted/50">
-                            <div className="text-center">
-                              <Upload className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                              <p className="text-sm font-medium mb-1">
-                                {formData.file ? formData.file.name : "파일을 드래그하거나 클릭하여 업로드하세요"}
-                              </p>
-                              <p className="text-xs text-muted-foreground mb-3">PNG, JPG 파일 (최대 5MB)</p>
-                              <Input
-                                id="file"
-                                type="file"
-                                accept="image/*"
-                                className="hidden"
-                                onChange={handleFileChange}
-                              />
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => document.getElementById("file")?.click()}
-                              >
-                                파일 선택
-                              </Button>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>

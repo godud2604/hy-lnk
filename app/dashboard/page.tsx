@@ -17,19 +17,20 @@ export default function DashboardPage() {
   const { user } = useAuth()
   const [courseProgress, setCourseProgress] = useState({
     currentDay: 1,
-    totalDays: 6,
+    totalDays: 7,
     completedDays: 0,
     lastActivity: "",
     pendingFeedback: false,
   })
 
   const baseModules = [
-    { day: 1, title: "블로그 개설 및 주제 설정" },
-    { day: 2, title: "첫 번째 포스팅 작성" },
-    { day: 3, title: "키워드 선정 및 상위노출 연습" },
-    { day: 4, title: "체험단 사이트 가입 + 신청 실습" },
-    { day: 5, title: "블로그 지수 관리 + 블덱스 활용" },
-    { day: 6, title: "당첨 후기 포스팅 마스터"},
+    { day: 1, title: "블로그 개설부터 완성까지" },
+    { day: 2, title: "블로그 글쓰기의 기초" },
+    { day: 3, title: "방문자 수 올리는 상위노출 전략" },
+    { day: 4, title: "체험단 신청하는 법 A to Z" },
+    { day: 5, title: "신뢰도 높은 후기 작성법" },
+    { day: 6, title: "블로그 지수 올리는 루틴" },
+    { day: 7, title: "수익형 블로그 첫걸음" },
   ]
   
   const courseModules: { day: number; status: string; title: string; feedback?: boolean; feedbackText?: string; }[] = _.map(baseModules, (module) => {
@@ -116,7 +117,7 @@ export default function DashboardPage() {
         const data = userSnap.data()
         setCourseProgress({
           currentDay: data.currentDay ?? 1,
-          totalDays: data.totalDays ?? 6,
+          totalDays: data.totalDays ?? 7,
           completedDays: data.completedDays ?? 0,
           lastActivity: data.lastActivity ?? "",
           pendingFeedback: data.pendingFeedback ?? false,
@@ -134,7 +135,7 @@ export default function DashboardPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">내 학습 대시보드</h1>
-          <p className="text-muted-foreground mt-1">6일 체험단 마스터 과정의 진행 상황을 확인하고 관리하세요.</p>
+          <p className="text-muted-foreground mt-1">7일 블로그 초보자 입문 과정의 진행 상황을 확인하고 관리하세요.</p>
         </div>
         <div className="flex items-center gap-2">
           <Button className="bg-pink-600 hover:bg-pink-700" asChild>
@@ -148,7 +149,7 @@ export default function DashboardPage() {
           <Card>
             <CardHeader className="pb-2">
               <CardTitle>학습 진행 상황</CardTitle>
-              <CardDescription>6일 체험단 마스터 과정</CardDescription>
+              <CardDescription>7일 블로그 초보자 입문 과정</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -239,7 +240,9 @@ export default function DashboardPage() {
           <Card>
             <CardHeader className="pb-2">
               <CardTitle>코스 모듈</CardTitle>
-              <CardDescription>각 단계별 진행 상황과 피드백을 확인하세요.</CardDescription>
+              <CardDescription>
+                블로그 초보자를 위한 단계별 학습을 진행해보세요. 매일 새로운 스킬을 배우고 실습할 수 있습니다.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">

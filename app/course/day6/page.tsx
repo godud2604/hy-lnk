@@ -16,6 +16,8 @@ import {
   LinkIcon,
   Send,
   Upload,
+  TrendingUp,
+  BarChart2,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -40,6 +42,10 @@ export default function Day6Page() {
     photoPlans: "",
     additionalNotes: "",
     file: null as File | null,
+    weeklyPlan: "",
+    timeAllocation: "",
+    communicationPlan: "",
+    aiUsage: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -76,24 +82,24 @@ export default function Day6Page() {
 
   return (
     <div className="container py-8 md:py-12">
-      <CourseProgressHeader title="체험단 상위노출 + 고급 전략" currentDay={6} totalDays={6} />
+      <CourseProgressHeader title="Day 6: 블로그 지수 올리는 루틴" currentDay={6} totalDays={7} />
 
       <div className="grid md:grid-cols-3 gap-8 mt-8">
         <div className="md:col-span-1">
           <Card>
             <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
               <CardTitle className="text-xl">Day 6</CardTitle>
-              <CardDescription className="text-base font-medium">체험단 상위노출 + 고급 전략</CardDescription>
+              <CardDescription className="text-base font-medium">블로그 지수 올리는 루틴</CardDescription>
             </CardHeader>
             <CardContent className="pt-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 text-pink-600 mr-2" />
-                    <span className="text-sm">예상 학습 시간: 40분</span>
+                    <span className="text-sm">예상 학습 시간: 45분</span>
                   </div>
                   <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
-                    마지막 단계
+                    6/7 단계
                   </Badge>
                 </div>
 
@@ -104,54 +110,19 @@ export default function Day6Page() {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>완벽한 블로그 포스팅 체크리스트 마스터하기</span>
+                      <span>블로그 지수 개념 이해하기</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>구글 SEO 전략 이해하기</span>
+                      <span>주간 루틴 계획 세우기</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>수익화 전략 수립하기</span>
+                      <span>소통 전략 수립하기</span>
                     </li>
                   </ul>
                 </div>
-
-                <Separator />
-
-                <div className="space-y-3"></div>
-                  <h3 className="font-medium">다운로드 자료</h3>
-                  <div className="space-y-2">
-                    <Button variant="outline" size="sm" className="w-full justify-start text-sm">
-                      <FileText className="h-4 w-4 mr-2" />
-                      체험단 신청서 템플릿.docx
-                      <Download className="h-4 w-4 ml-auto" />
-                    </Button>
-                    <Button variant="outline" size="sm" className="w-full justify-start text-sm">
-                      <ImageIcon className="h-4 w-4 mr-2" />
-                      블로그 프로필 최적화 가이드.pdf
-                      <Download className="h-4 w-4 ml-auto" />
-                    </Button>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-3">
-                  <h3 className="font-medium">이전/다음 단계</h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="/course/day5">
-                        <ArrowLeft className="h-4 w-4 mr-2" />
-                        Day 5
-                      </Link>
-                    </Button>
-                    <Button variant="outline" size="sm" disabled className="opacity-50">
-                      Day 7
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Button>
-                  </div>
-                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -170,138 +141,183 @@ export default function Day6Page() {
             <TabsContent value="learn" className="mt-0">
               <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>포스팅 완성도를 높이는 고급 전략</CardTitle>
+                  <CardTitle>블로그 지수 관리와 루틴</CardTitle>
                   <CardDescription className="text-base">
-                    체험단 리뷰의 품질을 높이고 장기적인 수익화까지 연결하는 방법을 알아봅시다.
+                    효과적인 블로그 운영을 위한 루틴을 만들어봅시다.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6 space-y-8">
-                  {/* 포스팅 체크리스트 섹션 */}
+                  {/* 블로그 지수 이해하기 */}
                   <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">블로그 포스팅 필수 체크리스트</h3>
+                    <h3 className="text-xl font-medium mb-4">📊 블로그 지수란?</h3>
                     
                     <div className="space-y-4">
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-lg text-blue-700">1. 게시 전 필수 확인 사항</h4>
-                        <div className="mt-3 space-y-2">
-                          <ChecklistItem
-                            title="모바일 화면 미리보기"
-                            description="줄바꿈이 자연스러운지 확인"
-                            checked={true}
-                          />
-                          <ChecklistItem
-                            title="PC 화면 미리보기"
-                            description="사진 크기와 정렬 상태 체크"
-                            checked={true}
-                          />
-                          <ChecklistItem
-                            title="썸네일 확인"
-                            description="매력적이고 클릭을 유도하는 이미지 선택"
-                            checked={true}
-                          />
-                          <ChecklistItem
-                            title="카테고리 설정"
-                            description="적절한 카테고리 지정 여부"
-                            checked={true}
-                          />
-                          <ChecklistItem
-                            title="공정위 문구"
-                            description="체험단 글의 경우 상단에 필수 표기"
-                            checked={true}
-                          />
+                        <h4 className="font-medium text-blue-700">주요 지표</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li className="flex items-start">
+                            <TrendingUp className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">방문자 수</span>
+                              <p className="text-gray-600">일일/주간/월간 방문자 추이</p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <BarChart2 className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">조회수</span>
+                              <p className="text-gray-600">게시글별 조회 통계</p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">공감/댓글</span>
+                              <p className="text-gray-600">독자 반응과 소통 지표</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700">지수 상승 요인</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li>• 정기적인 포스팅</li>
+                          <li>• 꾸준한 이웃 소통</li>
+                          <li>• 질 좋은 콘텐츠</li>
+                          <li>• 검색 유입률</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 주간 루틴 가이드 */}
+                  <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">📅 추천 주간 루틴</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-green-700">요일별 포스팅</h4>
+                        <div className="mt-3 space-y-3">
+                          <div className="bg-green-50 p-3 rounded">
+                            <p className="font-medium mb-2">월요일</p>
+                            <ul className="text-sm space-y-1">
+                              <li>• 체험단 후기 작성</li>
+                              <li>• 신규 체험단 신청</li>
+                            </ul>
+                          </div>
+                          <div className="bg-blue-50 p-3 rounded">
+                            <p className="font-medium mb-2">화요일</p>
+                            <ul className="text-sm space-y-1">
+                              <li>• 일상 이야기</li>
+                              <li>• 이웃 블로그 방문</li>
+                            </ul>
+                          </div>
+                          <div className="bg-purple-50 p-3 rounded">
+                            <p className="font-medium mb-2">수요일</p>
+                            <ul className="text-sm space-y-1">
+                              <li>• 키워드 포스팅</li>
+                              <li>• 트렌드 분석</li>
+                            </ul>
+                          </div>
+                          <div className="bg-pink-50 p-3 rounded">
+                            <p className="font-medium mb-2">목요일</p>
+                            <ul className="text-sm space-y-1">
+                              <li>• 블로그 꿀팁</li>
+                              <li>• 방문 답방</li>
+                            </ul>
+                          </div>
+                          <div className="bg-yellow-50 p-3 rounded">
+                            <p className="font-medium mb-2">금요일</p>
+                            <ul className="text-sm space-y-1">
+                              <li>• 주말 계획</li>
+                              <li>• 이웃 소통</li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
 
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-lg text-green-700">2. SEO 최적화 포인트</h4>
+                        <h4 className="font-medium text-blue-700">시간대별 전략</h4>
                         <ul className="mt-3 space-y-2 text-sm">
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">제목 최적화</span>
-                              <p className="text-gray-600">
-                                - 25자 이내로 작성
-                                - 핵심 키워드 포함
-                                - 특수문자 최소화
-                                - 지역명 활용 (해당되는 경우)
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">본문 최적화</span>
-                              <p className="text-gray-600">
-                                - 최소 1200자 이상 작성
-                                - 키워드 자연스러운 배치
-                                - 동일 키워드 과다 반복 금지
-                                - 이미지 5장 이상 첨부
-                              </p>
-                            </div>
-                          </li>
+                          <li>• 오전 9-11시: 신규 포스팅</li>
+                          <li>• 점심 12-2시: 이웃 방문</li>
+                          <li>• 저녁 8-10시: 댓글 소통</li>
+                          <li>• 자정 11-1시: 체험단 신청</li>
                         </ul>
                       </div>
                     </div>
                   </div>
 
-                  {/* 구글 SEO 전략 섹션 */}
-                  <div className="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">구글 노출 극대화 전략</h3>
-                    <div className="space-y-4">
-                      <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-lg text-pink-700">구글 SEO의 장점</h4>
-                        <ul className="mt-3 space-y-2 text-sm">
-                          <li>• 네이버보다 긴 콘텐츠 수명</li>
-                          <li>• 글의 퀄리티가 좋으면 장기 노출 가능</li>
-                          <li>• 해외 독자 유입 가능</li>
-                          <li>• 광고 수익과 연계 용이</li>
-                        </ul>
-                      </div>
-
-                      <div className="bg-yellow-50 p-4 rounded-lg">
-                        <h4 className="font-medium mb-2">구글 검색등록 방법</h4>
-                        <ol className="list-decimal pl-5 space-y-2 text-sm">
-                          <li>Google Search Console 가입</li>
-                          <li>블로그 소유권 인증</li>
-                          <li>사이트맵 제출</li>
-                          <li>URL 검사 도구 활용</li>
-                        </ol>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 수익화 전략 섹션 */}
-                  <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">블로그 수익화 전략</h3>
+                  {/* 소통 전략 */}
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">💬 소통 전략</h3>
                     
                     <div className="space-y-4">
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-lg text-blue-700">1. 여행 블로그 수익화 팁</h4>
+                        <h4 className="font-medium text-yellow-700">이웃 소통 방법</h4>
                         <ul className="mt-3 space-y-2 text-sm">
-                          <li>• 비밀번호가 걸린 일정 파일 공유</li>
-                          <li>• 파일 내 제휴 링크 삽입</li>
-                          <li>• 스크랩/댓글 유도로 지수 상승</li>
-                          <li>• 자연스러운 관련 포스팅 유입 연결</li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">진정성 있는 댓글</span>
+                              <p className="text-gray-600">게시글을 읽고 구체적인 피드백 남기기</p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">정기적인 방문</span>
+                              <p className="text-gray-600">관심 있는 블로거 정기 방문</p>
+                            </div>
+                          </li>
+                          <li className="flex items-start">
+                            <CheckCircle className="h-4 w-4 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                            <div>
+                              <span className="font-medium">답방 필수</span>
+                              <p className="text-gray-600">방문한 이웃 꼭 답방하기</p>
+                            </div>
+                          </li>
                         </ul>
                       </div>
 
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-lg text-green-700">2. 제휴 마케팅 활용</h4>
+                        <h4 className="font-medium text-orange-700">효율적인 소통 팁</h4>
                         <ul className="mt-3 space-y-2 text-sm">
-                          <li>• 여행 플랫폼 파트너 프로그램 가입</li>
-                          <li>• 자연스러운 링크 삽입</li>
-                          <li>• 포스팅별 맞춤 제휴 상품 연결</li>
-                          <li>• 시즌별 프로모션 활용</li>
+                          <li>• 비슷한 주제의 블로거와 소통</li>
+                          <li>• 하루 최소 10개 블로그 방문</li>
+                          <li>• 주제별 이웃 그룹 만들기</li>
+                          <li>• 소통 시간대 정하기</li>
                         </ul>
                       </div>
+                    </div>
+                  </div>
 
-                      <div className="bg-softblue-50 p-4 rounded-lg">
-                        <h4 className="font-medium text-softblue-700 mb-2">수익화 성공 사례</h4>
-                        <p className="text-sm">
-                          "6개월 동안 여행 포스팅 200건으로 월평균 30만원의 
-                          안정적인 수익 창출. 체험단 활동과 제휴 마케팅의 
-                          시너지 효과로 달성"
-                        </p>
+                  {/* AI 활용 팁 */}
+                  <div className="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">💡 AI 활용 팁</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-pink-700">ChatGPT로 루틴 최적화</h4>
+                        <div className="mt-3 space-y-4">
+                          <div className="bg-pink-50 p-3 rounded">
+                            <p className="text-sm font-medium mb-2">AI 프롬프트:</p>
+                            <p className="text-sm italic text-gray-600">
+                              "블로그 지수 상승을 위한 주간 계획표 만들어줘.
+                              내 블로그 주제와 시간 여유를 고려해서."
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700">GPT로 아이디어 생성</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li>• 매일 쓸만한 글 주제 추천</li>
+                          <li>• 카테고리별 컨텐츠 계획</li>
+                          <li>• 시즌별 특별 포스팅 아이디어</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -310,94 +326,80 @@ export default function Day6Page() {
             </TabsContent>
 
             <TabsContent value="assignment" className="mt-0">
-              <Card className="border-none shadow-md"></Card>
+              <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>Day 6 과제 제출</CardTitle>
+                  <CardTitle>Day 6 과제</CardTitle>
                   <CardDescription className="text-base">
-                    배운 내용을 활용하여 나만의 블로그 운영 전략을 수립해보세요.
+                    나만의 블로그 운영 루틴을 만들어보세요.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6">
                   {!isSubmitted ? (
-                    <div className="space-y-6">
-                      <div className="bg-pink-50 p-4 rounded-lg">
-                        <h3 className="font-medium mb-2">과제 안내</h3>
-                        <p className="text-sm text-gray-600">
-                          지금까지 배운 내용을 토대로 장기적인 블로그 운영 계획을 세워보세요.
-                        </p>
+                    <form className="space-y-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="weekly-plan">주간 포스팅 계획</Label>
+                        <Textarea
+                          id="weekly-plan"
+                          placeholder="요일별로 어떤 주제의 글을 쓸지 계획을 세워주세요"
+                          value={formData.weeklyPlan}
+                          onChange={(e) => handleInputChange("weeklyPlan", e.target.value)}
+                          className="min-h-[200px]"
+                        />
                       </div>
 
-                      <div className="space-y-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="seo-strategy">SEO 전략 계획</Label>
-                          <Textarea
-                            id="seo-strategy"
-                            placeholder="네이버와 구글 SEO를 위한 구체적인 실행 계획을 작성해주세요."
-                            className="min-h-[150px]"
-                          />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="monetization-plan">수익화 계획</Label>
-                          <Textarea
-                            id="monetization-plan"
-                            placeholder="체험단 활동과 연계한 수익화 전략을 구체적으로 작성해주세요."
-                            className="min-h-[150px]"
-                          />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="content-strategy">콘텐츠 제작 전략</Label>
-                          <Textarea
-                            id="content-strategy"
-                            placeholder="포스팅 품질 관리와 효율적인 콘텐츠 제작 계획을 작성해주세요."
-                            className="min-h-[150px]"
-                          />
-                        </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="time-allocation">시간 배분 계획</Label>
+                        <Textarea
+                          id="time-allocation"
+                          placeholder="하루 중 언제 어떤 블로그 활동을 할지 계획해주세요"
+                          value={formData.timeAllocation}
+                          onChange={(e) => handleInputChange("timeAllocation", e.target.value)}
+                          className="min-h-[150px]"
+                        />
                       </div>
-                    </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="communication-plan">소통 전략</Label>
+                        <Textarea
+                          id="communication-plan"
+                          placeholder="이웃 소통을 어떻게 할지 계획을 세워주세요"
+                          value={formData.communicationPlan}
+                          onChange={(e) => handleInputChange("communicationPlan", e.target.value)}
+                          className="min-h-[150px]"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="ai-usage">AI 활용 계획</Label>
+                        <Textarea
+                          id="ai-usage"
+                          placeholder="블로그 운영에 AI를 어떻게 활용할 계획인지 설명해주세요"
+                          value={formData.aiUsage}
+                          onChange={(e) => handleInputChange("aiUsage", e.target.value)}
+                          className="min-h-[100px]"
+                        />
+                      </div>
+
+                      <Button
+                        onClick={handleSubmit}
+                        disabled={!formData.weeklyPlan || !formData.timeAllocation}
+                        className="w-full"
+                      >
+                        과제 제출하기
+                      </Button>
+                    </form>
                   ) : (
-                    <div className="py-8 text-center space-y-4">
-                      <div className="bg-green-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
+                    <div className="text-center py-8">
+                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
                         <CheckCircle className="h-8 w-8 text-green-600" />
                       </div>
-                      <h3 className="text-xl font-medium">과제가 성공적으로 제출되었습니다!</h3>
-                      <p className="text-gray-600 max-w-md mx-auto">
-                        24시간 이내에 전문 멘토의 피드백을 받아보실 수 있습니다. 피드백이 도착하면 알림을 보내드릴게요.
-                      </p>
-                      <div className="pt-4">
-                        <Button variant="outline" asChild>
-                          <Link href="/dashboard">대시보드로 돌아가기</Link>
-                        </Button>
-                      </div>
-                    </div>)}
+                      <h3 className="text-xl font-bold text-green-600 mb-2">과제가 성공적으로 제출되었습니다!</h3>
+                      <p className="text-gray-600 mb-6">24시간 이내에 피드백을 받으실 수 있습니다.</p>
+                      <Button variant="outline" onClick={() => setIsSubmitted(false)}>다시 제출하기</Button>
+                    </div>
+                  )}
                 </CardContent>
-                {!isSubmitted && (
-                  <CardFooter className="flex justify-between border-t pt-6">
-                    <Button variant="outline" onClick={() => setActiveTab("learn")}>
-                      <ArrowLeft className="mr-2 h-4 w-4" />
-                      학습 내용으로 돌아가기
-                    </Button>
-                    <Button
-                      onClick={handleSubmit}
-                      disabled={
-                        isSubmitting ||
-                        (assignmentType === "post" && !formData.postUrl) ||
-                        (assignmentType === "plan" && !formData.title)
-                      }
-                      className="bg-pink-600 hover:bg-pink-700"
-                    >
-                      {isSubmitting ? (
-                        <>제출 중...</>
-                      ) : (
-                        <>
-                          과제 제출하기
-                          <Send className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                  </CardFooter>
-                )}
+              </Card>
             </TabsContent>
           </Tabs>
         </div>

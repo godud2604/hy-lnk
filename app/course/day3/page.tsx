@@ -23,6 +23,9 @@ export default function Day3Page() {
     postUrl: "",
     keywordResearch: "",
     file: null as File | null,
+    research: "",
+    title: "",
+    placement: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -46,7 +49,6 @@ export default function Day3Page() {
   const handleSubmit = () => {
     setIsSubmitting(true)
 
-    // 실제 구현에서는 API 호출로 대체
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubmitted(true)
@@ -59,15 +61,14 @@ export default function Day3Page() {
 
   return (
     <div className="container py-8 md:py-12">
-      <CourseProgressHeader title="Day 3: 황금 키워드 찾기 + SEO 최적화" currentDay={3} totalDays={6} />
+      <CourseProgressHeader title="Day 3: 방문자 수 올리는 상위노출 전략" currentDay={3} totalDays={7} />
 
       <div className="grid md:grid-cols-3 gap-8 mt-8">
-        {/* 사이드바 */}
         <div className="md:col-span-1">
           <Card>
             <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
               <CardTitle className="text-xl">Day 3</CardTitle>
-              <CardDescription className="text-base font-medium">황금 키워드 찾기 + SEO 최적화</CardDescription>
+              <CardDescription className="text-base font-medium">방문자 수 올리는 상위노출 전략</CardDescription>
             </CardHeader>
             <CardContent className="pt-6">
               <div className="space-y-4">
@@ -77,7 +78,7 @@ export default function Day3Page() {
                     <span className="text-sm">예상 학습 시간: 50분</span>
                   </div>
                   <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
-                    3/6 단계
+                    3/7 단계
                   </Badge>
                 </div>
 
@@ -88,62 +89,23 @@ export default function Day3Page() {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>효과적인 키워드 리서치 방법 익히기</span>
+                      <span>핵심 키워드 찾는 법 배우기</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>검색 상위노출을 위한 SEO 전략 수립</span>
+                      <span>상위노출 포스팅 방법 익히기</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-4 w-4 text-pink-600 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>블로그 최적화 요소 이해하기</span>
+                      <span>키워드 도구 활용법 배우기</span>
                     </li>
                   </ul>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-3">
-                  <h3 className="font-medium">다운로드 자료</h3>
-                  <div className="space-y-2">
-                    <Button variant="outline" size="sm" className="w-full justify-start text-sm">
-                      <FileText className="h-4 w-4 mr-2" />
-                      인기 키워드 리스트.xlsx
-                      <Download className="h-4 w-4 ml-auto" />
-                    </Button>
-                    <Button variant="outline" size="sm" className="w-full justify-start text-sm">
-                      <FileText className="h-4 w-4 mr-2" />
-                      키워드 분석 가이드.pdf
-                      <Download className="h-4 w-4 ml-auto" />
-                    </Button>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-3">
-                  <h3 className="font-medium">이전/다음 단계</h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="/course/day2">
-                        <ArrowLeft className="h-4 w-4 mr-2" />
-                        Day 2
-                      </Link>
-                    </Button>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="/course/day4">
-                        Day 4
-                        <ArrowRight className="h-4 w-4 ml-2" />
-                      </Link>
-                    </Button>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* 메인 콘텐츠 */}
         <div className="md:col-span-2">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid grid-cols-2 mb-6">
@@ -161,183 +123,121 @@ export default function Day3Page() {
             <TabsContent value="learn" className="mt-0">
               <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>효과적인 키워드 전략</CardTitle>
+                  <CardTitle>키워드 중심의 글쓰기 전략</CardTitle>
                   <CardDescription className="text-base">
-                    체험단 선정률을 높이는 키워드 전략과 SEO 최적화 방법을 알아봅시다.
+                    검색 유입을 늘리는 키워드 활용법을 알아봅시다.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6 space-y-8">
-                  {/* 황금 키워드 찾기 섹션 */}
                   <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">황금 키워드의 조건</h3>
-                    <div className="bg-yellow-50 p-4 rounded-lg mb-6">
-                      <ul className="space-y-1 text-sm text-gray-600">
-                        <li>• 검색량은 많지만 경쟁이 적은 키워드</li>
-                        <li>• 블로그 주제와의 높은 연관성</li>
-                        <li>• 트렌드 성장세에 있는 키워드</li>
-                      </ul>
-                    </div>
-
+                    <h3 className="text-xl font-medium mb-4">🔑 핵심 개념 이해하기</h3>
+                    
                     <div className="space-y-4">
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-blue-700 mb-3">황금 키워드 찾기 전략</h4>
-                        <ul className="space-y-3 text-sm">
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">롱테일 키워드 활용</span>
-                              <p className="text-gray-600">
-                                2-3개 단어로 구성된 구체적인 키워드
-                                <br />
-                                예: '화장품' → '민감성 피부 화장품 추천'
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">지역명 활용</span>
-                              <p className="text-gray-600">
-                                지역 특화 키워드로 경쟁 낮추기
-                                <br />
-                                예: '맛집' → '강남역 파스타 맛집'
-                              </p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-blue-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">시즌 키워드</span>
-                              <p className="text-gray-600">
-                                계절/이벤트 연계 키워드
-                                <br />
-                                예: '여름 자외선 차단제 추천'
-                              </p>
-                            </div>
-                          </li>
-                        </ul>
+                        <h4 className="font-medium text-blue-700">키워드란?</h4>
+                        <div className="mt-3 space-y-2">
+                          <p className="text-sm text-gray-600">
+                            키워드는 사람들이 검색할 때 사용하는 단어나 문구를 의미합니다.
+                            블로그 글이 검색 결과 상위에 노출되려면 적절한 키워드 선정이 중요합니다.
+                          </p>
+                        </div>
                       </div>
 
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-purple-700 mb-3">키워드 분석 도구 활용</h4>
-                        <ul className="space-y-2 text-sm">
-                          <li>• 네이버 검색어 트렌드</li>
-                          <li>• 구글 트렌드</li>
-                          <li>• 네이버 연관 검색어</li>
-                          <li>• 블로그 내 인기 검색어 분석</li>
-                        </ul>
+                        <h4 className="font-medium text-purple-700">상위노출이란?</h4>
+                        <div className="mt-3 space-y-2">
+                          <p className="text-sm text-gray-600">
+                            검색 결과 첫 페이지에 글이 노출되는 것을 의미합니다.
+                            주로 상위 3개의 포스팅이 클릭률이 가장 높습니다.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* SEO 최적화 섹션 */}
                   <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">검색 최적화 (SEO) 전략</h3>
+                    <h3 className="text-xl font-medium mb-4">🔍 키워드 찾는 방법</h3>
                     
                     <div className="space-y-4">
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-green-700">1. 제목 최적화</h4>
-                        <div className="mt-3 space-y-2">
-                          <div className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">제목 작성 원칙</span>
-                              <ul className="mt-1 space-y-1 text-sm text-gray-600">
-                                <li>• 25자 이내로 작성</li>
-                                <li>• 핵심 키워드 포함</li>
-                                <li>• 특수문자 최소화</li>
-                                <li>• 지역명/브랜드명 활용</li>
-                              </ul>
-                            </div>
+                        <h4 className="font-medium text-green-700">키워드 분석 도구</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li>• 블랙키위 - 실시간 인기 키워드 확인</li>
+                          <li>• 네이버 트렌드 - 키워드 검색량 추이</li>
+                          <li>• 키워드마스터 - 연관 키워드 추천</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-blue-700">지역 키워드 활용</h4>
+                        <div className="mt-3">
+                          <div className="bg-blue-50 p-3 rounded text-sm">
+                            <p className="font-medium mb-2">키워드 조합 예시:</p>
+                            <ul className="space-y-1 text-gray-600">
+                              <li>• 홍대 + 맛집 + 추천</li>
+                              <li>• 강남역 + 파스타 + 맛집</li>
+                              <li>• 부산 + 카페 + 오션뷰</li>
+                            </ul>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4">✍️ 제목 작성 예시</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-red-700 mb-3">❌ 피해야 할 제목</h4>
+                        <div className="bg-red-50 p-3 rounded">
+                          <p className="text-sm mb-2">오늘도 다녀온 후기</p>
+                          <ul className="text-sm text-gray-600 space-y-1">
+                            <li>• 키워드가 없음</li>
+                            <li>• 구체적이지 않음</li>
+                            <li>• 검색 노출 어려움</li>
+                          </ul>
                         </div>
                       </div>
 
                       <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-green-700">2. 본문 최적화</h4>
-                        <div className="mt-3 space-y-2">
-                          <div className="flex items-start">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-medium">본문 작성 원칙</span>
-                              <ul className="mt-1 space-y-1 text-sm text-gray-600">
-                                <li>• 1200자 이상 작성</li>
-                                <li>• 키워드 자연스럽게 배치</li>
-                                <li>• 단락 구분 명확히</li>
-                                <li>• 이미지 5장 이상 첨부</li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-white rounded-lg p-4 shadow-sm">
-                        <h4 className="font-medium text-green-700">3. 검색 노출 최적화</h4>
-                        <div className="mt-3 space-y-2">
-                          <ul className="space-y-2 text-sm">
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                              <span>상위노출이 잘 되는 시간대에 포스팅 (오전 10-11시, 저녁 8-10시)</span>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                              <span>적절한 태그 활용 (10-15개)</span>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                              <span>이미지 파일명에 키워드 포함</span>
-                            </li>
+                        <h4 className="font-medium text-green-700 mb-3">✅ 추천하는 제목</h4>
+                        <div className="bg-green-50 p-3 rounded">
+                          <p className="text-sm mb-2">[홍대 맛집 후기] 가성비 최고였던 파스타집!</p>
+                          <ul className="text-sm text-gray-600 space-y-1">
+                            <li>• 지역명 포함</li>
+                            <li>• 핵심 키워드 사용</li>
+                            <li>• 구체적인 정보 제공</li>
                           </ul>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* 실전 예시 섹션 */}
                   <div className="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-6">
-                    <h3 className="text-xl font-medium mb-4">실전 키워드 분석 예시</h3>
+                    <h3 className="text-xl font-medium mb-4">💡 AI 활용 팁</h3>
                     
-                    <div className="bg-white rounded-lg p-4 shadow-sm">
-                      <div className="space-y-4">
-                        <div className="border-b pb-2">
-                          <div className="flex justify-between items-center text-sm font-medium">
-                            <span>키워드</span>
-                            <div className="flex gap-4">
-                              <span>월 검색량</span>
-                              <span>발행량</span>
-                              <span>평가</span>
-                            </div>
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-pink-700">ChatGPT 활용</h4>
+                        <div className="mt-3 space-y-4">
+                          <div className="bg-pink-50 p-3 rounded">
+                            <p className="text-sm font-medium mb-2">ChatGPT 프롬프트:</p>
+                            <p className="text-sm italic text-gray-600">
+                              "[제품/서비스] 후기 글 제목을 5개 제안해줘.
+                              상위노출에 유리한 키워드 포함해서."
+                            </p>
                           </div>
                         </div>
+                      </div>
 
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center text-sm">
-                            <span>"강남역 브런치 맛집"</span>
-                            <div className="flex gap-4">
-                              <span>15,000</span>
-                              <span>250</span>
-                              <span className="text-green-600">좋음</span>
-                            </div>
-                          </div>
-
-                          <div className="flex justify-between items-center text-sm">
-                            <span>"민감성 피부 선크림"</span>
-                            <div className="flex gap-4">
-                              <span>8,000</span>
-                              <span>120</span>
-                              <span className="text-green-600">매우 좋음</span>
-                            </div>
-                          </div>
-
-                          <div className="flex justify-between items-center text-sm">
-                            <span>"브런치 카페"</span>
-                            <div className="flex gap-4">
-                              <span>25,000</span>
-                              <span>1,500</span>
-                              <span className="text-red-600">경쟁 높음</span>
-                            </div>
-                          </div>
-                        </div>
+                      <div className="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 className="font-medium text-purple-700">Midjourney + GPT 활용</h4>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          <li>• 썸네일 이미지 제작</li>
+                          <li>• 클릭 유도 문구 생성</li>
+                          <li>• 감성적인 이미지 연출</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -348,103 +248,82 @@ export default function Day3Page() {
             <TabsContent value="assignment" className="mt-0">
               <Card className="border-none shadow-md">
                 <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
-                  <CardTitle>Day 3 과제: 키워드 선정 및 활용</CardTitle>
+                  <CardTitle>Day 3 과제</CardTitle>
                   <CardDescription className="text-base">
-                    배운 내용을 바탕으로 키워드를 선정하고 포스팅에 활용해보세요.
+                    키워드를 활용한 포스팅을 작성하고 결과를 공유해주세요.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  {isSubmitted ? (
-                    <div className="flex flex-col items-center justify-center py-8 text-center">
-                      <div className="rounded-full bg-green-100 p-3 mb-4">
-                        <CheckCircle className="h-8 w-8 text-green-600" />
-                      </div>
-                      <h3 className="text-xl font-medium mb-2">과제가 성공적으로 제출되었습니다</h3>
-                      <p className="text-gray-500 mb-6 max-w-md">
-                        24시간 이내에 피드백을 받아보실 수 있습니다. 다음 학습을 계속 진행해주세요.
-                      </p>
-                      <Button asChild>
-                        <Link href="/course/day4">
-                          다음 학습으로 이동
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="space-y-6">
+                  {!isSubmitted ? (
+                    <form className="space-y-6">
                       <div className="space-y-2">
-                        <Label htmlFor="keyword">선정한 키워드</Label>
+                        <Label htmlFor="target-keyword">선정한 메인 키워드</Label>
                         <Input
-                          id="keyword"
-                          placeholder="예: 가을 니트 코디 추천"
+                          id="target-keyword"
+                          placeholder="예: 강남역 브런치 맛집"
                           value={formData.keyword}
                           onChange={(e) => handleInputChange("keyword", e.target.value)}
                         />
-                        <p className="text-xs text-gray-500">배운 내용을 바탕으로 선정한 키워드를 입력해주세요.</p>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="keywordResearch">키워드 선정 이유 및 분석</Label>
+                        <Label htmlFor="keyword-research">키워드 선정 이유</Label>
                         <Textarea
-                          id="keywordResearch"
-                          placeholder="이 키워드를 선정한 이유와 검색량, 경쟁도 등을 분석해주세요."
+                          id="keyword-research"
+                          placeholder="선정한 키워드의 검색량, 경쟁도, 선정 이유를 설명해주세요"
+                          value={formData.research}
+                          onChange={(e) => handleInputChange("research", e.target.value)}
                           className="min-h-[100px]"
-                          value={formData.keywordResearch}
-                          onChange={(e) => handleInputChange("keywordResearch", e.target.value)}
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="postUrl">키워드를 활용한 포스팅 URL</Label>
+                        <Label htmlFor="post-title">작성한 포스팅 제목</Label>
                         <Input
-                          id="postUrl"
-                          placeholder="https://blog.naver.com/yourblog/123456789"
+                          id="post-title"
+                          placeholder="실제 작성한 포스팅의 제목을 입력해주세요"
+                          value={formData.title}
+                          onChange={(e) => handleInputChange("title", e.target.value)}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="post-url">포스팅 URL</Label>
+                        <Input
+                          id="post-url"
+                          placeholder="작성한 포스팅의 URL을 입력해주세요"
                           value={formData.postUrl}
                           onChange={(e) => handleInputChange("postUrl", e.target.value)}
                         />
-                        <p className="text-xs text-gray-500">
-                          선정한 키워드를 활용하여 작성한 포스팅의 URL을 입력해주세요.
-                        </p>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="file">키워드 분석 자료 첨부 (선택사항)</Label>
-                        <div className="flex items-center justify-center border-2 border-dashed border-gray-200 rounded-lg p-6">
-                          <label
-                            htmlFor="file"
-                            className="flex flex-col items-center justify-center w-full cursor-pointer"
-                          >
-                            <Upload className="h-8 w-8 text-gray-400 mb-2" />
-                            <span className="text-sm font-medium mb-1">파일을 끌어다 놓거나 클릭하세요</span>
-                            <span className="text-xs text-gray-500">
-                              {formData.file ? formData.file.name : "PNG, JPG, PDF 파일 (최대 10MB)"}
-                            </span>
-                            <input
-                              id="file"
-                              type="file"
-                              className="hidden"
-                              accept=".png,.jpg,.jpeg,.pdf"
-                              onChange={handleFileChange}
-                            />
-                          </label>
-                        </div>
+                        <Label htmlFor="keyword-placement">본문 내 키워드 배치 전략</Label>
+                        <Textarea
+                          id="keyword-placement"
+                          placeholder="본문에서 키워드를 어떻게 자연스럽게 배치했는지 설명해주세요"
+                          value={formData.placement}
+                          onChange={(e) => handleInputChange("placement", e.target.value)}
+                          className="min-h-[100px]"
+                        />
                       </div>
 
                       <Button
-                        className="w-full"
                         onClick={handleSubmit}
-                        disabled={!formData.keyword || !formData.keywordResearch || !formData.postUrl || isSubmitting}
+                        disabled={!formData.keyword || !formData.title || !formData.postUrl}
+                        className="w-full"
                       >
-                        {isSubmitting ? (
-                          <>
-                            <span className="animate-spin mr-2">⏳</span> 제출 중...
-                          </>
-                        ) : (
-                          <>
-                            <Send className="mr-2 h-4 w-4" /> 과제 제출하기
-                          </>
-                        )}
+                        과제 제출하기
                       </Button>
+                    </form>
+                  ) : (
+                    <div className="text-center py-8">
+                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
+                        <CheckCircle className="h-8 w-8 text-green-600" />
+                      </div>
+                      <h3 className="text-xl font-bold text-green-600 mb-2">과제가 성공적으로 제출되었습니다!</h3>
+                      <p className="text-gray-600 mb-6">24시간 이내에 피드백을 받으실 수 있습니다.</p>
+                      <Button variant="outline" onClick={() => setIsSubmitted(false)}>다시 제출하기</Button>
                     </div>
                   )}
                 </CardContent>
