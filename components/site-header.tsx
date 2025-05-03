@@ -90,7 +90,7 @@ export default function SiteHeader() {
                   onClick={handleProfileClick}
                   className="h-9 px-4 rounded-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white shadow-sm"
                 >
-                  마이프로필
+                  대시보드
                 </Button>
                 <Button 
                   variant="outline" 
@@ -135,7 +135,7 @@ export default function SiteHeader() {
               {user ? (
                 <>
                   <DropdownMenuItem asChild className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
-                    <Link href="/dashboard">마이프로필</Link>
+                    <Link href="/dashboard">대시보드</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onSelect={handleSignOut} className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
                     로그아웃
