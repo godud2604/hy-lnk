@@ -10,6 +10,7 @@ import { auth, db } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { LoginButton } from "./loginButton";
+import { Badge } from "@/components/ui/badge";
 
 export default function SiteHeader() {
   const { user } = useAuth();
@@ -59,31 +60,23 @@ export default function SiteHeader() {
             >
               6일 완성 커리큘럼
             </Link>
-            <Link
+            <div className="flex items-center gap-4 relative">
+              <Link
+                href="/"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                Make 자동화
+              </Link>
+              <Badge variant="secondary" className="absolute -top-2.5 -right-8 text-[10px] py-0 px-1.5 h-4 bg-yellow-100/70 text-yellow-800 hover:bg-yellow-100/70">
+                출시예정
+              </Badge>
+            </div>
+            {/* <Link
               href="/tips"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               체험단 꿀팁
-            </Link>
-            {/* <Link
-              href="/schedule"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              일정 관리
             </Link> */}
-            {/* <Link
-              href="/tools"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              자동화 툴
-            </Link>
-            <Link
-              href="/monetization"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              수익 창출
-            </Link> */}
-          
           </nav>
         </div>
         <div className="flex items-center gap-4">
@@ -115,16 +108,15 @@ export default function SiteHeader() {
                 <Link href="/curriculum">6일 완성 커리큘럼</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/tips">체험단 꿀팁</Link>
+                <div className="flex items-center gap-2 w-full relative">
+                  <Link href="/">Make 자동화</Link>
+                  <Badge variant="secondary" className="text-[10px] py-0 px-1.5 h-4 bg-yellow-100/70 text-yellow-800 hover:bg-yellow-100/70">
+                    출시예정
+                  </Badge>
+                </div>
               </DropdownMenuItem>
               {/* <DropdownMenuItem asChild>
-                <Link href="/schedule">일정 관리</Link>
-              </DropdownMenuItem> */}
-              {/* <DropdownMenuItem asChild>
-                <Link href="/tools">자동화 툴</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/monetization">수익 창출</Link>
+                <Link href="/">체험단 꿀팁</Link>
               </DropdownMenuItem> */}
               {user ? (
                 <>
