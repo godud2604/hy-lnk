@@ -62,8 +62,8 @@ export function LoginButton({ className, size = "default" }: LoginButtonProps) {
     if (isRunningInWebView()) {
       setShowWebViewWarning(true);
       alert(
-        "웹뷰(인앱 브라우저)에서는 Google 로그인이 제한됩니다.\n" +
-        "Safari(iOS) 또는 Chrome(Android) 브라우저에서 열어주세요."
+        "네이버, 카카오톡, 인스타그램 등 앱 내 브라우저에서는 로그인이 안돼요!\n" +
+        "핸드폰에 기본으로 설치된 인터넷(Safari/Chrome)으로 접속해 주세요."
       );
       return;
     }
@@ -128,16 +128,16 @@ export function LoginButton({ className, size = "default" }: LoginButtonProps) {
       </Button>
       
       {showWebViewWarning && (
-        <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded text-sm text-amber-800">
-          <p className="font-medium mb-2">안내: 웹뷰에서는 Google 로그인이 제한됩니다</p>
-          <p className="mb-2">모바일 앱 내 브라우저(인스타그램, 페이스북, 카카오톡 등)에서는 Google 로그인이 불가능합니다.</p>
+        <div className="mt-3 p-4 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+          <p className="font-medium mb-2 text-base">😊 쉽게 로그인하는 방법</p>
+          <p className="mb-3">카카오톡, 인스타그램 등의 앱에서 열면 로그인이 어려울 수 있어요. 아래 버튼을 눌러 기본 인터넷 앱으로 이동해 주세요.</p>
           <Button 
             size="sm" 
             variant="outline" 
             onClick={openInSystemBrowser}
-            className="w-full bg-white hover:bg-amber-100 border-amber-300 text-amber-800"
+            className="w-full bg-white hover:bg-amber-100 border-amber-300 text-amber-800 font-medium"
           >
-            시스템 브라우저로 열기
+            간편하게 인터넷 앱으로 열기
           </Button>
         </div>
       )}
