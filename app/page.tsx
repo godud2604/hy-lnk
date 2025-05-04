@@ -16,8 +16,8 @@ export default function Home() {
         <div className="container relative px-4 sm:px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-12">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">교육 과정 소개</h2>
-              <p className="text-muted-foreground/80 mt-2 text-sm sm:text-base">에듀테크단의 혁신적인 교육 프로그램으로 디지털 역량을 강화하세요</p>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">쉽고 재미있는 교육 과정</h2>
+              <p className="text-muted-foreground/80 mt-2 text-sm sm:text-base">누구나 쉽게 따라할 수 있는 체험단 활동 노하우를 배워보세요</p>
             </div>
             <Link href="/curriculum">
               <Button variant="link" className="hidden md:flex p-0 mt-4 md:mt-0 text-primary hover:text-primary/90 group">
@@ -38,20 +38,20 @@ export default function Home() {
                 </CardTitle>
                 <div>
                   <CardDescription className="text-sm sm:text-base text-gray-600">
-                    체계적인 커리큘럼으로 체험단의 A to Z를 배우는 실전 교육
+                    누구나 쉽게 따라할 수 있는 체험단 활동 실전 가이드
                   </CardDescription>
                   <ul className="mt-4 space-y-2.5">
                     <li className="flex items-center gap-2.5 text-sm text-gray-600">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/60 ring-4 ring-primary/10"></span>
-                      블로그 설정과 최적화
+                      쉽게 시작하는 블로그 만들기
                     </li>
                     <li className="flex items-center gap-2.5 text-sm text-gray-600">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/60 ring-4 ring-primary/10"></span>
-                      매력적인 리뷰 작성법
+                      눈에 띄는 리뷰 글쓰기 비법
                     </li>
                     <li className="flex items-center gap-2.5 text-sm text-gray-600">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/60 ring-4 ring-primary/10"></span>
-                      SEO와 노출 전략
+                      더 많은 사람들에게 보이는 방법
                     </li>
                     <li className="flex items-center gap-2.5 text-sm text-gray-600">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/60 ring-4 ring-primary/10"></span>
