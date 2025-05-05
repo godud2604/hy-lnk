@@ -20,7 +20,7 @@ export default function SiteHeader() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      // 로그아웃 후 추가 처리(예: 페이지 리다이렉션 등)를 여기에 구현할 수 있습니다.
+      router.push('/'); // 로그아웃 후 메인 페이지로 이동
     } catch (error) {
       console.error("로그아웃 실패:", error);
     }
