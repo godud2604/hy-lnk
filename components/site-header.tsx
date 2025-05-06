@@ -34,7 +34,7 @@ export default function SiteHeader() {
       const userRef = doc(db, "users", user.uid);
       const userSnap = await getDoc(userRef);
 
-      if (userSnap.exists() && userSnap.data().hasPaid) {
+      if (userSnap.exists()) {
         router.push('/dashboard');
       } else {
         alert('결제 완료 후 이용하실 수 있어요!');
@@ -90,7 +90,7 @@ export default function SiteHeader() {
                   onClick={handleProfileClick}
                   className="h-9 px-4 rounded-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white shadow-sm"
                 >
-                  대시보드
+                  마이페이지
                 </Button>
                 <Button 
                   variant="outline" 
@@ -135,7 +135,7 @@ export default function SiteHeader() {
               {user ? (
                 <>
                   <DropdownMenuItem asChild className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
-                    <Link href="/dashboard">대시보드</Link>
+                    <Link href="/dashboard">마이페이지</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onSelect={handleSignOut} className="h-9 text-sm rounded-lg text-gray-600 focus:text-primary focus:bg-lavender-50">
                     로그아웃
