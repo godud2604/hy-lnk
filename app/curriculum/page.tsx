@@ -39,7 +39,7 @@ export default function Curriculum() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 min-[400px]:flex-row">
-                <Link href="/course/day1">
+                <Link href="/dashboard">
                   <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white shadow-lg shadow-primary/25">
                     6일 코스 체험하기
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -264,7 +264,7 @@ export default function Curriculum() {
               블로그 초보도 걱정 없이 도전할 수 있습니다. <br/> 전문가의 1:1 피드백으로 6일 동안 체계적으로 성장하세요.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Link href="/course/day1">
+              <Link href="/dashboard">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90">
                   6일 코스 체험하기 
                   <ArrowRight className="ml-2 h-4 w-4" />
