@@ -284,9 +284,90 @@ export default function MyPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-                {courseModules.map((module) => (
-                  <ProgressCard key={module.day} module={module} />
+              <div className="relative flex flex-col space-y-3 mt-3 px-2 before:absolute before:left-5 before:top-0 before:bottom-0 before:w-0.5 before:bg-gray-200">
+                {courseModules.map((module, index) => (
+                  <div key={module.day} className={cn(
+                    "relative flex items-start pl-12 transition-opacity",
+                    module.status === "locked" && "opacity-70"
+                  )}>
+                    {/* 타임라인 점 */}
+                    <div className={cn(
+                      "absolute left-4 -translate-x-1/2 w-5 h-5 rounded-full border-2 z-10 flex items-center justify-center",
+                      module.status === "completed" ? "bg-green-100 border-green-500" : 
+                      module.status === "in-progress" ? "bg-pink-100 border-pink-500" : 
+                      "bg-gray-100 border-gray-300"
+                    )}>
+                      {module.status === "completed" ? (
+                        <CheckCircle className="h-3 w-3 text-green-600" />
+                      ) : module.status === "in-progress" ? (
+                        <Clock className="h-3 w-3 text-pink-600" />
+                      ) : (
+                        <span className="h-2.5 w-2.5 rounded-full bg-gray-300" />
+                      )}
+                    </div>
+                    
+                    {/* 카드 콘텐츠 */}
+                    <Card className={cn(
+                      "flex-1 transition-all shadow-sm hover:shadow-md",
+                      module.status === "completed" ? "border-l-2 border-l-green-500" : 
+                      module.status === "in-progress" ? "border-l-2 border-l-pink-500" : 
+                      "border-l-2 border-l-gray-200"
+                    )}>
+                      <div className="p-3 grid grid-cols-[1fr,auto] gap-3 items-center">
+                        {/* 왼쪽 영역: 텍스트 정보 */}
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <Badge className="h-5 px-2" variant={
+                              module.status === "completed" ? "default" :
+                              module.status === "in-progress" ? "secondary" :
+                              "outline"
+                            }>
+                              <span className="text-xs font-medium">Day {module.day}</span>
+                            </Badge>
+                            <h4 className="font-medium text-sm">{module.title}</h4>
+                          </div>
+                          <div className="mt-2 flex items-center gap-2">
+                            <Progress value={
+                              module.status === "completed" ? 100 :
+                              module.status === "in-progress" ? 50 :
+                              0
+                            } className="h-2 w-24" />
+                            <span className={cn(
+                              "text-xs font-medium",
+                              module.status === "completed" ? "text-green-600" :
+                              module.status === "in-progress" ? "text-pink-600" :
+                              "text-muted-foreground"
+                            )}>
+                              {module.status === "completed" ? "완료" :
+                               module.status === "in-progress" ? "진행중" :
+                               module.day === 1 && !courseProgress.hasPaidCourse ? "무료" :
+                               "잠김"}
+                            </span>
+                          </div>
+                        </div>
+                        
+                        {/* 오른쪽 영역: 버튼 */}
+                        <div>
+                          <Button 
+                            variant={module.status === "locked" && !(module.day === 1 && !courseProgress.hasPaidCourse) ? "outline" : "default"}
+                            disabled={module.status === "locked" && !(module.day === 1 && !courseProgress.hasPaidCourse)}
+                            asChild
+                            size="sm"
+                            className={cn(
+                              "text-xs px-3 font-medium min-w-20",
+                              module.status === "completed" ? "bg-green-500 hover:bg-green-600" :
+                              module.status === "in-progress" ? "bg-pink-500 hover:bg-pink-600" : ""
+                            )}
+                          >
+                            <Link href={`/course/day${module.day}`}>
+                              {module.day === 1 && !courseProgress.hasPaidCourse ? "체험하기" : "시작하기"}
+                              <ArrowRight className="w-3 h-3 ml-1" />
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
                 ))}
               </div>
               
