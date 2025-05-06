@@ -61,7 +61,7 @@ export default function Home() {
                 </div>
               </CardHeader>
               <CardFooter className="pt-0 pb-6">
-                <Link href="/course/day1" className="w-full">
+                <Link href="/curriculum" className="w-full">
                   <Button 
                     variant="outline" 
                     className="w-full border-lavender-200 rounded-lg h-11"
