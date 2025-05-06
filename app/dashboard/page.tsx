@@ -326,23 +326,49 @@ export default function MyPage() {
                             </Badge>
                             <h4 className="font-medium text-sm">{module.title}</h4>
                           </div>
-                          <div className="mt-2 flex items-center gap-2">
-                            <Progress value={
-                              module.status === "completed" ? 100 :
-                              module.status === "in-progress" ? 50 :
-                              0
-                            } className="h-2 w-24" />
-                            <span className={cn(
-                              "text-xs font-medium",
-                              module.status === "completed" ? "text-green-600" :
-                              module.status === "in-progress" ? "text-pink-600" :
-                              "text-muted-foreground"
-                            )}>
-                              {module.status === "completed" ? "완료" :
-                               module.status === "in-progress" ? "진행중" :
-                               module.day === 1 && !courseProgress.hasPaidCourse ? "무료" :
-                               "잠김"}
-                            </span>
+                          
+                          {/* 진행 상태 아이콘으로 표시 */}
+                          <div className="mt-2 flex items-center">
+                            {module.status === "completed" ? (
+                              <div className="flex items-center">
+                                <div className="flex items-center bg-green-100 text-green-700 rounded-full px-2 py-0.5">
+                                  <CheckCircle className="w-3 h-3 mr-1" />
+                                  <span className="text-xs font-medium">과제 제출 완료</span>
+                                </div>
+                                {module.feedback && (
+                                  <div className="ml-2 flex items-center bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">
+                                    <MessageCircle className="w-3 h-3 mr-1" />
+                                    <span className="text-xs font-medium">피드백 완료</span>
+                                  </div>
+                                )}
+                              </div>
+                            ) : module.status === "in-progress" ? (
+                              <div className="flex items-center">
+                                {courseProgress.pendingFeedback ? (
+                                  <div className="flex items-center bg-yellow-100 text-yellow-700 rounded-full px-2 py-0.5">
+                                    <Clock className="w-3 h-3 mr-1" />
+                                    <span className="text-xs font-medium">피드백 대기중</span>
+                                  </div>
+                                ) : (
+                                  <div className="flex items-center bg-pink-100 text-pink-700 rounded-full px-2 py-0.5">
+                                    <FileText className="w-3 h-3 mr-1" />
+                                    <span className="text-xs font-medium">학습 진행중</span>
+                                  </div>
+                                )}
+                              </div>
+                            ) : module.day === 1 && !courseProgress.hasPaidCourse ? (
+                              <div className="flex items-center">
+                                <div className="flex items-center bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">
+                                  <span className="text-xs font-medium">무료체험 가능</span>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="flex items-center">
+                                <div className="flex items-center bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
+                                  <span className="text-xs font-medium">이전 단계 완료 필요</span>
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
                         
