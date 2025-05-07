@@ -2,11 +2,11 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, CheckCircle, Clock, Download, FileText, Send, Upload } from "lucide-react"
+import { ArrowLeft, ArrowRight, CheckCircle, ChevronRight, Clock, Download, FileText, Send, Upload } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
@@ -15,8 +15,10 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { toast } from "@/hooks/use-toast"
 import CourseProgressHeader from "@/components/course-progress-header"
+import { useRouter } from "next/navigation"
 
 export default function Day3Page() {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState("learn")
   const [formData, setFormData] = useState({
     keyword: "",
@@ -29,6 +31,19 @@ export default function Day3Page() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [hasPaid, setHasPaid] = useState(false)
+
+  // Simulate getting user payment status
+  useEffect(() => {
+    // In a real app, this would fetch from your backend or auth context
+    // For now, we'll just simulate a free user
+    setHasPaid(false)
+    
+    // Show payment required message
+    if (!hasPaid) {
+      showPaymentRequiredAlert()
+    }
+  }, [])
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
@@ -46,6 +61,21 @@ export default function Day3Page() {
     }
   }
 
+  const showPaymentRequiredAlert = () => {
+    toast({
+      title: "결제가 필요합니다",
+      description: "더 학습하시려면 결제가 필요합니다.",
+      variant: "destructive",
+    })
+    
+    // Show payment prompt
+    if (window.confirm("더 학습하시려면 결제가 필요합니다. 결제 페이지로 이동하시겠습니까?")) {
+      router.push('/curriculum') // Redirect to payment page
+    } else {
+      router.push('/course/day1') // If they cancel, go back to day1
+    }
+  }
+
   const handleSubmit = () => {
     setIsSubmitting(true)
 
@@ -57,6 +87,11 @@ export default function Day3Page() {
         description: "24시간 이내에 피드백을 받아보실 수 있습니다.",
       })
     }, 1500)
+  }
+
+  // Redirect unpaid users
+  if (!hasPaid) {
+    return null; // Return null because the useEffect will handle the redirect
   }
 
   return (

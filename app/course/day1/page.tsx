@@ -2,9 +2,9 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, CheckCircle, ChevronRight, Clock, Download, FileText, Send, Upload } from "lucide-react"
+import { ArrowLeft, ArrowRight, CheckCircle, ChevronRight, Clock, Download, FileText, Send, Upload, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -15,8 +15,11 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { toast } from "@/hooks/use-toast"
 import CourseProgressHeader from "@/components/course-progress-header"
+import { useRouter } from "next/navigation"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export default function Day1Page() {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState("learn")
   const [formData, setFormData] = useState({
     blogUrl: "",
@@ -28,6 +31,7 @@ export default function Day1Page() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [hasPaid, setHasPaid] = useState(false) // Track paid status
 
   const [completedSteps, setCompletedSteps] = useState<Record<string, boolean>>({
     step1: false,
@@ -42,6 +46,13 @@ export default function Day1Page() {
 
   const [currentStep, setCurrentStep] = useState("step1")
 
+  // Simulate getting user payment status
+  useEffect(() => {
+    // In a real app, this would fetch from your backend or auth context
+    // For now, we'll just simulate a free user
+    setHasPaid(false)
+  }, [])
+
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
@@ -50,6 +61,11 @@ export default function Day1Page() {
   }
 
   const handleSubmit = () => {
+    if (!hasPaid) {
+      showPaymentRequiredAlert()
+      return
+    }
+    
     setIsSubmitting(true)
 
     setTimeout(() => {
@@ -82,6 +98,19 @@ export default function Day1Page() {
         stepElement.scrollIntoView({ behavior: "smooth" })
       }
     }, 100)
+  }
+
+  const showPaymentRequiredAlert = () => {
+    toast({
+      title: "결제가 필요합니다",
+      description: "더 많은 기능을 이용하시려면 결제가 필요합니다.",
+      variant: "destructive",
+    })
+    
+    // Show payment prompt
+    if (window.confirm("더 학습하시려면 결제가 필요합니다. 결제 페이지로 이동하시겠습니까?")) {
+      router.push('/curriculum') // Redirect to payment page
+    }
   }
 
   return (
@@ -133,12 +162,24 @@ export default function Day1Page() {
                   <div className="space-y-3">
                     <h3 className="font-medium">다운로드 자료</h3>
                     <div className="space-y-2">
-                      <Button variant="outline" size="sm" className="w-full justify-start text-sm">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full justify-start text-sm"
+                        disabled={!hasPaid}
+                        onClick={!hasPaid ? showPaymentRequiredAlert : undefined}
+                      >
                         <FileText className="h-4 w-4 mr-2" />
                         블로그 세팅 운영 가이드.pdf
                         <Download className="h-4 w-4 ml-auto" />
                       </Button>
-                      <Button variant="outline" size="sm" className="w-full justify-start text-sm">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full justify-start text-sm"
+                        disabled={!hasPaid}
+                        onClick={!hasPaid ? showPaymentRequiredAlert : undefined}
+                      >
                         <FileText className="h-4 w-4 mr-2" />
                         블로그 세팅을 도와주는 AI 활용법.docx
                         <Download className="h-4 w-4 ml-auto" />
@@ -227,11 +268,14 @@ export default function Day1Page() {
                         <ArrowLeft className="h-4 w-4 mr-2" />
                         이전
                       </Button>
-                      <Button variant="outline" size="sm" asChild>
-                        <Link href="/course/day2">
-                          Day 2
-                          <ArrowRight className="h-4 w-4 ml-2" />
-                        </Link>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={!hasPaid ? showPaymentRequiredAlert : undefined}
+                        disabled={!hasPaid}
+                      >
+                        Day 2
+                        <ArrowRight className="h-4 w-4 ml-2" />
                       </Button>
                     </div>
                   </div>
@@ -834,6 +878,23 @@ export default function Day1Page() {
                           </div>
                         </div>
                       </div>
+                      
+                      {!hasPaid && (
+                        <Alert className="mt-6 bg-yellow-50 border-yellow-200">
+                          <AlertCircle className="h-4 w-4 text-yellow-600" />
+                          <AlertTitle className="text-yellow-800">프리미엄 과정 안내</AlertTitle>
+                          <AlertDescription className="text-yellow-700">
+                            Day 1은 무료로 제공됩니다. Day 2부터 Day 6까지의 과정과 전문가 피드백을 받아보시려면 결제가 필요합니다.
+                          </AlertDescription>
+                          <Button 
+                            onClick={() => router.push('/curriculum')}
+                            className="mt-4 bg-yellow-600 hover:bg-yellow-700 text-white"
+                            size="sm"
+                          >
+                            프리미엄 과정 구매하기
+                          </Button>
+                        </Alert>
+                      )}
                     </div>
                   )}
                 </CardContent>
@@ -861,6 +922,23 @@ export default function Day1Page() {
                         </ul>
                       </div>
 
+                      {!hasPaid && (
+                        <Alert className="mt-4 bg-yellow-50 border-yellow-200">
+                          <AlertCircle className="h-4 w-4 text-yellow-600" />
+                          <AlertTitle className="text-yellow-800">과제 제출 기능 제한</AlertTitle>
+                          <AlertDescription className="text-yellow-700">
+                            무료 체험 회원은 과제 제출 기능을 이용할 수 없습니다. 전문가 피드백을 받아보시려면 프리미엄 과정을 구매해주세요.
+                          </AlertDescription>
+                          <Button 
+                            onClick={() => router.push('/curriculum')}
+                            className="mt-4 bg-yellow-600 hover:bg-yellow-700 text-white"
+                            size="sm"
+                          >
+                            프리미엄 과정 구매하기
+                          </Button>
+                        </Alert>
+                      )}
+
                       <div className="space-y-4">
                         <div className="space-y-2">
                           <Label htmlFor="blogUrl">블로그 URL</Label>
@@ -869,6 +947,7 @@ export default function Day1Page() {
                             placeholder="https://blog.naver.com/yourblog"
                             value={formData.blogUrl}
                             onChange={(e) => handleInputChange("blogUrl", e.target.value)}
+                            disabled={!hasPaid}
                           />
                           <p className="text-xs text-muted-foreground">
                             네이버, 티스토리 등 블로그 주소를 입력해주세요.
@@ -882,6 +961,7 @@ export default function Day1Page() {
                             placeholder="예: 뷰티/화장품 리뷰, 맛집 탐방, 육아 일상 등"
                             value={formData.blogTopic}
                             onChange={(e) => handleInputChange("blogTopic", e.target.value)}
+                            disabled={!hasPaid}
                           />
                           <p className="text-xs text-muted-foreground">블로그에서 주로 다룰 주제를 입력해주세요.</p>
                         </div>
@@ -894,6 +974,7 @@ export default function Day1Page() {
                             rows={3}
                             value={formData.keywords}
                             onChange={(e) => handleInputChange("keywords", e.target.value)}
+                            disabled={!hasPaid}
                           />
                           <p className="text-xs text-muted-foreground">
                             블로그에서 다루고 싶은 구체적인 키워드를 쉼표로 구분하여 입력해주세요.
@@ -926,7 +1007,7 @@ export default function Day1Page() {
                     </Button>
                     <Button
                       onClick={handleSubmit}
-                      disabled={isSubmitting || !formData.blogUrl || !formData.blogTopic || !formData.keywords}
+                      disabled={isSubmitting || !formData.blogUrl || !formData.blogTopic || !formData.keywords || !hasPaid}
                       className="bg-pink-600 hover:bg-pink-700"
                     >
                       {isSubmitting ? (
