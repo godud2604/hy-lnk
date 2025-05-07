@@ -153,17 +153,17 @@ export default function MyPage() {
     : 0
 
   return (
-    <div className="container py-8 md:py-12">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+    <div className="container py-6 md:py-12 px-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 md:mb-8">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">마이페이지</h1>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">마이페이지</h1>
           <p className="text-muted-foreground mt-1">내 학습 현황과 개인정보를 관리할 수 있어요.</p>
         </div>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {/* 첫 번째 열: 사용자 정보 */}
-        <div className="space-y-6">
+        <div className="space-y-6 order-2 md:order-1">
           {/* 내 정보 카드 */}
           <Card>
             <CardHeader className="pb-2">
@@ -235,7 +235,7 @@ export default function MyPage() {
           </Card>
 
           {/* 전문가 피드백 카드 */}
-          <Card>
+          <Card className="hidden md:block">
             <CardHeader className="pb-2">
               <CardTitle>전문가 피드백</CardTitle>
               <CardDescription>
@@ -276,7 +276,7 @@ export default function MyPage() {
         </div>
 
         {/* 두 번째~세 번째 열: 코스 모듈 */}
-        <div className="md:col-span-2 space-y-6">
+        <div className="md:col-span-2 space-y-6 order-1 md:order-2">
           <Card>
             <CardHeader className="pb-2">
               <CardTitle>6일만에 완성하는 블로그 커리큘럼</CardTitle>
@@ -317,7 +317,7 @@ export default function MyPage() {
                       <div className="p-3 grid grid-cols-[1fr,auto] gap-3 items-center">
                         {/* 왼쪽 영역: 텍스트 정보 */}
                         <div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
                             <Badge className="h-5 px-2" variant={
                               module.status === "completed" ? "default" :
                               module.status === "in-progress" ? "secondary" :
@@ -325,19 +325,26 @@ export default function MyPage() {
                             }>
                               <span className="text-xs font-medium">Day {module.day}</span>
                             </Badge>
-                            <h4 className="font-medium text-sm">{module.title}</h4>
+                            <h4 className="font-medium text-sm">
+                              <span className="hidden sm:inline">{module.title}</span>
+                              <span className="sm:hidden">{
+                                module.title.length > 8 
+                                  ? module.title.substring(0, 8) + "..."
+                                  : module.title
+                              }</span>
+                            </h4>
                           </div>
                           
                           {/* 진행 상태 아이콘으로 표시 - 개선된 버전 */}
                           <div className="mt-2">
                             {module.status === "completed" ? (
                               <div className="flex flex-col space-y-1.5">
-                                <div className="flex items-center">
+                                <div className="flex flex-wrap items-center">
                                   <div className="flex items-center bg-green-100 text-green-700 rounded-full px-2 py-0.5">
                                     <CheckCircle className="w-3 h-3 mr-1" />
                                     <span className="text-xs font-medium">과제 제출 완료</span>
                                   </div>
-                                  <span className="text-xs text-gray-500 ml-2">
+                                  <span className="text-xs text-gray-500 ml-2 hidden sm:inline">
                                     {courseProgress.lastActivity && `${courseProgress.lastActivity.split('T')[0]} 제출`}
                                   </span>
                                 </div>
@@ -367,22 +374,22 @@ export default function MyPage() {
                             ) : module.status === "in-progress" ? (
                               <div className="flex flex-col space-y-1.5">
                                 {courseProgress.pendingFeedback ? (
-                                  <div className="flex items-center">
+                                  <div className="flex flex-wrap items-center">
                                     <div className="flex items-center bg-yellow-100 text-yellow-700 rounded-full px-2 py-0.5">
                                       <Clock className="w-3 h-3 mr-1" />
                                       <span className="text-xs font-medium">피드백 대기중</span>
                                     </div>
-                                    <div className="flex items-center ml-2 text-xs text-gray-500">
+                                    <div className="flex items-center ml-2 text-xs text-gray-500 hidden sm:flex">
                                       <span>예상 도착: 24시간 이내</span>
                                     </div>
                                   </div>
                                 ) : (
-                                  <div className="flex items-center">
+                                  <div className="flex flex-wrap items-center">
                                     <div className="flex items-center bg-pink-100 text-pink-700 rounded-full px-2 py-0.5">
                                       <FileText className="w-3 h-3 mr-1" />
                                       <span className="text-xs font-medium">학습 진행중</span>
                                     </div>
-                                    <div className="ml-2">
+                                    <div className="ml-2 hidden sm:block">
                                       <Button
                                         variant="ghost"
                                         size="sm"
@@ -407,7 +414,7 @@ export default function MyPage() {
                                     ></div>
                                   </div>
                                   <span className="text-xs text-gray-500 ml-2">
-                                    {courseProgress.pendingFeedback ? '학습 80% 완료' : '학습 40% 완료'}
+                                    {courseProgress.pendingFeedback ? '80%' : '40%'}
                                   </span>
                                 </div>
                               </div>
@@ -416,18 +423,18 @@ export default function MyPage() {
                                 <div className="flex items-center bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">
                                   <span className="text-xs font-medium">무료체험 가능</span>
                                 </div>
-                                <div className="ml-2">
+                                <div className="ml-2 hidden sm:block">
                                   <Badge variant="outline" className="bg-blue-50 border-blue-200 text-blue-600 text-[10px] h-5">
                                     신규회원 혜택
                                   </Badge>
                                 </div>
                               </div>
                             ) : (
-                              <div className="flex items-center">
+                              <div className="flex flex-wrap items-center">
                                 <div className="flex items-center bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
                                   <span className="text-xs font-medium">이전 단계 완료 필요</span>
                                 </div>
-                                <div className="ml-2 text-xs text-gray-500">
+                                <div className="ml-2 text-xs text-gray-500 hidden sm:block">
                                   {module.day > 1 && !courseProgress.hasPaidCourse 
                                     ? '구매 후 이용 가능' 
                                     : `Day ${module.day-1} 완료 후 진행`}
@@ -478,6 +485,46 @@ export default function MyPage() {
                       </Link>
                     </Button>
                   </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* 모바일에서만 표시되는 전문가 피드백 */}
+          <Card className="md:hidden">
+            <CardHeader className="pb-2">
+              <CardTitle>전문가 피드백</CardTitle>
+              <CardDescription>
+                제출한 과제에 대한 전문가의 피드백을 확인해보세요.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {courseProgress.pendingFeedback ? (
+                <div className="w-full bg-yellow-50 text-yellow-800 rounded-lg p-4 text-sm">
+                  <div className="flex items-center font-medium mb-2">
+                    <Clock className="h-4 w-4 mr-2" />
+                    <span>피드백 대기 중</span>
+                  </div>
+                  <p>제출한 과제에 대한 피드백이 곧 도착할 예정입니다.</p>
+                  <p className="mt-2 text-xs text-yellow-700">일반적으로 24시간 이내에 전달됩니다.</p>
+                </div>
+              ) : courseProgress.feedbackReceived ? (
+                <div className="w-full bg-green-50 text-green-800 rounded-lg p-4 text-sm">
+                  <div className="flex items-center font-medium mb-2">
+                    <CheckCircle className="h-4 w-4 mr-2" />
+                    <span>피드백 도착</span>
+                  </div>
+                  <div className="p-3 bg-white/70 rounded border border-green-100 mt-2">
+                    <p>{courseProgress.feedbackContent}</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-6 text-center">
+                  <MessageCircle className="h-12 w-12 text-gray-300 mb-2" />
+                  <h3 className="text-base font-medium text-gray-600">아직 피드백이 없습니다</h3>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    과제를 완료하고 제출하면 전문가의 피드백을 받을 수 있어요.
+                  </p>
                 </div>
               )}
             </CardContent>

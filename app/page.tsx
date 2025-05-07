@@ -10,11 +10,11 @@ export default function Home() {
       <HeroSection />
 
       {/* Featured Courses */}
-      <section className="relative py-16 md:py-24">
+      <section className="relative py-12 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-br from-lavender-50/70 via-white to-lavender-50/50"></div>
         <div className="absolute inset-0 bg-[url('/patterns/grid.svg')] opacity-[0.02]"></div>
         <div className="container relative px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 sm:mb-12">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">쉽고 재미있는 교육 과정</h2>
               <p className="text-muted-foreground/80 mt-2 text-sm sm:text-base">누구나 쉽게 따라할 수 있는 체험단 활동 노하우를 배워보세요</p>
@@ -126,7 +126,7 @@ export default function Home() {
             </Card>
           </div>
 
-          <Link href="/curriculum" className="md:hidden w-full mt-8">
+          <Link href="/curriculum" className="md:hidden w-full mt-6">
             <Button variant="link" className="w-full justify-center text-primary hover:text-primary/90 group">
               전체 과정 보기 
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -136,21 +136,21 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="container relative py-16 md:py-24 px-4 sm:px-6">
-        <div className="rounded-2xl bg-gradient-to-br from-lavender-100 to-softpink-100 p-8 sm:p-12 relative overflow-hidden">
+      <section className="container relative py-12 md:py-24 px-4 sm:px-6">
+        <div className="rounded-2xl bg-gradient-to-br from-lavender-100 to-softpink-100 p-6 sm:p-12 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/patterns/grid.svg')] opacity-[0.03]"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-white/50 to-transparent"></div>
           <div className="relative z-10 max-w-2xl">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+            <h2 className="text-xl sm:text-3xl font-bold tracking-tight mb-3 sm:mb-4 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
               디지털 혁신의 시작, 에듀테크단
             </h2>
-            <p className="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
               체험단 마스터 과정부터 AI 활용까지, 디지털 시대에 필요한 핵심 역량을 체계적으로 학습하세요. 실전 중심의 커리큘럼과 전문가의 1:1 피드백으로 빠른 성장을 경험하실 수 있습니다.
             </p>
             <Link href="/curriculum">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl text-sm sm:text-base px-6 py-5 sm:py-6"
+                className="w-full sm:w-auto bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl text-sm sm:text-base px-6 py-5 sm:py-6"
               >
                 학습 시작하기 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
