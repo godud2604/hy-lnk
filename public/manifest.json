@@ -1,0 +1,23 @@
+{
+  "name": "에듀테크단",
+  "short_name": "에듀테크단",
+  "description": "체험단 일정 관리, 꿀팁 공유, 자동화 툴 소개 및 수익 창출 방법을 알려드립니다.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -7,6 +7,28 @@ import { ThemeProvider } from "@/components/theme-provider"
 export const metadata = {
   title: "에듀테크단 - 체험단 꿀팁과 자동화 툴 공유 플랫폼",
   description: "체험단 일정 관리, 꿀팁 공유, 자동화 툴 소개 및 수익 창출 방법을 알려드립니다.",
+  icons: {
+    icon: [
+      {
+        url: '/web-app-manifest-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        url: '/web-app-manifest-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+    apple: [
+      {
+        url: '/web-app-manifest-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+    ],
+  },
+  manifest: '/manifest.json',
 }
 
 export default function RootLayout({
