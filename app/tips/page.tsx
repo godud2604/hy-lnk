@@ -89,15 +89,6 @@ const allTips = [
     views: 720,
     slug: "blog-growth-routine"
   },
-  {
-    id: 10,
-    title: "이번 달 주요 체험단 모집 일정 총정리",
-    description: "5월 주요 브랜드 체험단 모집 일정과 신청 팁을 정리했습니다.",
-    category: "모집정보",
-    date: "2025-05-02",
-    views: 1100,
-    slug: "may-opportunities"
-  }
 ]
 
 export default function TipsPage() {

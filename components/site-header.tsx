@@ -83,7 +83,7 @@ export default function SiteHeader() {
         </div>
         <div className="flex items-center gap-4">
           {/* 데스크탑용 */}
-          <div className="hidden md:flex gap-3 items-center">
+          {/* <div className="hidden md:flex gap-3 items-center">
             {user ? (
               <>
                 <Button 
@@ -103,9 +103,9 @@ export default function SiteHeader() {
             ) : (
               <LoginButton className="h-9 px-4 rounded-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-white shadow-sm" />
             )}
-          </div>
+          </div> */}
           {/* 모바일용 Dropdown 메뉴 */}
-          <DropdownMenu>
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-primary">
                 <Menu className="h-5 w-5" />
@@ -147,7 +147,7 @@ export default function SiteHeader() {
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
         </div>
       </div>
     </header>

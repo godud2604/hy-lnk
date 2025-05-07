@@ -377,10 +377,10 @@ export default function Day1Page() {
 
                         {currentStep === "step2_1" && (
                           <div className="flex justify-between mt-4">
-                            <Button variant="outline" onClick={() => setCurrentStep("step1")}>
+                            {/* <Button variant="outline" onClick={() => setCurrentStep("step1")}>
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               이전 단계로
-                            </Button>
+                            </Button> */}
                             <Button onClick={() => completeStep("step2_1")} className="bg-pink-600 hover:bg-pink-700">
                               완료 및 계속하기
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -492,10 +492,10 @@ export default function Day1Page() {
 
                         {currentStep === "step2_2" && (
                           <div className="flex justify-between mt-4">
-                            <Button variant="outline" onClick={() => setCurrentStep("step2_1")}>
+                            {/* <Button variant="outline" onClick={() => setCurrentStep("step2_1")}>
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               이전 단계로
-                            </Button>
+                            </Button> */}
                             <Button onClick={() => completeStep("step2_2")} className="bg-pink-600 hover:bg-pink-700">
                               완료 및 계속하기
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -574,10 +574,10 @@ export default function Day1Page() {
 
                         {currentStep === "step2_3" && (
                           <div className="flex justify-between mt-4">
-                            <Button variant="outline" onClick={() => setCurrentStep("step2_2")}>
+                            {/* <Button variant="outline" onClick={() => setCurrentStep("step2_2")}>
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               이전 단계로
-                            </Button>
+                            </Button> */}
                             <Button onClick={() => completeStep("step2_3")} className="bg-pink-600 hover:bg-pink-700">
                               완료 및 계속하기
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -618,10 +618,10 @@ export default function Day1Page() {
 
                         {currentStep === "step2_4" && (
                           <div className="flex justify-between mt-4">
-                            <Button variant="outline" onClick={() => setCurrentStep("step2_3")}>
+                            {/* <Button variant="outline" onClick={() => setCurrentStep("step2_3")}>
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               이전 단계로
-                            </Button>
+                            </Button> */}
                             <Button onClick={() => completeStep("step2_4")} className="bg-pink-600 hover:bg-pink-700">
                               완료 및 계속하기
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -688,10 +688,10 @@ export default function Day1Page() {
 
                         {currentStep === "step2_5" && (
                           <div className="flex justify-between mt-4">
-                            <Button variant="outline" onClick={() => setCurrentStep("step2_4")}>
+                            {/* <Button variant="outline" onClick={() => setCurrentStep("step2_4")}>
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               이전 단계로
-                            </Button>
+                            </Button> */}
                             <Button onClick={() => completeStep("step2_5")} className="bg-pink-600 hover:bg-pink-700">
                               완료 및 계속하기
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -748,10 +748,10 @@ export default function Day1Page() {
 
                         {currentStep === "step3_1" && (
                           <div className="flex justify-between mt-4">
-                            <Button variant="outline" onClick={() => setCurrentStep("step2_5")}>
+                            {/* <Button variant="outline" onClick={() => setCurrentStep("step2_5")}>
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               이전 단계로
-                            </Button>
+                            </Button> */}
                             <Button onClick={() => completeStep("step3_1")} className="bg-pink-600 hover:bg-pink-700">
                               완료 및 계속하기
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -832,10 +832,10 @@ export default function Day1Page() {
 
                         {currentStep === "step3_2" && (
                           <div className="flex justify-between mt-4">
-                            <Button variant="outline" onClick={() => setCurrentStep("step3_1")}>
+                            {/* <Button variant="outline" onClick={() => setCurrentStep("step3_1")}>
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               이전 단계로
-                            </Button>
+                            </Button> */}
                             <Button onClick={() => completeStep("step3_2")} className="bg-pink-600 hover:bg-pink-700">
                               모든 학습 완료하기
                               <CheckCircle className="ml-2 h-4 w-4" />
@@ -886,12 +886,15 @@ export default function Day1Page() {
                           <AlertDescription className="text-yellow-700">
                             Day 1은 무료로 제공됩니다. Day 2부터 Day 6까지의 과정과 전문가 피드백을 받아보시려면 결제가 필요합니다.
                           </AlertDescription>
-                          <Button 
-                            onClick={() => router.push('/curriculum')}
-                            className="mt-4 bg-yellow-600 hover:bg-yellow-700 text-white"
-                            size="sm"
-                          >
-                            프리미엄 과정 구매하기
+                          <Button className="mt-4 ml-6 bg-pink-600 hover:bg-pink-700" asChild>
+                              <Link
+                              href="https://docs.google.com/forms/d/1sjSUhF5Vlv0VdoOcloakd6dUot8dTyhKrv65gtH1xNs/edit" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              >
+                              사전 신청하기
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Link>
                           </Button>
                         </Alert>
                       )}
@@ -929,12 +932,15 @@ export default function Day1Page() {
                           <AlertDescription className="text-yellow-700">
                             무료 체험 회원은 과제 제출 기능을 이용할 수 없습니다. 전문가 피드백을 받아보시려면 프리미엄 과정을 구매해주세요.
                           </AlertDescription>
-                          <Button 
-                            onClick={() => router.push('/curriculum')}
-                            className="mt-4 bg-yellow-600 hover:bg-yellow-700 text-white"
-                            size="sm"
-                          >
-                            프리미엄 과정 구매하기
+                          <Button className="ml-6 mt-4 bg-pink-600 hover:bg-pink-700" asChild>
+                              <Link
+                              href="https://docs.google.com/forms/d/1sjSUhF5Vlv0VdoOcloakd6dUot8dTyhKrv65gtH1xNs/edit" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              >
+                              사전 신청하기
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Link>
                           </Button>
                         </Alert>
                       )}
