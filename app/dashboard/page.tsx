@@ -276,7 +276,30 @@ export default function MyPage() {
         </div>
 
         {/* 두 번째~세 번째 열: 코스 모듈 */}
+        
         <div className="md:col-span-2 space-y-6">
+        {!courseProgress.hasPaidCourse && (
+            <div className="p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg border border-pink-100">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <h3 className="font-semibold text-lg text-pink-800">모든 커리큘럼 이용하기</h3>
+                  <p className="text-sm text-pink-700 mt-1">
+                    전체 강의와 전문가 피드백을 받아보세요.
+                  </p>
+                </div>
+                <Button className="bg-pink-600 hover:bg-pink-700" asChild>
+                    <Link
+                    href="https://docs.google.com/forms/d/1sjSUhF5Vlv0VdoOcloakd6dUot8dTyhKrv65gtH1xNs/edit" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    >
+                    사전 신청하기
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
+              </div>
+            </div>
+          )}
           <Card>
             <CardHeader className="pb-2">
               <CardTitle>6일만에 완성하는 블로그 커리큘럼</CardTitle>
@@ -464,28 +487,7 @@ export default function MyPage() {
                 ))}
               </div>
               
-              {!courseProgress.hasPaidCourse && (
-                <div className="mt-8 p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg border border-pink-100">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div>
-                      <h3 className="font-semibold text-lg text-pink-800">모든 커리큘럼 이용하기</h3>
-                      <p className="text-sm text-pink-700 mt-1">
-                        전체 강의와 전문가 피드백을 받아보세요.
-                      </p>
-                    </div>
-                    <Button className="bg-pink-600 hover:bg-pink-700" asChild>
-                        <Link
-                        href="https://docs.google.com/forms/d/1sjSUhF5Vlv0VdoOcloakd6dUot8dTyhKrv65gtH1xNs/edit" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        >
-                        사전 신청하기
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
-                  </div>
-                </div>
-              )}
+            
             </CardContent>
           </Card>
         </div>
