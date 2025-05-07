@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, CheckCircle, Clock, FileText, MessageCircle, Star, User } from "lucide-react"
+import { ArrowRight, CheckCircle, Clock, FileText, MessageCircle, Star, User, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -13,6 +13,7 @@ import { db } from "@/lib/firebase"
 import _ from "lodash"
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
+import { toast } from "@/hooks/use-toast"
 
 export default function MyPage() {
   const { user } = useAuth()
@@ -327,45 +328,109 @@ export default function MyPage() {
                             <h4 className="font-medium text-sm">{module.title}</h4>
                           </div>
                           
-                          {/* 진행 상태 아이콘으로 표시 */}
-                          <div className="mt-2 flex items-center">
+                          {/* 진행 상태 아이콘으로 표시 - 개선된 버전 */}
+                          <div className="mt-2">
                             {module.status === "completed" ? (
-                              <div className="flex items-center">
-                                <div className="flex items-center bg-green-100 text-green-700 rounded-full px-2 py-0.5">
-                                  <CheckCircle className="w-3 h-3 mr-1" />
-                                  <span className="text-xs font-medium">과제 제출 완료</span>
+                              <div className="flex flex-col space-y-1.5">
+                                <div className="flex items-center">
+                                  <div className="flex items-center bg-green-100 text-green-700 rounded-full px-2 py-0.5">
+                                    <CheckCircle className="w-3 h-3 mr-1" />
+                                    <span className="text-xs font-medium">과제 제출 완료</span>
+                                  </div>
+                                  <span className="text-xs text-gray-500 ml-2">
+                                    {courseProgress.lastActivity && `${courseProgress.lastActivity.split('T')[0]} 제출`}
+                                  </span>
                                 </div>
-                                {module.feedback && (
-                                  <div className="ml-2 flex items-center bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">
-                                    <MessageCircle className="w-3 h-3 mr-1" />
-                                    <span className="text-xs font-medium">피드백 완료</span>
+                                {module.feedback ? (
+                                  <div className="flex items-center">
+                                    <div className="flex items-center bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">
+                                      <MessageCircle className="w-3 h-3 mr-1" />
+                                      <span className="text-xs font-medium">피드백 완료</span>
+                                    </div>
+                                    <button className="ml-2 text-xs text-blue-600 hover:text-blue-800 underline font-medium" 
+                                      onClick={() => {
+                                        // 피드백 내용 모달 열기 기능
+                                        toast({
+                                          title: "피드백 보기",
+                                          description: module.feedbackText || "멘토 피드백: 잘 작성된 과제입니다. 특히 카테고리 구성이 체계적이네요!",
+                                        })
+                                      }}>
+                                      피드백 보기
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <div className="px-2 py-0.5 text-xs text-gray-500">
+                                    전문가 피드백이 곧 도착할 예정입니다
                                   </div>
                                 )}
                               </div>
                             ) : module.status === "in-progress" ? (
-                              <div className="flex items-center">
+                              <div className="flex flex-col space-y-1.5">
                                 {courseProgress.pendingFeedback ? (
-                                  <div className="flex items-center bg-yellow-100 text-yellow-700 rounded-full px-2 py-0.5">
-                                    <Clock className="w-3 h-3 mr-1" />
-                                    <span className="text-xs font-medium">피드백 대기중</span>
+                                  <div className="flex items-center">
+                                    <div className="flex items-center bg-yellow-100 text-yellow-700 rounded-full px-2 py-0.5">
+                                      <Clock className="w-3 h-3 mr-1" />
+                                      <span className="text-xs font-medium">피드백 대기중</span>
+                                    </div>
+                                    <div className="flex items-center ml-2 text-xs text-gray-500">
+                                      <span>예상 도착: 24시간 이내</span>
+                                    </div>
                                   </div>
                                 ) : (
-                                  <div className="flex items-center bg-pink-100 text-pink-700 rounded-full px-2 py-0.5">
-                                    <FileText className="w-3 h-3 mr-1" />
-                                    <span className="text-xs font-medium">학습 진행중</span>
+                                  <div className="flex items-center">
+                                    <div className="flex items-center bg-pink-100 text-pink-700 rounded-full px-2 py-0.5">
+                                      <FileText className="w-3 h-3 mr-1" />
+                                      <span className="text-xs font-medium">학습 진행중</span>
+                                    </div>
+                                    <div className="ml-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        className="h-6 px-2 text-xs text-pink-600 hover:text-pink-700 hover:bg-pink-50"
+                                        asChild
+                                      >
+                                        <Link href={`/course/day${module.day}?tab=assignment`}>
+                                          과제 제출하기
+                                          <Send className="w-3 h-3 ml-1" />
+                                        </Link>
+                                      </Button>
+                                    </div>
                                   </div>
                                 )}
+                                <div className="flex items-center">
+                                  <div className="w-full max-w-32 bg-gray-200 rounded-full h-1">
+                                    <div 
+                                      className="bg-pink-500 h-1 rounded-full" 
+                                      style={{ 
+                                        width: courseProgress.pendingFeedback ? '80%' : '40%' 
+                                      }}
+                                    ></div>
+                                  </div>
+                                  <span className="text-xs text-gray-500 ml-2">
+                                    {courseProgress.pendingFeedback ? '학습 80% 완료' : '학습 40% 완료'}
+                                  </span>
+                                </div>
                               </div>
                             ) : module.day === 1 && !courseProgress.hasPaidCourse ? (
                               <div className="flex items-center">
                                 <div className="flex items-center bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">
                                   <span className="text-xs font-medium">무료체험 가능</span>
                                 </div>
+                                <div className="ml-2">
+                                  <Badge variant="outline" className="bg-blue-50 border-blue-200 text-blue-600 text-[10px] h-5">
+                                    신규회원 혜택
+                                  </Badge>
+                                </div>
                               </div>
                             ) : (
                               <div className="flex items-center">
                                 <div className="flex items-center bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
                                   <span className="text-xs font-medium">이전 단계 완료 필요</span>
+                                </div>
+                                <div className="ml-2 text-xs text-gray-500">
+                                  {module.day > 1 && !courseProgress.hasPaidCourse 
+                                    ? '구매 후 이용 가능' 
+                                    : `Day ${module.day-1} 완료 후 진행`}
                                 </div>
                               </div>
                             )}

@@ -205,7 +205,7 @@ export default function Curriculum() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* <section className="py-16 md:py-24 bg-white">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-lavender-100 text-primary hover:bg-lavender-100 border-none">수강생 후기</Badge>
@@ -217,10 +217,10 @@ export default function Curriculum() {
 
           <TestimonialSlider />
         </div>
-      </section>
+      </section> */}
 
       {/* Pricing Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-lavender-50 to-softpink-50">
+      {/* <section className="py-16 md:py-24 bg-gradient-to-r from-lavender-50 to-softpink-50">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center mb-12">
             <Badge className="mb-2 bg-lavender-100 text-primary hover:bg-lavender-100 border-none">수강 신청</Badge>
@@ -236,7 +236,7 @@ export default function Curriculum() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-white">

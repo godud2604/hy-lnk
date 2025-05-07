@@ -49,15 +49,6 @@ export default function Day1Page() {
     }))
   }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData((prev) => ({
-        ...prev,
-        file: e.target.files![0],
-      }))
-    }
-  }
-
   const handleSubmit = () => {
     setIsSubmitting(true)
 
@@ -100,7 +91,7 @@ export default function Day1Page() {
       <div className="grid md:grid-cols-3 gap-8 mt-8">
         <div className="md:col-span-1">
           <div className="sticky top-24">
-            <Card className="max-h-[calc(100vh-8rem)] overflow-y-auto">
+            <Card>
               <CardHeader className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-lg">
                 <CardTitle className="text-xl">Day 1</CardTitle>
                 <CardDescription className="text-base font-medium">체험단 특화 블로그 만들기</CardDescription>
